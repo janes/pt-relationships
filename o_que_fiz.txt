@@ -1,0 +1,8 @@
+# gerar dados/features de treino e de teste
+clear;./main.py ~/Dropbox/RelationshipsPT-Dataset/train_data.txt ~/Dropbox/RelationshipsPT-Dataset/publico_sentences_to_tag.txt
+
+# treinar o modelo
+vw train.vw -c -k --passes 300 -b 24 --ect 21 -f publico.model.vw
+
+# fazer a previsão
+vw classify.vw -t -i publico.model.vw -p preds.txt
