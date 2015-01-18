@@ -120,6 +120,8 @@ def classify(data_file, extractor, f):
 
 
 def main():
+    # Data format for Vowppal Wabbit
+    """
     extractor = FeatureExtractor()
     f_train = open("train.vw", "wb")
     training(sys.argv[1], extractor, f_train)
@@ -127,6 +129,18 @@ def main():
     f_classify = open("classify.vw", "wb")
     classify(sys.argv[2], extractor, f_classify)
     f_classify.close()
+    """
+
+    #
+    extractor = FeatureExtractor()
+    f_train = open("train.vw", "wb")
+    training(sys.argv[1], extractor, f_train)
+    f_train.close()
+    f_classify = open("classify.vw", "wb")
+    classify(sys.argv[2], extractor, f_classify)
+    f_classify.close()
+
+
 
 if __name__ == "__main__":
     main()
