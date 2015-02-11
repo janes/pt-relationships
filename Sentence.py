@@ -19,6 +19,7 @@ class Relationship:
         self.arg1type = _arg1type
         self.arg2type = _arg2type
         self.sigs = None
+        self.patterns = list()
 
         if _before is None and _between is None and _after is None and _sentence is not None:
             matches = []

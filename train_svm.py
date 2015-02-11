@@ -276,16 +276,18 @@ def main():
     x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
 
     # more feature extraction
+
     # TODO: guardar sequencialmente todos os ReVerb patterns extraidos
     # TODO: guardar para cada relação os ReVerb patterns extraidos, atraves de indices para a estrutura global
     # TODO: word-clusters generated from word2vec over publico.pt 10 years dataset
+    reverb_patterns = list()
     for rel in relationships:
-        # ReVerb patterns
-        extract_reverb_patterns_ptb()
-
-
-
-
+        # extract ReVerb patterns from the 3 contexts
+        patterns = extract_reverb_patterns_ptb(rel)
+        rel.patterns = patterns
+        for p in patterns:
+            if p not in patterns:
+                reverb_patterns.append(p)
 
     samples_features = []
     sample_class = []
@@ -296,12 +298,6 @@ def main():
         samples_features.append(words)
         sample_class.append(rel_type_id[rel.rel_type])
         relationships_by_id[rel.identifier] = rel
-
-
-
-
-
-
 
     print len(samples_features), " samples"
     print len(rel_type_id), " classes"
