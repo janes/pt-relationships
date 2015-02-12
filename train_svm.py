@@ -15,6 +15,10 @@ from sklearn import svm
 from sklearn.cross_validation import KFold
 from Sentence import Relationship, Sentence
 
+# Parameters for relationship extraction from Sentence
+MAX_TOKENS_AWAY = 9
+MIN_TOKENS_AWAY = 1
+CONTEXT_WINDOW = 3
 
 rel_type_id = dict()
 rel_type_id['agreement(Arg1,Arg2)'] = 0
@@ -49,11 +53,17 @@ def load_relationships(data_file):
     relationships = list()
     rel_id = 0
     print "Loading relationships from file"
-    f_sentences = codecs.open(data_file, encoding='utf-8')
+    #f_sentences = codecs.open(data_file, encoding='utf-8')
+    f_sentences = codecs.open(data_file)
     for line in f_sentences:
         if not re.match('^relation', line):
             sentence = line.strip()
         else:
+            #TODO: limitar o contexto de BEF e AFT
+
+            # before = self.sentence[start:matches[x].start()]
+            # after = self.sentence[matches[x + 1].end(): end]
+
             rel_type = line.strip().split(':')[1]
             rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
             rel_id += 1
@@ -242,32 +252,67 @@ def extract_reverb_patterns_ptb(text):
     return patterns, patterns_tags
 
 
-def extract_patterns(text):
+def add_patterns(patterns, reverb_patterns):
+    for p in patterns:
+        if p not in reverb_patterns:
+            reverb_patterns.append(p)
+
+
+def extract_patterns(text, context):
+    # each sentence contains one relationship only
     patterns, patterns_tags = extract_reverb_patterns_ptb(text)
-    if len(patterns) > 0:
-        for pattern in patterns_tags:
-            for tag in pattern:
-                print '/'.join(tag).encode("utf8"),
-            print "\n"
-        print "\n"
+
+    # detect which patterns contain passive voice
+    extracted_patterns = list()
+    for pattern in patterns_tags:
+        passive_voice = False
+        for i in range(0, len(pattern)):
+            if pattern[i][1].startswith('v'):
+                try:
+                    inf = verbs[pattern[i][0]]
+                    if inf in ['ser', 'estar', 'ter', 'haver'] and i+2 <= len(pattern)-1:
+                        if (pattern[-2][1] == 'verb_past' or pattern[-2][1] == 'adjectiv') and pattern[-1][0] == 'por':
+                            passive_voice = True
+                except KeyError:
+                    continue
+
+        if passive_voice is True:
+            p = '_'.join([tag[0] for tag in pattern])
+            p += '_PASSIVE_VOICE_'+context
+        else:
+            p = '_'.join([tag[0] for tag in pattern])
+            p += '_'+context
+
+        extracted_patterns.append(p)
+
+    return extracted_patterns
+
+
+def load_clusters(clusters_file):
+    return None
 
 
 def main():
-
     global verbs
     print "Loading Label-Delaf"
-    verbs_conj = open('../verbs/verbs_conj.pkl', "r")
+    verbs_conj = open('verbs/verbs_conj.pkl', "r")
     verbs = pickle.load(verbs_conj)
     verbs_conj.close()
 
     global tagger
-    print "Loading PoS tagger\n"
+    print "Loading PoS tagger from", sys.argv[1]
     f_model = open(sys.argv[1], "rb")
     tagger = pickle.load(f_model)
     f_model.close()
 
-    print "Loading relationships"
-    relationships = load_relationships(sys.argv[1])
+    """
+    global word_clusters
+    print "Loading Word Clusters from", sys.argv[3]
+    word_clusters = load_clusters(sys.arg[3])
+    """
+
+    print "Loading relationships from", sys.argv[3]
+    relationships = load_relationships(sys.argv[3])
     print len(relationships), " loaded"
 
     # extracting tf-idf vectors
@@ -276,19 +321,23 @@ def main():
     x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
 
     # more feature extraction
-
-    # TODO: guardar sequencialmente todos os ReVerb patterns extraidos
-    # TODO: guardar para cada relação os ReVerb patterns extraidos, atraves de indices para a estrutura global
     # TODO: word-clusters generated from word2vec over publico.pt 10 years dataset
     reverb_patterns = list()
     for rel in relationships:
-        # extract ReVerb patterns from the 3 contexts
-        patterns = extract_reverb_patterns_ptb(rel)
-        rel.patterns = patterns
-        for p in patterns:
-            if p not in patterns:
-                reverb_patterns.append(p)
 
+        # extract ReVerb patterns from the 3 contexts
+        patterns_bef = extract_patterns(rel.before, "BEF")
+        patterns_bet = extract_patterns(rel.between, "BET")
+        patterns_aft = extract_patterns(rel.after, "AFT")
+        add_patterns(patterns_bef, reverb_patterns)
+        add_patterns(patterns_bet, reverb_patterns)
+        add_patterns(patterns_aft, reverb_patterns)
+
+        # extract ReVerb patterns from the 3 contexts
+
+    print len(reverb_patterns), " ReVerb patterns extracted"
+
+    """
     samples_features = []
     sample_class = []
     relationships_by_id = dict()
@@ -349,14 +398,14 @@ def main():
                 print id_rel_type[c_index], '\t', class_prob_lst[c_index]
                 #scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
 
-            """
             sorted_by_score = sorted(scores, key=lambda tup: tup[1])
             for t in sorted_by_score:
                 print t[0], '\t:', t[1]
-            """
 
             index_rel += 1
         fold += 1
+    """
+
 
 if __name__ == "__main__":
     main()
