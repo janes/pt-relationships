@@ -1,19 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import StringIO
-import pickle
-import nltk
+import operator
 
 __author__ = 'dsbatista'
 
 import codecs
 import re
 import sys
+import StringIO
+import pickle
+import nltk
+import sklearn
 
+from nltk import ngrams
+from nltk import bigrams
+from nltk import trigrams
+from nltk.collocations import *
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import svm
 from sklearn.cross_validation import KFold
 from Sentence import Relationship, Sentence
+
+
+N_GRAMS_SIZE = 4
 
 # Parameters for relationship extraction from Sentence
 MAX_TOKENS_AWAY = 9
@@ -45,6 +54,7 @@ rel_type_id['work-together'] = 20
 
 id_rel_type = {v: k for k, v in rel_type_id.items()}
 
+#TODO: incluir virgulas na tokenização
 TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.' \
             r'-]+|https?://[^\s]+|\w+'
 
@@ -59,99 +69,18 @@ def load_relationships(data_file):
         if not re.match('^relation', line):
             sentence = line.strip()
         else:
-            #TODO: limitar o contexto de BEF e AFT
-
-            # before = self.sentence[start:matches[x].start()]
-            # after = self.sentence[matches[x + 1].end(): end]
-
             rel_type = line.strip().split(':')[1]
             rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
+
+            tokens = re.findall(TOKENIZER, rel.before.decode("utf8"), flags=re.UNICODE)
+            rel.before = ' '.join(tokens[-CONTEXT_WINDOW:])
+            tokens = re.findall(TOKENIZER, rel.after.decode("utf8"), flags=re.UNICODE)
+            rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
+
             rel_id += 1
             relationships.append(rel)
 
     return relationships
-
-
-def training(data_file, extractor, f):
-    sentence = None
-    rel_id = 0
-    f_sentences = codecs.open(data_file, encoding='utf-8')
-    for line in f_sentences:
-        if not re.match('^relation', line):
-            sentence = line.strip()
-        else:
-            rel_type = line.strip().split(':')[1]
-            rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
-
-            # relationship type
-            f.write(str(rel_type_id[rel.rel_type]))
-
-            # relationship identifier
-            f.write(" 1.0 "+str(rel.identifier))
-
-            # features
-            # arguments namespace
-            f.write("|arguments ")
-            f.write("arg1_"+rel.arg1type.strip())
-            f.write(" arg2_"+rel.arg2type.strip())
-
-            # n-grams namespace
-            f.write("|n-grams ")
-            before_tokens = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
-            between_tokens = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
-            after_tokens = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
-            bef_grams = extractor.extract_ngrams(' '.join(before_tokens), "BEF")
-            bet_grams = extractor.extract_ngrams(' '.join(between_tokens), "BET")
-            aft_grams = extractor.extract_ngrams(' '.join(after_tokens), "AFT")
-            f.write(bef_grams.getvalue().encode("utf8")+" "+bet_grams.getvalue().encode("utf8")+" "+aft_grams.getvalue().encode("utf8")+" ")
-
-            rel_id += 1
-            f.write("\n")
-
-    f_sentences.close()
-
-
-def classify(data_file, extractor, f):
-    f_output = codecs.open("sentences_id.txt", "wb", encoding='utf-8')
-    rel_id = 0
-    f_sentences = codecs.open(data_file, encoding='utf-8')
-    for line in f_sentences:
-        if rel_id > 1000:
-            break
-
-        # extract relationships from sentence
-        sentence = Sentence(line.strip())
-
-        # rel = Relationship(sentence, None, None, None, None, None, None, None, None, rel_id)
-        for rel in sentence.relationships:
-            f_output.write(str(rel_id)+'\t'+rel.ent1+'\t'+rel.ent2+'\t'+rel.sentence+'\n')
-            # relationship type
-            f.write(" ")
-
-            # relationship identifier
-            f.write(" 1.0 "+str(rel_id))
-
-            # features
-            # arguments namespace
-            f.write("|arguments ")
-            f.write("arg1_"+rel.arg1type.strip())
-            f.write(" arg2_"+rel.arg2type.strip())
-
-            # n-grams namespace
-            f.write("|n-grams ")
-            before_tokens = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
-            between_tokens = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
-            after_tokens = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
-            bef_grams = extractor.extract_ngrams(' '.join(before_tokens), "BEF")
-            bet_grams = extractor.extract_ngrams(' '.join(between_tokens), "BET")
-            aft_grams = extractor.extract_ngrams(' '.join(after_tokens), "AFT")
-            f.write(bef_grams.getvalue().encode("utf8")+" "+bet_grams.getvalue().encode("utf8")+" "+aft_grams.getvalue().encode("utf8")+" ")
-
-            rel_id += 1
-            f.write("\n")
-
-    f_sentences.close()
-    f_output.close()
 
 
 def extract_reverb_patterns_ptb(text):
@@ -169,7 +98,7 @@ def extract_reverb_patterns_ptb(text):
 
     # remove the tags and extract tokens
     text_no_tags = re.sub(r"</?[A-Z]+>", "", text)
-    tokens = re.findall(TOKENIZER, text_no_tags.decode("utf8"), flags=re.UNICODE)
+    tokens = re.findall(TOKENIZER, text_no_tags, flags=re.UNICODE)
 
     # tag tokens with pos-tagger
     tagged = tagger.tag(tokens)
@@ -288,6 +217,21 @@ def extract_patterns(text, context):
     return extracted_patterns
 
 
+def extract_ngrams(text, context):
+        chrs = ['_' if c == ' ' else c for c in text]
+        return [''.join(g) + '_' + context + ' ' for g in ngrams(chrs, N_GRAMS_SIZE)]
+
+
+def extract_collocations(text, context):
+    bigram_measures = nltk.collocations.BigramAssocMeasures(text)
+    trigram_measures = nltk.collocations.TrigramAssocMeasures(text)
+
+
+def extract_bigrams(text, context):
+    tokens = re.findall(TOKENIZER, text, flags=re.UNICODE)
+    return [gram[0]+'_'+gram[1]+'_'+context for gram in bigrams(tokens)]
+
+
 def load_clusters(clusters_file):
     return None
 
@@ -315,28 +259,79 @@ def main():
     relationships = load_relationships(sys.argv[3])
     print len(relationships), " loaded"
 
+    per_class = dict()
+    for rel in relationships:
+        try:
+            per_class[rel.rel_type] += 1
+        except KeyError:
+            per_class[rel.rel_type] = 1
+
+    for rel in sorted(per_class.items(), key=operator.itemgetter(1), reverse=True):
+        print rel
+
+    # TODO: add TF-IDF words as features
+    """
     # extracting tf-idf vectors
     stopwords_pt = nltk.corpus.stopwords.words('portuguese')
     vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words=stopwords_pt)
     x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
+    """
 
-    # more feature extraction
-    # TODO: word-clusters generated from word2vec over publico.pt 10 years dataset
-    reverb_patterns = list()
+    # feature extraction
+    all_features = set()
+    relationship_features = list()
+
     for rel in relationships:
+        rel_features = list()
 
+        # TODO: first extract all ReVerb patterns, then see which belong to each context
         # extract ReVerb patterns from the 3 contexts
         patterns_bef = extract_patterns(rel.before, "BEF")
         patterns_bet = extract_patterns(rel.between, "BET")
         patterns_aft = extract_patterns(rel.after, "AFT")
-        add_patterns(patterns_bef, reverb_patterns)
-        add_patterns(patterns_bet, reverb_patterns)
-        add_patterns(patterns_aft, reverb_patterns)
+        for f in patterns_bef:
+            rel_features.append(f)
+        for f in patterns_bet:
+            rel_features.append(f)
+        for f in patterns_aft:
+            rel_features.append(f)
 
-        # extract ReVerb patterns from the 3 contexts
+        # extract n-grams
+        bef_grams = extract_ngrams(rel.before, "BEF")
+        bet_grams = extract_ngrams(rel.between, "BET")
+        aft_grams = extract_ngrams(rel.after, "AFT")
+        for f in bef_grams:
+            rel_features.append(f)
+        for f in bet_grams:
+            rel_features.append(f)
+        for f in aft_grams:
+            rel_features.append(f)
 
-    print len(reverb_patterns), " ReVerb patterns extracted"
+        # extract_bi_grams
+        for f in extract_bigrams(rel.before, "BEF"):
+            rel_features.append(f)
+        for f in extract_bigrams(rel.before, "BET"):
+            rel_features.append(f)
+        for f in extract_bigrams(rel.before, "AFT"):
+            rel_features.append(f)
 
+        # relationships arguments
+        args_type = 'arg1_'+rel.arg1type.strip()+'_arg2_'+rel.arg2type.strip()
+        rel_features.append(args_type)
+
+        # append features to relationships features collection
+        relationship_features.append(rel_features)
+
+        # add the extracted features to a collection containing all the seen features
+        for feature in rel_features:
+            all_features.add(feature)
+
+        # TODO: word-clusters generated from word2vec over publico.pt 10 years dataset
+        # TODO: normalized verbs from each context
+
+    print len(all_features), " features patterns extracted"
+
+    #TF-IDF Vectorizer
     """
     samples_features = []
     sample_class = []
@@ -350,12 +345,27 @@ def main():
 
     print len(samples_features), " samples"
     print len(rel_type_id), " classes"
+    """
+
+    # FeatureHasher
+    hasher = sklearn.feature_extraction.FeatureHasher(n_features=len(all_features), non_negative=True, input_type='string')
+    samples_features = []
+    sample_class = []
+    relationships_by_id = dict()
+
+    for rel in relationships:
+        features = hasher.fit_transform(relationship_features[rel.identifier])
+        samples_features.append(features.toarray()[0])
+        sample_class.append(rel_type_id[rel.rel_type])
+        relationships_by_id[rel.identifier] = rel
+
+    print len(samples_features), " samples"
+    print len(rel_type_id), " classes"
 
     kf = KFold(len(relationships), 2)
-
-    fold = 1
+    current_fold = 0
     for train_index, test_index in kf:
-        print "\nFOLD", fold
+        print "\nFOLD", current_fold
         train = []
         train_label = []
         test = []
@@ -386,26 +396,63 @@ def main():
         print "accuracy:", clf.score(test, test_label)
         print "\n"
 
+        #TODO: results per class, Precision, Recall, F1
+        """
+        double numInstancesOfClass = 0;
+        double numCorrectClassified = 0;
+        double numClassified = 0;
+        double numCorrect = 0;
+
+        // pair.getFirst() = true label
+        // pair.getSecond() = classification label
+
+        for (Pair<String, String> pair : results) {
+            if (pair.getSecond() == null)
+                pair.setSecond("UNKNOWN");
+            String first = pair.getFirst();
+            String second = pair.getSecond();
+            if (first.equalsIgnoreCase(class_relation)) {
+                numInstancesOfClass++;
+                if (first.equalsIgnoreCase(second)) numCorrectClassified++;
+            }
+            if (second.equalsIgnoreCase(class_relation)) numClassified++;
+            if (first.equalsIgnoreCase(second)) numCorrect++;
+        }
+
+        double precision = numClassified == 0 ? 1.0 : (numCorrectClassified / numClassified);
+        double recall = numInstancesOfClass == 0 ? 1.0 : (numCorrectClassified / numInstancesOfClass);
+        double f1 = precision == 0 && recall == 0 ? 0.0 : (2.0 * ((precision * recall) / (precision + recall)));
+
+        System.out.println();
+        System.out.println("Results for class \t" + class_relation + "\t" + (dataIndex.indexSize(class_relation) + (int) numInstancesOfClass));
+        System.out.println("Number of training instances : " + dataIndex.indexSize(class_relation));
+        System.out.println("Number of test instances : " + numInstancesOfClass);
+        System.out.println("Number of classifications : " + numClassified);
+        System.out.println("Precision : " + precision);
+        System.out.println("Recall : " + recall);
+        System.out.println("F1 : " + f1);
+        """
+
+        # To use in Active Learning Scenario
+        """
         index_rel = 0
         for class_prob in results:
             print "rel_id:\t", test_ids[index_rel]
             print "sentence:\t", relationships_by_id[test_ids[index_rel]].sentence
+            print "class:\t", relationships_by_id[test_ids[index_rel]].rel_type
 
             class_prob_lst = list(class_prob)
-            #scores = []
-            print "range", range(len(class_prob_lst))
+            scores = []
             for c_index in range(0, len(class_prob_lst)):
-                print id_rel_type[c_index], '\t', class_prob_lst[c_index]
-                #scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
+                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
 
-            sorted_by_score = sorted(scores, key=lambda tup: tup[1])
+            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
             for t in sorted_by_score:
                 print t[0], '\t:', t[1]
-
+            print "\n"
             index_rel += 1
-        fold += 1
-    """
-
+        """
+        current_fold+=1
 
 if __name__ == "__main__":
     main()
