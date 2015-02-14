@@ -393,45 +393,62 @@ def main():
         results = clf.predict_proba(test)
         assert len(results) == len(test_label)
         print len(results), "samples classified",
-        print "accuracy:", clf.score(test, test_label)
-        print "\n"
 
-        #TODO: results per class, Precision, Recall, F1
-        """
-        double numInstancesOfClass = 0;
-        double numCorrectClassified = 0;
-        double numClassified = 0;
-        double numCorrect = 0;
+        # Results per class, Precision, Recall, F1
+        index_rel = 0
+        classifications = list()
+        for class_prob in results:
+            class_prob_lst = list(class_prob)
+            scores = []
+            for c_index in range(0, len(class_prob_lst)):
+                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
 
-        // pair.getFirst() = true label
-        // pair.getSecond() = classification label
+            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
+            classified = sorted_by_score[0][0]
+            true_label = relationships_by_id[test_ids[index_rel]].rel_type
+            classifications.append((true_label, classified))
+            index_rel += 1
 
-        for (Pair<String, String> pair : results) {
-            if (pair.getSecond() == null)
-                pair.setSecond("UNKNOWN");
-            String first = pair.getFirst();
-            String second = pair.getSecond();
-            if (first.equalsIgnoreCase(class_relation)) {
-                numInstancesOfClass++;
-                if (first.equalsIgnoreCase(second)) numCorrectClassified++;
-            }
-            if (second.equalsIgnoreCase(class_relation)) numClassified++;
-            if (first.equalsIgnoreCase(second)) numCorrect++;
-        }
+        classes_to_annotate = list()
+        for rel_type in rel_type_id.keys():
+            num_instances_of_class = 0
+            num_correct_classified = 0
+            num_classified = 0
+            num_correct = 0
+            for classified in classifications:
+                true_label = classified[0]
+                classification = classified[1]
 
-        double precision = numClassified == 0 ? 1.0 : (numCorrectClassified / numClassified);
-        double recall = numInstancesOfClass == 0 ? 1.0 : (numCorrectClassified / numInstancesOfClass);
-        double f1 = precision == 0 && recall == 0 ? 0.0 : (2.0 * ((precision * recall) / (precision + recall)));
+                if true_label == rel_type:
+                    num_instances_of_class += 1
+                    if true_label == classification:
+                        num_correct_classified += 1
 
-        System.out.println();
-        System.out.println("Results for class \t" + class_relation + "\t" + (dataIndex.indexSize(class_relation) + (int) numInstancesOfClass));
-        System.out.println("Number of training instances : " + dataIndex.indexSize(class_relation));
-        System.out.println("Number of test instances : " + numInstancesOfClass);
-        System.out.println("Number of classifications : " + numClassified);
-        System.out.println("Precision : " + precision);
-        System.out.println("Recall : " + recall);
-        System.out.println("F1 : " + f1);
-        """
+                if classification == rel_type:
+                    num_classified += 1
+                if true_label == classification:
+                    num_correct += 1
+
+            precision = 1.0 if num_classified == 0 else float(num_correct_classified) / float(num_classified)
+            recall = 1.0 if num_instances_of_class == 0 else float(num_correct_classified) / float(num_instances_of_class)
+            f1 = 0.0 if precision == 0 and recall == 0 else 2.0 * (precision*recall) / (precision + recall)
+
+            print "Results for class \t" + rel_type + "\t"
+            print "Training instances : " + str(per_class[rel_type])
+            print "Test instances     : " + str(num_instances_of_class)
+            print "Classifications    : " + str(num_classified)
+            print "Correct            : " + str(num_correct_classified)
+            print "Precision : " + str(precision)
+            print "Recall : " + str(recall)
+            print "F1 : " + str(f1)
+            print "\n"
+
+            if num_classified or num_correct_classified == 0:
+                classes_to_annotate.append(rel_type)
+
+        print "Classes to Annotate"
+        for rel_type in classes_to_annotate:
+            print rel_type
 
         # To use in Active Learning Scenario
         """
