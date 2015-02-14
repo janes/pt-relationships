@@ -443,12 +443,14 @@ def main():
             print "F1 : " + str(f1)
             print "\n"
 
-            if num_classified or num_correct_classified == 0:
+            if num_classified == 0 or num_correct_classified == 0:
                 classes_to_annotate.append(rel_type)
 
         print "Classes to Annotate"
         for rel_type in classes_to_annotate:
-            print rel_type
+            print rel_type, per_class[rel_type]
+
+        # TODO: overall precision, f1, recall
 
         # To use in Active Learning Scenario
         """
