@@ -471,7 +471,7 @@ def main():
             print "\n"
             index_rel += 1
         """
-        current_fold+=1
+        current_fold += 1
 
 if __name__ == "__main__":
     main()
