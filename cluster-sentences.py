@@ -31,8 +31,8 @@ def load_relationships(data_file):
     relationships = list()
     rel_id = 0
     print "Loading relationships from file"
-    #f_sentences = codecs.open(data_file, encoding='utf-8')
-    f_sentences = codecs.open(data_file)
+    f_sentences = codecs.open(data_file, encoding='utf-8')
+    #f_sentences = codecs.open(data_file)
     for line in f_sentences:
         s = Sentence(line.strip())
         for r in s.relationships:
@@ -178,6 +178,7 @@ def main():
     verbs_conj.close()
     """
 
+    print "Loading relationships from", sys.argv[3]
     relationships = load_relationships(sys.argv[3])
     print len(relationships), "relationships loaded"
 
@@ -192,11 +193,12 @@ def main():
 
     print "Extracting ReVerb patterns"
     bet_vectors = []
+    words = stopwords.words('portuguese')
     for rel in relationships:
         patterns_bet, patterns_bet_tags = extract_reverb_patterns_ptb(rel.between)
         if len(patterns_bet) > 0:
-            #print patterns_bet_tags[0]
-            pattern = [t[0] for t in patterns_bet_tags[0] if t[0].lower() not in stopwords.words('portuguese')]
+            #print patterns_bet
+            pattern = [t[0] for t in patterns_bet_tags[0] if t[0].encode("utf8").lower() not in words]
             #print pattern
             #print "\n"
             if len(pattern) >= 1:
@@ -242,12 +244,11 @@ def main():
         for rel in clusters[k]:
             f.write("ent1: " + rel.ent1 + '\n')
             f.write("ent2: " + rel.ent2 + '\n')
-            f.write("BEF:  " + rel.before  + '\n')
+            f.write("BEF:  " + rel.before + '\n')
             f.write("BET:  " + rel.between + '\n')
-            f.write("AFT:  " + rel.after  + '\n')
+            f.write("AFT:  " + rel.after + '\n')
             f.write(rel.sentence+'\n')
-        print "==================\n"
-
+            f.write("==================\n")
     f.close()
 
     """
