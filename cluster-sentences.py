@@ -30,7 +30,6 @@ TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\
 def load_relationships(data_file):
     relationships = list()
     rel_id = 0
-    print "Loading relationships from file"
     f_sentences = codecs.open(data_file, encoding='utf-8')
     #f_sentences = codecs.open(data_file)
     for line in f_sentences:
@@ -242,6 +241,7 @@ def main():
     for k in clusters.keys():
         f.write("cluster: " + str(k) + ' ' + str(len(clusters[k]))+'\n')
         for rel in clusters[k]:
+            f.write("cluster: " + str(k)+'\n')
             f.write("ent1: " + rel.ent1 + '\n')
             f.write("ent2: " + rel.ent2 + '\n')
             f.write("BEF:  " + rel.before + '\n')
