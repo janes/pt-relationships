@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 import pickle
 
-from nltk import TreebankWordTokenizer, DependencyGraph
+from nltk import TreebankWordTokenizer
 #from nltk.parse import MaltParser
 
 from malt import MaltParser
-from postagger.mxpost import MaxentPosTagger
 
 __author__ = 'dsbatista'
 
