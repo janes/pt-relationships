@@ -1,0 +1,89 @@
+# disagreement
+#relation: disagreement
+#arg1: PER,ORG
+#arg2: PER,ORG
+#words: discordar,critica,processar,desafia,responsabiliza,críticas,acusações,questionar,questionou,desacordo, desacordo, desagrado, desapontamento, desaprovação, descontentamento, desilusão, desprezo
+
+
+# agreement
+#relation: agreement
+#arg1: PER,ORG
+#arg2: PER,ORG
+#words: elogiou,concordou,apoiou,enalteceu,elogia,saudou,defendeu,desejou,lovou,aplaudiu,apoia,enalteceu,destacou,elogiando,saudou,agradeceu,felicitou,corroborou,elogiou
+
+
+# works-together
+relation: work-together
+arg1: PER
+arg2: PER
+words: parceiro,companheiro,colaborou,trabalhou,colega,aliado,conheceram-se,parceiros,aliados,companheiros,colegas,coopera
+
+
+# member-of
+#relation: member-of
+#arg1: PER
+#arg2: ORG
+#words: líder,executivo,parlementar,director,presidente,dirigente,deputado,membro,administrador,co-proprietário,sócio-gerente,pertence,preside,lidera,liderou,CEO,chefe,gerente,aderiu,liderada,cargo,eleito,nomeado,pertencer,presidir,tutelava
+
+
+# hold-shares-of
+relation: hold-shares-of
+arg1: PER
+arg2: ORG
+words:detém,investiu,ações,acções,participação,comprou,investe,detentor,aquisição,accionista,accionistas,acionista,acionistas,acções,adquiriu,alienada,alienar,alienarem,alienação,detendo,detentora,deter,detida,detinha,detém,maioritária,minoritária 
+
+
+# owns
+relation: owns
+arg1: PER,ORG
+arg2: ORG
+words: proprietário,patrão,detentor,gerente,aquisição,accionista,accionistas,acionista,acionistas,acções,adquiriu,alienada,alienar,alienarem,alienação,casa-mãe,empresa-mãe,detentora,dono,dona,adquiriu,detentora,adquirida,comprada,totalidade
+
+
+# lives-in
+#relation: lives-in
+#arg1: PER
+#arg2: LOC
+#words: mora,reside,habita,mudou-se,casa,vivia,residia,radica-se,residência,apartamento,vivenda,complexo,condomínio
+
+
+# studied-at
+relation: studied-at
+arg1: PER
+arg2: ORG
+words: estudou,licenciou-se em,formou-se,doutorou-se,licenciou-se,doutorou,doutorado,estudava,frequentou,diplomou-se,doutor,engenheiro,quimica,engenharia, licenciada,licenciado,licenciar-se,licenciaram-se,licenciou,matriculou-se,universitária,universitário,dissertação,doutorada,doutorado,doutoramento, doutoranda,doutorando,doutorar-se,doutorou,diplomado,cursar,cursado,bolseira,bolseiro,licenciatura,mestrado,ingressou,curso,frequentava,estudante,aluno,pupilo
+
+
+# installations-in
+relation: installations-in
+arg1: ORG
+arg2: LOC
+words: localizada,sede,situada,sediada,sedeada,sedeado,situa-se,escritórios,fábrica,complexo
+
+
+# founded-by
+relation: founded-by
+arg1: ORG
+arg2: PER
+words: fundada,criada,inaugurado,co-fundador,fundador,líder-fundador,presidente-fundador,ex-fundador,membro-fundador,refundador,co-fundador,sócio-fundador,co-fundada
+
+
+# merge
+relation: merge
+arg1:ORG
+arg2:ORG
+words: joint-venture,spin-off,societária,fundiu,fusão,junção,cisão,fundir,incorporação,alienação,fundiu
+
+
+# hold-shares-of
+relation: holds-shares-of
+arg1: ORG
+arg2: ORG
+words: detém,accções,comprou,participação,injectou,societária
+
+
+# located-in
+#relation: located-in
+#arg1: LOC
+#arg2: LOC
+#words:capital,cidade,aldeia, localizado, localizada, situada, situado
