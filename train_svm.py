@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import operator
+from collections import defaultdict
+import fileinput
+
 
 __author__ = 'dsbatista'
 
@@ -11,6 +13,7 @@ import StringIO
 import pickle
 import nltk
 import sklearn
+import operator
 
 from nltk import ngrams
 from nltk import bigrams
@@ -20,6 +23,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import svm
 from sklearn.cross_validation import KFold
 from Sentence import Relationship, Sentence
+from math import log
 
 
 N_GRAMS_SIZE = 4
@@ -63,8 +67,8 @@ def load_relationships(data_file):
     relationships = list()
     rel_id = 0
     print "Loading relationships from file"
-    #f_sentences = codecs.open(data_file, encoding='utf-8')
-    f_sentences = codecs.open(data_file)
+    f_sentences = codecs.open(data_file, encoding='utf-8')
+    #f_sentences = codecs.open(data_file)
     for line in f_sentences:
         if not re.match('^relation', line):
             sentence = line.strip()
@@ -72,9 +76,11 @@ def load_relationships(data_file):
             rel_type = line.strip().split(':')[1]
             rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
 
-            tokens = re.findall(TOKENIZER, rel.before.decode("utf8"), flags=re.UNICODE)
+            #tokens = re.findall(TOKENIZER, rel.before.decode("utf8"), flags=re.UNICODE)
+            tokens = re.findall(TOKENIZER, rel.before)
             rel.before = ' '.join(tokens[-CONTEXT_WINDOW:])
-            tokens = re.findall(TOKENIZER, rel.after.decode("utf8"), flags=re.UNICODE)
+            #tokens = re.findall(TOKENIZER, rel.after.decode("utf8"), flags=re.UNICODE)
+            tokens = re.findall(TOKENIZER, rel.after)
             rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
 
             rel_id += 1
@@ -233,10 +239,28 @@ def extract_bigrams(text, context):
 
 
 def load_clusters(clusters_file):
-    return None
+    clusters = dict()
+    words = defaultdict(list)
+    for line in fileinput.input(clusters_file):
+        word, cluster = line.strip().split()
+        clusters[word] = int(cluster)
+        words[int(cluster)].append(word)
+    fileinput.close()
+    return clusters, words
+
+
+def shannon_entropy(probabilities):
+    entropy = 0
+    for i in probabilities:
+        entropy += i * log(i)
 
 
 def main():
+    global word_cluster
+    global clusters_words
+    print "Loading Word Clusters from", sys.argv[2]
+    word_cluster, clusters_words = load_clusters(sys.argv[2])
+
     global verbs
     print "Loading Label-Delaf"
     verbs_conj = open('verbs/verbs_conj.pkl', "r")
@@ -248,12 +272,6 @@ def main():
     f_model = open(sys.argv[1], "rb")
     tagger = pickle.load(f_model)
     f_model.close()
-
-    """
-    global word_clusters
-    print "Loading Word Clusters from", sys.argv[3]
-    word_clusters = load_clusters(sys.arg[3])
-    """
 
     print "Loading relationships from", sys.argv[3]
     relationships = load_relationships(sys.argv[3])
@@ -284,11 +302,25 @@ def main():
     for rel in relationships:
         rel_features = list()
 
+        # TODO: normalized verbs from each context
         # TODO: first extract all ReVerb patterns, then see which belong to each context
+
         # extract ReVerb patterns from the 3 contexts
         patterns_bef = extract_patterns(rel.before, "BEF")
         patterns_bet = extract_patterns(rel.between, "BET")
         patterns_aft = extract_patterns(rel.after, "AFT")
+
+        for p in patterns_bet:
+            verb = p.split('_')[0]
+            try:
+                inf = verbs[verb]
+                if inf not in ['ser', 'estar', 'ter', 'haver', 'ficar', 'ir']:
+                    for word in clusters_words[int(word_cluster[verb])]:
+                        if word in verbs[verb]:
+                            rel_features.append(word)
+            except KeyError:
+                pass
+
         for f in patterns_bef:
             rel_features.append(f)
         for f in patterns_bet:
@@ -326,10 +358,7 @@ def main():
         for feature in rel_features:
             all_features.add(feature)
 
-        # TODO: word-clusters generated from word2vec over publico.pt 10 years dataset
-        # TODO: normalized verbs from each context
-
-    print len(all_features), " features patterns extracted"
+    print len(all_features), " features extracted"
 
     #TF-IDF Vectorizer
     """
@@ -353,6 +382,7 @@ def main():
     sample_class = []
     relationships_by_id = dict()
 
+    print "Hashing features"
     for rel in relationships:
         features = hasher.fit_transform(relationship_features[rel.identifier])
         samples_features.append(features.toarray()[0])
@@ -471,7 +501,7 @@ def main():
             print "\n"
             index_rel += 1
         """
-        current_fold+=1
+        current_fold += 1
 
 if __name__ == "__main__":
     main()
