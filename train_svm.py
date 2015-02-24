@@ -254,6 +254,8 @@ def shannon_entropy(probabilities):
     for i in probabilities:
         entropy += i * log(i)
 
+    return entropy
+
 
 def main():
     global word_cluster
@@ -304,6 +306,22 @@ def main():
 
         # TODO: normalized verbs from each context
         # TODO: first extract all ReVerb patterns, then see which belong to each context
+
+        """
+        # extract all words from the contexts
+        tokens_bef = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
+        tokens_bet = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
+        tokens_aft = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
+
+        for f in tokens_bef:
+            rel_features.append(f)
+
+        for f in tokens_bet:
+            rel_features.append(f)
+
+        for f in tokens_aft:
+            rel_features.append(f)
+        """
 
         # extract ReVerb patterns from the 3 contexts
         patterns_bef = extract_patterns(rel.before, "BEF")
@@ -392,95 +410,117 @@ def main():
     print len(samples_features), " samples"
     print len(rel_type_id), " classes"
 
-    kf = KFold(len(relationships), 2)
-    current_fold = 0
-    for train_index, test_index in kf:
-        print "\nFOLD", current_fold
-        train = []
-        train_label = []
-        test = []
-        test_label = []
-        test_ids = []
+    #hashing = HashingVectorizer(non_negative=True, norm=None)
+    #tfidf = TfidfTransformer()
+    #hashing_tfidf = Pipeline([("hashing", hashing), ("tidf", tfidf)])
 
-        for index in train_index:
+    if sys.argv[4] == 'fold':
+
+        kf = KFold(len(relationships), 2)
+        current_fold = 0
+        for train_index, test_index in kf:
+            print "\nFOLD", current_fold
+            train = []
+            train_label = []
+            test = []
+            test_label = []
+            test_ids = []
+
+            for index in train_index:
+                train.append(samples_features[index])
+                train_label.append(sample_class[index])
+
+            for index in test_index:
+                test.append(samples_features[index])
+                test_label.append(sample_class[index])
+                test_ids.append(index)
+
+            print len(set(train_label)), " classes"
+
+            print "Training...."
+            clf = svm.SVC(probability=True)
+            clf.fit(train, train_label)
+            print "Done"
+
+            print "Testing"
+            # compare labels with test_label
+            results = clf.predict_proba(test)
+            assert len(results) == len(test_label)
+            print len(results), "samples classified",
+
+            # Results per class, Precision, Recall, F1
+            index_rel = 0
+            classifications = list()
+            for class_prob in results:
+                class_prob_lst = list(class_prob)
+                scores = []
+                for c_index in range(0, len(class_prob_lst)):
+                    scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
+
+                sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
+                classified = sorted_by_score[0][0]
+                true_label = relationships_by_id[test_ids[index_rel]].rel_type
+                classifications.append((true_label, classified))
+                index_rel += 1
+
+            classes_to_annotate = list()
+            for rel_type in rel_type_id.keys():
+                num_instances_of_class = 0
+                num_correct_classified = 0
+                num_classified = 0
+                num_correct = 0
+                for classified in classifications:
+                    true_label = classified[0]
+                    classification = classified[1]
+
+                    if true_label == rel_type:
+                        num_instances_of_class += 1
+                        if true_label == classification:
+                            num_correct_classified += 1
+
+                    if classification == rel_type:
+                        num_classified += 1
+                    if true_label == classification:
+                        num_correct += 1
+
+                precision = 1.0 if num_classified == 0 else float(num_correct_classified) / float(num_classified)
+                recall = 1.0 if num_instances_of_class == 0 else float(num_correct_classified) / float(num_instances_of_class)
+                f1 = 0.0 if precision == 0 and recall == 0 else 2.0 * (precision*recall) / (precision + recall)
+
+                print "Results for class \t" + rel_type + "\t"
+                print "Training instances : " + str(per_class[rel_type])
+                print "Test instances     : " + str(num_instances_of_class)
+                print "Classifications    : " + str(num_classified)
+                print "Correct            : " + str(num_correct_classified)
+                print "Precision : " + str(precision)
+                print "Recall : " + str(recall)
+                print "F1 : " + str(f1)
+                print "\n"
+
+                if num_classified == 0 or num_correct_classified == 0:
+                    classes_to_annotate.append(rel_type)
+
+            print "Classes to Annotate"
+            for rel_type in classes_to_annotate:
+                print rel_type, per_class[rel_type]
+
+            # TODO: overall precision, f1, recall
+
+    elif sys.argv[4] == 'model':
+
+        train = list()
+        train_label = list()
+
+        for index in samples_features:
             train.append(samples_features[index])
             train_label.append(sample_class[index])
-
-        for index in test_index:
-            test.append(samples_features[index])
-            test_label.append(sample_class[index])
-            test_ids.append(index)
-
-        print len(set(train_label)), " classes"
 
         print "Training...."
         clf = svm.SVC(probability=True)
         clf.fit(train, train_label)
         print "Done"
 
-        print "Testing"
-        # compare labels with test_label
-        results = clf.predict_proba(test)
-        assert len(results) == len(test_label)
-        print len(results), "samples classified",
-
-        # Results per class, Precision, Recall, F1
-        index_rel = 0
-        classifications = list()
-        for class_prob in results:
-            class_prob_lst = list(class_prob)
-            scores = []
-            for c_index in range(0, len(class_prob_lst)):
-                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
-
-            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
-            classified = sorted_by_score[0][0]
-            true_label = relationships_by_id[test_ids[index_rel]].rel_type
-            classifications.append((true_label, classified))
-            index_rel += 1
-
-        classes_to_annotate = list()
-        for rel_type in rel_type_id.keys():
-            num_instances_of_class = 0
-            num_correct_classified = 0
-            num_classified = 0
-            num_correct = 0
-            for classified in classifications:
-                true_label = classified[0]
-                classification = classified[1]
-
-                if true_label == rel_type:
-                    num_instances_of_class += 1
-                    if true_label == classification:
-                        num_correct_classified += 1
-
-                if classification == rel_type:
-                    num_classified += 1
-                if true_label == classification:
-                    num_correct += 1
-
-            precision = 1.0 if num_classified == 0 else float(num_correct_classified) / float(num_classified)
-            recall = 1.0 if num_instances_of_class == 0 else float(num_correct_classified) / float(num_instances_of_class)
-            f1 = 0.0 if precision == 0 and recall == 0 else 2.0 * (precision*recall) / (precision + recall)
-
-            print "Results for class \t" + rel_type + "\t"
-            print "Training instances : " + str(per_class[rel_type])
-            print "Test instances     : " + str(num_instances_of_class)
-            print "Classifications    : " + str(num_classified)
-            print "Correct            : " + str(num_correct_classified)
-            print "Precision : " + str(precision)
-            print "Recall : " + str(recall)
-            print "F1 : " + str(f1)
-            print "\n"
-
-            if num_classified == 0 or num_correct_classified == 0:
-                classes_to_annotate.append(rel_type)
-
-        print "Classes to Annotate"
-        for rel_type in classes_to_annotate:
-            print rel_type, per_class[rel_type]
-
-        # TODO: overall precision, f1, recall
+        # TODO: ler relacoes po classificar, passar ao classificar, e calcular a entropia das probabilidades das classificacoes
 
         # To use in Active Learning Scenario
         """
