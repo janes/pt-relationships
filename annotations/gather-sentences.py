@@ -120,7 +120,7 @@ def main():
         matches = ent.findall(line)
         clean = re.sub(r"</?[A-Z]+>", "", line)
         if clean not in tagged:
-            # resnumero de entidades e tamanho da frase
+            # restringir numero de entidades e tamanho da frase
             if len(matches) == 2 and len(clean) <= 200:
                 #to_tag.add(line.encode("utf-8"))
                 find_matches(line, relationships, None, None)

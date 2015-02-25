@@ -25,6 +25,8 @@ from sklearn.cross_validation import KFold
 from Sentence import Relationship, Sentence
 from math import log
 
+tokenizer =  r'\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.-]+|https?://[^\s]+|\w+'
+CONTEXT_WINDOW = 4
 
 N_GRAMS_SIZE = 4
 
@@ -64,12 +66,24 @@ TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\
 
 
 def load_relationships(data_file):
+    tagged = set()
     relationships = list()
     rel_id = 0
     print "Loading relationships from file"
     f_sentences = codecs.open(data_file, encoding='utf-8')
     #f_sentences = codecs.open(data_file)
     for line in f_sentences:
+        """
+        if rel_id == 100:
+            break
+        """
+        # read the lines without tagged entities, this is used later
+        # to compare with sentences to tag, and assure no training sentences
+        # are given to tag
+        if not line.startswith("relation:"):
+            clean = re.sub(r"</?[A-Z]+>", "", line.strip())
+            tagged.add(clean)
+
         if not re.match('^relation', line):
             sentence = line.strip()
         else:
@@ -86,7 +100,7 @@ def load_relationships(data_file):
             rel_id += 1
             relationships.append(rel)
 
-    return relationships
+    return relationships, tagged
 
 
 def extract_reverb_patterns_ptb(text):
@@ -257,50 +271,10 @@ def shannon_entropy(probabilities):
     return entropy
 
 
-def main():
-    global word_cluster
-    global clusters_words
-    print "Loading Word Clusters from", sys.argv[2]
-    word_cluster, clusters_words = load_clusters(sys.argv[2])
-
-    global verbs
-    print "Loading Label-Delaf"
-    verbs_conj = open('verbs/verbs_conj.pkl', "r")
-    verbs = pickle.load(verbs_conj)
-    verbs_conj.close()
-
-    global tagger
-    print "Loading PoS tagger from", sys.argv[1]
-    f_model = open(sys.argv[1], "rb")
-    tagger = pickle.load(f_model)
-    f_model.close()
-
-    print "Loading relationships from", sys.argv[3]
-    relationships = load_relationships(sys.argv[3])
-    print len(relationships), " loaded"
-
-    per_class = dict()
-    for rel in relationships:
-        try:
-            per_class[rel.rel_type] += 1
-        except KeyError:
-            per_class[rel.rel_type] = 1
-
-    for rel in sorted(per_class.items(), key=operator.itemgetter(1), reverse=True):
-        print rel
-
-    # TODO: add TF-IDF words as features
-    """
-    # extracting tf-idf vectors
-    stopwords_pt = nltk.corpus.stopwords.words('portuguese')
-    vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words=stopwords_pt)
-    x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
-    """
-
+def feature_extraction(clusters_words, relationships, verbs, word_cluster):
     # feature extraction
     all_features = set()
     relationship_features = list()
-
     for rel in relationships:
         rel_features = list()
 
@@ -366,7 +340,7 @@ def main():
             rel_features.append(f)
 
         # relationships arguments
-        args_type = 'arg1_'+rel.arg1type.strip()+'_arg2_'+rel.arg2type.strip()
+        args_type = 'arg1_' + rel.arg1type.strip() + '_arg2_' + rel.arg2type.strip()
         rel_features.append(args_type)
 
         # append features to relationships features collection
@@ -375,8 +349,194 @@ def main():
         # add the extracted features to a collection containing all the seen features
         for feature in rel_features:
             all_features.add(feature)
-
     print len(all_features), " features extracted"
+    return all_features, relationship_features
+
+
+def cross_validation(per_class, relationships, relationships_by_id, sample_class, samples_features):
+    kf = KFold(len(relationships), 2)
+    current_fold = 0
+    for train_index, test_index in kf:
+        print "\nFOLD", current_fold
+        train = []
+        train_label = []
+        test = []
+        test_label = []
+        test_ids = []
+
+        for index in train_index:
+            train.append(samples_features[index])
+            train_label.append(sample_class[index])
+
+        for index in test_index:
+            test.append(samples_features[index])
+            test_label.append(sample_class[index])
+            test_ids.append(index)
+
+        print len(set(train_label)), " classes"
+
+        print "Training...."
+        clf = svm.SVC(probability=True)
+        clf.fit(train, train_label)
+        print "Done"
+
+        print "Testing"
+        # compare labels with test_label
+        results = clf.predict_proba(test)
+        assert len(results) == len(test_label)
+        print len(results), "samples classified",
+
+        # Results per class, Precision, Recall, F1
+        index_rel = 0
+        classifications = list()
+        for class_prob in results:
+            class_prob_lst = list(class_prob)
+            scores = []
+            for c_index in range(0, len(class_prob_lst)):
+                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
+
+            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
+            classified = sorted_by_score[0][0]
+            true_label = relationships_by_id[test_ids[index_rel]].rel_type
+            classifications.append((true_label, classified))
+            index_rel += 1
+
+        classes_to_annotate = list()
+        for rel_type in rel_type_id.keys():
+            num_instances_of_class = 0
+            num_correct_classified = 0
+            num_classified = 0
+            num_correct = 0
+            for classified in classifications:
+                true_label = classified[0]
+                classification = classified[1]
+
+                if true_label == rel_type:
+                    num_instances_of_class += 1
+                    if true_label == classification:
+                        num_correct_classified += 1
+
+                if classification == rel_type:
+                    num_classified += 1
+                if true_label == classification:
+                    num_correct += 1
+
+            precision = 1.0 if num_classified == 0 else float(num_correct_classified) / float(num_classified)
+            recall = 1.0 if num_instances_of_class == 0 else float(num_correct_classified) / float(
+                num_instances_of_class)
+            f1 = 0.0 if precision == 0 and recall == 0 else 2.0 * (precision * recall) / (precision + recall)
+
+            print "Results for class \t" + rel_type + "\t"
+            print "Training instances : " + str(per_class[rel_type])
+            print "Test instances     : " + str(num_instances_of_class)
+            print "Classifications    : " + str(num_classified)
+            print "Correct            : " + str(num_correct_classified)
+            print "Precision : " + str(precision)
+            print "Recall : " + str(recall)
+            print "F1 : " + str(f1)
+            print "\n"
+
+            if num_classified == 0 or num_correct_classified == 0:
+                classes_to_annotate.append(rel_type)
+
+        print "Classes to Annotate"
+        for rel_type in classes_to_annotate:
+            print rel_type, per_class[rel_type]
+            # TODO: overall precision, f1, recall
+        current_fold += 1
+
+
+def train_classifier(sample_class, samples_features):
+    """
+    train = list()
+    train_label = list()
+    for index in samples_features:
+        train.append(samples_features[index])
+        train_label.append(sample_class[index])
+    """
+    print "Training...."
+    clf = svm.SVC(probability=True)
+    clf.fit(samples_features, sample_class)
+    print "Done"
+    return clf
+
+
+def classify(classifier, relationships_pool, hasher):
+
+        all_features, relationship_features = feature_extraction(clusters_words, relationships_pool, verbs, word_cluster)
+
+        samples_features = []
+
+        print "Hashing features"
+        for rel in range(len(relationships_pool)):
+            features = hasher.fit_transform(relationship_features[rel])
+            samples_features.append(features.toarray()[0])
+
+        # calculate classifications for each class
+        results = classifier.predict_proba(samples_features)
+
+        # calculate entropy
+        index_rel = 0
+        for class_prob in results:
+            print "sentence:\t", relationships_pool[index_rel].sentence
+
+            class_prob_lst = list(class_prob)
+            scores = []
+            for c_index in range(0, len(class_prob_lst)):
+                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
+
+            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
+            for t in sorted_by_score:
+                print t[0], '\t:', t[1]
+            print "\n"
+            index_rel += 1
+
+
+def main():
+    global word_cluster
+    global clusters_words
+    print "Loading Word Clusters from", sys.argv[2]
+    word_cluster, clusters_words = load_clusters(sys.argv[2])
+
+    global verbs
+    print "Loading Label-Delaf"
+    verbs_conj = open('verbs/verbs_conj.pkl', "r")
+    verbs = pickle.load(verbs_conj)
+    verbs_conj.close()
+
+    global tagger
+    print "Loading PoS tagger from", sys.argv[1]
+    f_model = open(sys.argv[1], "rb")
+    tagger = pickle.load(f_model)
+    f_model.close()
+
+    print "Loading relationships from", sys.argv[3]
+    relationships, tagged = load_relationships(sys.argv[3])
+    print len(relationships), " loaded"
+
+    # print number of samples per class
+    per_class = dict()
+    for rel in relationships:
+        try:
+            per_class[rel.rel_type] += 1
+        except KeyError:
+            per_class[rel.rel_type] = 1
+
+    for rel in sorted(per_class.items(), key=operator.itemgetter(1), reverse=True):
+        print rel
+
+
+    # TODO: add TF-IDF words as features
+    """
+    # extracting tf-idf vectors
+    stopwords_pt = nltk.corpus.stopwords.words('portuguese')
+    vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words=stopwords_pt)
+    x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
+    """
+
+    all_features, relationship_features = feature_extraction(clusters_words, relationships, verbs, word_cluster)
+
+    # Feature Hashing
 
     #TF-IDF Vectorizer
     """
@@ -394,7 +554,7 @@ def main():
     print len(rel_type_id), " classes"
     """
 
-    # FeatureHasher
+    #FeatureHasher
     hasher = sklearn.feature_extraction.FeatureHasher(n_features=len(all_features), non_negative=True, input_type='string')
     samples_features = []
     sample_class = []
@@ -415,133 +575,30 @@ def main():
     #hashing_tfidf = Pipeline([("hashing", hashing), ("tidf", tfidf)])
 
     if sys.argv[4] == 'fold':
-
-        kf = KFold(len(relationships), 2)
-        current_fold = 0
-        for train_index, test_index in kf:
-            print "\nFOLD", current_fold
-            train = []
-            train_label = []
-            test = []
-            test_label = []
-            test_ids = []
-
-            for index in train_index:
-                train.append(samples_features[index])
-                train_label.append(sample_class[index])
-
-            for index in test_index:
-                test.append(samples_features[index])
-                test_label.append(sample_class[index])
-                test_ids.append(index)
-
-            print len(set(train_label)), " classes"
-
-            print "Training...."
-            clf = svm.SVC(probability=True)
-            clf.fit(train, train_label)
-            print "Done"
-
-            print "Testing"
-            # compare labels with test_label
-            results = clf.predict_proba(test)
-            assert len(results) == len(test_label)
-            print len(results), "samples classified",
-
-            # Results per class, Precision, Recall, F1
-            index_rel = 0
-            classifications = list()
-            for class_prob in results:
-                class_prob_lst = list(class_prob)
-                scores = []
-                for c_index in range(0, len(class_prob_lst)):
-                    scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
-
-                sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
-                classified = sorted_by_score[0][0]
-                true_label = relationships_by_id[test_ids[index_rel]].rel_type
-                classifications.append((true_label, classified))
-                index_rel += 1
-
-            classes_to_annotate = list()
-            for rel_type in rel_type_id.keys():
-                num_instances_of_class = 0
-                num_correct_classified = 0
-                num_classified = 0
-                num_correct = 0
-                for classified in classifications:
-                    true_label = classified[0]
-                    classification = classified[1]
-
-                    if true_label == rel_type:
-                        num_instances_of_class += 1
-                        if true_label == classification:
-                            num_correct_classified += 1
-
-                    if classification == rel_type:
-                        num_classified += 1
-                    if true_label == classification:
-                        num_correct += 1
-
-                precision = 1.0 if num_classified == 0 else float(num_correct_classified) / float(num_classified)
-                recall = 1.0 if num_instances_of_class == 0 else float(num_correct_classified) / float(num_instances_of_class)
-                f1 = 0.0 if precision == 0 and recall == 0 else 2.0 * (precision*recall) / (precision + recall)
-
-                print "Results for class \t" + rel_type + "\t"
-                print "Training instances : " + str(per_class[rel_type])
-                print "Test instances     : " + str(num_instances_of_class)
-                print "Classifications    : " + str(num_classified)
-                print "Correct            : " + str(num_correct_classified)
-                print "Precision : " + str(precision)
-                print "Recall : " + str(recall)
-                print "F1 : " + str(f1)
-                print "\n"
-
-                if num_classified == 0 or num_correct_classified == 0:
-                    classes_to_annotate.append(rel_type)
-
-            print "Classes to Annotate"
-            for rel_type in classes_to_annotate:
-                print rel_type, per_class[rel_type]
-
-            # TODO: overall precision, f1, recall
+        cross_validation(per_class, relationships, relationships_by_id, sample_class, samples_features)
 
     elif sys.argv[4] == 'model':
+        classifier = train_classifier(sample_class, samples_features)
 
-        train = list()
-        train_label = list()
+        # create a pool of 1.0000 sentences
+        relationships_pool = list()
+        # read sentences to tag from file
+        # make sure they are different from the ones in the training set
+        f = open(sys.argv[5], 'r')
+        ent = re.compile('<[A-Z]+>[^<]+</[A-Z]+>', re.U)
+        for line in f:
+            matches = ent.findall(line)
+            clean = re.sub(r"</?[A-Z]+>", "", line)
+            if clean not in tagged:
+                # restringir numero de entidades e tamanho da frase
+                if len(matches) == 2 and len(clean) <= 200:
+                    sentence = Sentence(line)
+                    for rel in sentence.relationships:
+                        relationships_pool.append(rel)
+                if len(relationships_pool) > 1000:
+                    break
 
-        for index in samples_features:
-            train.append(samples_features[index])
-            train_label.append(sample_class[index])
-
-        print "Training...."
-        clf = svm.SVC(probability=True)
-        clf.fit(train, train_label)
-        print "Done"
-
-        # TODO: ler relacoes po classificar, passar ao classificar, e calcular a entropia das probabilidades das classificacoes
-
-        # To use in Active Learning Scenario
-        """
-        index_rel = 0
-        for class_prob in results:
-            print "rel_id:\t", test_ids[index_rel]
-            print "sentence:\t", relationships_by_id[test_ids[index_rel]].sentence
-            print "class:\t", relationships_by_id[test_ids[index_rel]].rel_type
-
-            class_prob_lst = list(class_prob)
-            scores = []
-            for c_index in range(0, len(class_prob_lst)):
-                scores.append((id_rel_type[c_index], class_prob_lst[c_index]))
-
-            sorted_by_score = sorted(scores, key=lambda tup: tup[1], reverse=True)
-            for t in sorted_by_score:
-                print t[0], '\t:', t[1]
-            print "\n"
-            index_rel += 1
-        """
-        current_fold += 1
+        classify(classifier, relationships_pool, hasher)
 
 if __name__ == "__main__":
     main()
