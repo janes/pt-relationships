@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from collections import defaultdict
-import fileinput
-
 
 __author__ = 'dsbatista'
 
@@ -11,29 +8,24 @@ import re
 import sys
 import StringIO
 import pickle
-import nltk
 import sklearn
 import operator
+import fileinput
 
-from nltk import ngrams
+from collections import defaultdict
+from nltk import ngrams, PunktWordTokenizer
 from nltk import bigrams
-from nltk import trigrams
-from nltk.collocations import *
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import svm
 from sklearn.cross_validation import KFold
 from Sentence import Relationship, Sentence
 from math import log
 
-tokenizer =  r'\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.-]+|https?://[^\s]+|\w+'
-CONTEXT_WINDOW = 4
-
-N_GRAMS_SIZE = 4
 
 # Parameters for relationship extraction from Sentence
 MAX_TOKENS_AWAY = 9
 MIN_TOKENS_AWAY = 1
 CONTEXT_WINDOW = 3
+N_GRAMS_SIZE = 4
 
 rel_type_id = dict()
 rel_type_id['agreement(Arg1,Arg2)'] = 0
@@ -60,7 +52,6 @@ rel_type_id['work-together'] = 20
 
 id_rel_type = {v: k for k, v in rel_type_id.items()}
 
-#TODO: incluir virgulas na tokenização
 TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.' \
             r'-]+|https?://[^\s]+|\w+'
 
@@ -69,14 +60,8 @@ def load_relationships(data_file):
     tagged = set()
     relationships = list()
     rel_id = 0
-    print "Loading relationships from file"
     f_sentences = codecs.open(data_file, encoding='utf-8')
-    #f_sentences = codecs.open(data_file)
     for line in f_sentences:
-        """
-        if rel_id == 100:
-            break
-        """
         # read the lines without tagged entities, this is used later
         # to compare with sentences to tag, and assure no training sentences
         # are given to tag
@@ -89,14 +74,10 @@ def load_relationships(data_file):
         else:
             rel_type = line.strip().split(':')[1]
             rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
-
-            #tokens = re.findall(TOKENIZER, rel.before.decode("utf8"), flags=re.UNICODE)
-            tokens = re.findall(TOKENIZER, rel.before)
+            tokens = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
             rel.before = ' '.join(tokens[-CONTEXT_WINDOW:])
-            #tokens = re.findall(TOKENIZER, rel.after.decode("utf8"), flags=re.UNICODE)
-            tokens = re.findall(TOKENIZER, rel.after)
+            tokens = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
             rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
-
             rel_id += 1
             relationships.append(rel)
 
@@ -227,10 +208,10 @@ def extract_patterns(text, context):
 
         if passive_voice is True:
             p = '_'.join([tag[0] for tag in pattern])
-            p += '_PASSIVE_VOICE_'+context
+            p += '_RVB_PASSIVE_VOICE_'+context
         else:
             p = '_'.join([tag[0] for tag in pattern])
-            p += '_'+context
+            p += '_RVB_'+context
 
         extracted_patterns.append(p)
 
@@ -240,11 +221,6 @@ def extract_patterns(text, context):
 def extract_ngrams(text, context):
         chrs = ['_' if c == ' ' else c for c in text]
         return [''.join(g) + '_' + context + ' ' for g in ngrams(chrs, N_GRAMS_SIZE)]
-
-
-def extract_collocations(text, context):
-    bigram_measures = nltk.collocations.BigramAssocMeasures(text)
-    trigram_measures = nltk.collocations.TrigramAssocMeasures(text)
 
 
 def extract_bigrams(text, context):
@@ -278,26 +254,30 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
     for rel in relationships:
         rel_features = list()
 
-        # TODO: normalized verbs from each context
-        # TODO: first extract all ReVerb patterns, then see which belong to each context
+        # TODO: extract Pos-tags for each context
+        patterns_bef = extract_patterns(rel.before, "BEF")
+        patterns_bet = extract_patterns(rel.between, "BET")
+        patterns_aft = extract_patterns(rel.after, "AFT")
 
-        """
+        # TODO: normalized verbs/substântivos from each context
+
         # extract all words from the contexts
         tokens_bef = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
         tokens_bet = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
         tokens_aft = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
 
-        for f in tokens_bef:
+        for f in tokens_bef+tokens_bet:
             rel_features.append(f)
 
         for f in tokens_bet:
             rel_features.append(f)
 
-        for f in tokens_aft:
+        for f in tokens_bet+tokens_aft:
             rel_features.append(f)
-        """
 
         # extract ReVerb patterns from the 3 contexts
+        # TODO: first ReVerb from a sentence, then for each identify to which each context it belongs
+        # TODO: identify passive voice
         patterns_bef = extract_patterns(rel.before, "BEF")
         patterns_bet = extract_patterns(rel.between, "BET")
         patterns_aft = extract_patterns(rel.after, "AFT")
@@ -320,7 +300,7 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
         for f in patterns_aft:
             rel_features.append(f)
 
-        # extract n-grams
+        # extract n-grams of characters
         bef_grams = extract_ngrams(rel.before, "BEF")
         bet_grams = extract_ngrams(rel.between, "BET")
         aft_grams = extract_ngrams(rel.after, "AFT")
@@ -331,12 +311,12 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
         for f in aft_grams:
             rel_features.append(f)
 
-        # extract_bi_grams
-        for f in extract_bigrams(rel.before, "BEF"):
+        # extract_bi_grams of words
+        for f in extract_bigrams(rel.before, "BIGRAMS_BEF"):
             rel_features.append(f)
-        for f in extract_bigrams(rel.before, "BET"):
+        for f in extract_bigrams(rel.between, "BIGRAMS_BET"):
             rel_features.append(f)
-        for f in extract_bigrams(rel.before, "AFT"):
+        for f in extract_bigrams(rel.after, "BIGRAMS_AFT"):
             rel_features.append(f)
 
         # relationships arguments
@@ -346,10 +326,20 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
         # append features to relationships features collection
         relationship_features.append(rel_features)
 
+        """
+        print rel.arg1type
+        print rel.arg2type
+        print rel.sentence.encode("utf8")
+        print rel_features
+        print "\n"
+        """
+
         # add the extracted features to a collection containing all the seen features
         for feature in rel_features:
             all_features.add(feature)
+
     print len(all_features), " features extracted"
+
     return all_features, relationship_features
 
 
@@ -447,15 +437,8 @@ def cross_validation(per_class, relationships, relationships_by_id, sample_class
 
 
 def train_classifier(sample_class, samples_features):
-    """
-    train = list()
-    train_label = list()
-    for index in samples_features:
-        train.append(samples_features[index])
-        train_label.append(sample_class[index])
-    """
     print "Training...."
-    clf = svm.SVC(probability=True)
+    clf = svm.SVC(C=1.0, probability=True, verbose=False)
     clf.fit(samples_features, sample_class)
     print "Done"
     return clf
@@ -479,6 +462,8 @@ def classify(classifier, relationships_pool, hasher):
         index_rel = 0
         for class_prob in results:
             print "sentence:\t", relationships_pool[index_rel].sentence
+            entropy = shannon_entropy(list(class_prob))
+            print "entropy:\t", entropy
 
             class_prob_lst = list(class_prob)
             scores = []
@@ -493,6 +478,11 @@ def classify(classifier, relationships_pool, hasher):
 
 
 def main():
+
+    print "Loading relationships from", sys.argv[3]
+    relationships, tagged = load_relationships(sys.argv[3])
+    print len(relationships), " loaded"
+
     global word_cluster
     global clusters_words
     print "Loading Word Clusters from", sys.argv[2]
@@ -509,10 +499,6 @@ def main():
     f_model = open(sys.argv[1], "rb")
     tagger = pickle.load(f_model)
     f_model.close()
-
-    print "Loading relationships from", sys.argv[3]
-    relationships, tagged = load_relationships(sys.argv[3])
-    print len(relationships), " loaded"
 
     # print number of samples per class
     per_class = dict()
@@ -591,7 +577,7 @@ def main():
             clean = re.sub(r"</?[A-Z]+>", "", line)
             if clean not in tagged:
                 # restringir numero de entidades e tamanho da frase
-                if len(matches) == 2 and len(clean) <= 200:
+                if len(matches) == 2 and len(clean) <= 200 > 40:
                     sentence = Sentence(line)
                     for rel in sentence.relationships:
                         relationships_pool.append(rel)

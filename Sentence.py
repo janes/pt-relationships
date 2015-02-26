@@ -1,8 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import re
 from nltk import PunktWordTokenizer
 
 regex = re.compile('<[A-Z]+>[^<]+</[A-Z]+>', re.U)
 
+TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.' \
+            r'-]+|https?://[^\s]+|\w+'
 
 class Relationship:
     def __init__(self, _sentence, _before=None, _between=None, _after=None, _ent1=None, _ent2=None, _arg1type=None,
@@ -45,6 +50,14 @@ class Relationship:
                 arg2match = re.match("<[A-Z]+>", self.ent2)
                 self.arg1type = arg1match.group()[1:-1]
                 self.arg2type = arg2match.group()[1:-1]
+
+                """
+                print self.sentence.encode("utf8")
+                print self.before.encode("utf8")
+                print self.between.encode("utf8")
+                print self.after.encode("utf8")
+                print "\n"
+                """
 
 
 class Sentence:
@@ -89,6 +102,9 @@ class Sentence:
                     ent2 = re.sub("</?[A-Z]+>", "", ent2, count=2, flags=0)
                     arg1type = arg1match.group()[1:-1]
                     arg2type = arg2match.group()[1:-1]
-                    rel = Relationship(_sentence, before, between, after, ent1, ent2, arg1type, arg2type, _type=None,
-                                       _id=None)
-                    self.relationships.add(rel)
+
+                    if arg1type == 'MSC' or arg2type == 'MSC':
+                        continue
+                    else:
+                        rel = Relationship(_sentence, before, between, after, ent1, ent2, arg1type, arg2type, _type=None, _id=None)
+                        self.relationships.add(rel)

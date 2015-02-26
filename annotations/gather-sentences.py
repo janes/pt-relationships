@@ -80,7 +80,7 @@ def find_matches(line, relationships, positive=None, negative=None):
                     #print " ".join(r.words).encode("utf8")
                     print rel.ent1.encode("utf8")
                     print rel.ent2.encode("utf8")
-                    print line.encode("utf8")
+                    print "sentence:", line.encode("utf8")
 
         if positive is not None and negative is not None:
             if len(set(tokens).intersection(set(positive))) > 0:
