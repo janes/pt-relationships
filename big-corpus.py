@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import nltk
 
 __author__ = 'dsbatista'
 
+import nltk
 import MySQLdb
 
 

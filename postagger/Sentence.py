@@ -1,3 +1,6 @@
+__author__ = "David S. Batista"
+__email__ = "dsbatista@inesc-id.pt"
+
 import re
 
 regex = re.compile('<[A-Z]+>[^<]+</[A-Z]+>', re.U)

@@ -1,24 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from common.Sentence import Sentence, Relationship
 
 __author__ = 'dsbatista'
 
 import codecs
 import re
 import sys
-import StringIO
 import pickle
 import sklearn
 import operator
 import fileinput
 
 from collections import defaultdict
-from nltk import ngrams, PunktWordTokenizer
+from nltk import ngrams
 from nltk import bigrams
 from sklearn import svm
 from sklearn.cross_validation import KFold
-from Sentence import Relationship, Sentence
 from math import log
+from common.ReVerbPT import ReverbPT
 
 
 # Parameters for relationship extraction from Sentence
@@ -84,140 +84,6 @@ def load_relationships(data_file):
     return relationships, tagged
 
 
-def extract_reverb_patterns_ptb(text):
-
-    """
-    Extract ReVerb relational patterns
-    http://homes.cs.washington.edu/~afader/bib_pdf/emnlp11.pdf
-
-    # extract ReVerb patterns:
-    # V | V P | V W*P
-    # V = verb particle? adv?
-    # W = (noun | adj | adv | pron | det)
-    # P = (prep | particle | inf. marker)
-    """
-
-    # remove the tags and extract tokens
-    text_no_tags = re.sub(r"</?[A-Z]+>", "", text)
-    tokens = re.findall(TOKENIZER, text_no_tags, flags=re.UNICODE)
-
-    # tag tokens with pos-tagger
-    tagged = tagger.tag(tokens)
-    patterns = []
-    patterns_tags = []
-    i = 0
-    limit = len(tagged)-1
-    tags = tagged
-
-    """
-    verb = ['VB', 'VBD', 'VBD|VBN', 'VBG', 'VBG|NN', 'VBN', 'VBP', 'VBP|TO', 'VBZ', 'VP']
-    adverb = ['RB', 'RBR', 'RBS', 'RB|RP', 'RB|VBG', 'WRB']
-    particule = ['POS', 'PRT', 'TO', 'RP']
-    noun = ['NN', 'NNP', 'NNPS', 'NNS', 'NN|NNS', 'NN|SYM', 'NN|VBG', 'NP']
-    adjectiv = ['JJ', 'JJR', 'JJRJR', 'JJS', 'JJ|RB', 'JJ|VBG']
-    pronoun = ['WP', 'WP$', 'PRP', 'PRP$', 'PRP|VBP']
-    determiner = ['DT', 'EX', 'PDT', 'WDT']
-    adp = ['IN', 'IN|RP']
-    """
-
-    verb = ['verb', 'verb_past']
-    word = ['noun', 'adjective', 'adverb', 'determiner', 'pronoun']
-    particule = ['preposition']
-
-    """
-    conjunction
-    electronic
-    interjection
-    numeral
-    punctuation
-    symbol
-
-    adjective
-    adverb
-    determiner
-    noun
-    preposition
-    pronoun
-    verb
-    verb_past
-    """
-
-    while i <= limit:
-        tmp = StringIO.StringIO()
-        tmp_tags = []
-
-        # a ReVerb pattern always starts with a verb
-        if tags[i][1] in verb:
-            tmp.write(tags[i][0]+' ')
-            t = (tags[i][0], tags[i][1])
-            tmp_tags.append(t)
-            i += 1
-
-            # V = verb particle? adv? (also capture auxiliary verbs)
-            while i <= limit and (tags[i][1] in verb or tags[i][1] in word):
-                tmp.write(tags[i][0]+' ')
-                t = (tags[i][0], tags[i][1])
-                tmp_tags.append(t)
-                i += 1
-
-            # W = (noun | adj | adv | pron | det)
-            while i <= limit and (tags[i][1] in word):
-                tmp.write(tags[i][0]+' ')
-                t = (tags[i][0], tags[i][1])
-                tmp_tags.append(t)
-                i += 1
-
-            # P = (prep | particle | inf. marker)
-            while i <= limit and (tags[i][1] in particule):
-                tmp.write(tags[i][0]+' ')
-                t = (tags[i][0], tags[i][1])
-                tmp_tags.append(t)
-                i += 1
-
-            # add the build pattern to the list collected patterns
-            patterns.append(tmp.getvalue())
-            patterns_tags.append(tmp_tags)
-        i += 1
-
-    return patterns, patterns_tags
-
-
-def add_patterns(patterns, reverb_patterns):
-    for p in patterns:
-        if p not in reverb_patterns:
-            reverb_patterns.append(p)
-
-
-def extract_patterns(text, context):
-    # each sentence contains one relationship only
-    patterns, patterns_tags = extract_reverb_patterns_ptb(text)
-
-    # detect which patterns contain passive voice
-    extracted_patterns = list()
-    for pattern in patterns_tags:
-        passive_voice = False
-        for i in range(0, len(pattern)):
-            if pattern[i][1].startswith('v'):
-                try:
-                    inf = verbs[pattern[i][0]]
-                    if inf in ['ser', 'estar', 'ter', 'haver'] and i+2 <= len(pattern)-1:
-                        if (pattern[-2][1] == 'verb_past' or pattern[-2][1] == 'adjectiv') and pattern[-1][0] == 'por':
-                            passive_voice = True
-                except KeyError:
-                    continue
-
-        if passive_voice is True:
-            p = '_'.join([tag[0] for tag in pattern])
-            p += '_RVB_PASSIVE_VOICE_'+context
-        else:
-            p = '_'.join([tag[0] for tag in pattern])
-            p += '_RVB_'+context
-
-        extracted_patterns.append(p)
-
-    return extracted_patterns
-
-
 def extract_ngrams(text, context):
         chrs = ['_' if c == ' ' else c for c in text]
         return [''.join(g) + '_' + context + ' ' for g in ngrams(chrs, N_GRAMS_SIZE)]
@@ -247,7 +113,7 @@ def shannon_entropy(probabilities):
     return entropy
 
 
-def feature_extraction(clusters_words, relationships, verbs, word_cluster):
+def feature_extraction(reverb, clusters_words, relationships, verbs, word_cluster):
     # feature extraction
     all_features = set()
     relationship_features = list()
@@ -255,32 +121,28 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
         rel_features = list()
 
         # TODO: extract Pos-tags for each context
-        patterns_bef = extract_patterns(rel.before, "BEF")
-        patterns_bet = extract_patterns(rel.between, "BET")
-        patterns_aft = extract_patterns(rel.after, "AFT")
+        #patterns_bef = extract_patterns(rel.before, "BEF")
+        #patterns_bet = extract_patterns(rel.between, "BET")
+        #patterns_aft = extract_patterns(rel.after, "AFT")
 
         # TODO: normalized verbs/substântivos from each context
-
         # extract all words from the contexts
-        tokens_bef = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
-        tokens_bet = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
-        tokens_aft = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
+        #tokens_bef = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
+        #tokens_bet = re.findall(TOKENIZER, rel.between, flags=re.UNICODE)
+        #tokens_aft = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
 
-        for f in tokens_bef+tokens_bet:
-            rel_features.append(f)
+        #for f in tokens_bef+tokens_bet:
+        #    rel_features.append(f)
 
-        for f in tokens_bet:
-            rel_features.append(f)
+        #for f in tokens_bet:
+        #    rel_features.append(f)
 
-        for f in tokens_bet+tokens_aft:
-            rel_features.append(f)
+        #for f in tokens_bet+tokens_aft:
+        #    rel_features.append(f)
 
-        # extract ReVerb patterns from the 3 contexts
-        # TODO: first ReVerb from a sentence, then for each identify to which each context it belongs
-        # TODO: identify passive voice
-        patterns_bef = extract_patterns(rel.before, "BEF")
-        patterns_bet = extract_patterns(rel.between, "BET")
-        patterns_aft = extract_patterns(rel.after, "AFT")
+        # extract ReVerb patterns from BET context
+        # extract 2 words from BEF and AFT
+        patterns_bet = reverb.extract_reverb_patterns_ptb(rel.between)
 
         for p in patterns_bet:
             verb = p.split('_')[0]
@@ -293,11 +155,7 @@ def feature_extraction(clusters_words, relationships, verbs, word_cluster):
             except KeyError:
                 pass
 
-        for f in patterns_bef:
-            rel_features.append(f)
         for f in patterns_bet:
-            rel_features.append(f)
-        for f in patterns_aft:
             rel_features.append(f)
 
         # extract n-grams of characters
@@ -445,9 +303,8 @@ def train_classifier(sample_class, samples_features):
 
 
 def classify(classifier, relationships_pool, hasher):
-
-        all_features, relationship_features = feature_extraction(clusters_words, relationships_pool, verbs, word_cluster)
-
+        all_features, relationship_features = feature_extraction(clusters_words, relationships_pool,
+                                                                 verbs, word_cluster)
         samples_features = []
 
         print "Hashing features"
@@ -479,26 +336,27 @@ def classify(classifier, relationships_pool, hasher):
 
 def main():
 
-    print "Loading relationships from", sys.argv[3]
-    relationships, tagged = load_relationships(sys.argv[3])
-    print len(relationships), " loaded"
+    global tagger
+    print "Loading PoS tagger from", sys.argv[1]
+    f_model = open(sys.argv[1], "rb")
+    tagger = pickle.load(f_model)
+    f_model.close()
+    reverb = ReverbPT(tagger)
 
     global word_cluster
     global clusters_words
     print "Loading Word Clusters from", sys.argv[2]
     word_cluster, clusters_words = load_clusters(sys.argv[2])
 
+    print "Loading relationships from", sys.argv[3]
+    relationships, tagged = load_relationships(sys.argv[3])
+    print len(relationships), " loaded"
+
     global verbs
     print "Loading Label-Delaf"
     verbs_conj = open('verbs/verbs_conj.pkl', "r")
     verbs = pickle.load(verbs_conj)
     verbs_conj.close()
-
-    global tagger
-    print "Loading PoS tagger from", sys.argv[1]
-    f_model = open(sys.argv[1], "rb")
-    tagger = pickle.load(f_model)
-    f_model.close()
 
     # print number of samples per class
     per_class = dict()
@@ -511,37 +369,33 @@ def main():
     for rel in sorted(per_class.items(), key=operator.itemgetter(1), reverse=True):
         print rel
 
-
     # TODO: add TF-IDF words as features
-    """
     # extracting tf-idf vectors
-    stopwords_pt = nltk.corpus.stopwords.words('portuguese')
-    vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words=stopwords_pt)
-    x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
-    """
+    #stopwords_pt = nltk.corpus.stopwords.words('portuguese')
+    #vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words=stopwords_pt)
+    #x_train = vectorizer.fit_transform([rel.sentence for rel in relationships])
 
-    all_features, relationship_features = feature_extraction(clusters_words, relationships, verbs, word_cluster)
+    all_features, relationship_features = feature_extraction(reverb, clusters_words, relationships, verbs, word_cluster)
 
     # Feature Hashing
 
     #TF-IDF Vectorizer
-    """
-    samples_features = []
-    sample_class = []
-    relationships_by_id = dict()
+    #samples_features = []
+    #sample_class = []
+    #relationships_by_id = dict()
 
-    for rel in relationships:
-        words = x_train[rel.identifier].toarray()[0]
-        samples_features.append(words)
-        sample_class.append(rel_type_id[rel.rel_type])
-        relationships_by_id[rel.identifier] = rel
+    #for rel in relationships:
+    #    words = x_train[rel.identifier].toarray()[0]
+    #    samples_features.append(words)
+    #    sample_class.append(rel_type_id[rel.rel_type])
+    #    relationships_by_id[rel.identifier] = rel
 
-    print len(samples_features), " samples"
-    print len(rel_type_id), " classes"
-    """
+    #print len(samples_features), " samples"
+    #print len(rel_type_id), " classes"
 
     #FeatureHasher
-    hasher = sklearn.feature_extraction.FeatureHasher(n_features=len(all_features), non_negative=True, input_type='string')
+    hasher = sklearn.feature_extraction.FeatureHasher(n_features=len(all_features), non_negative=True,
+                                                      input_type='string')
     samples_features = []
     sample_class = []
     relationships_by_id = dict()
@@ -560,23 +414,27 @@ def main():
     #tfidf = TfidfTransformer()
     #hashing_tfidf = Pipeline([("hashing", hashing), ("tidf", tfidf)])
 
+    # makes a cross-vold validation with the training data
     if sys.argv[4] == 'fold':
         cross_validation(per_class, relationships, relationships_by_id, sample_class, samples_features)
 
+    # trains a model with the training data
+    # selects a sentence not in the train data, each SVM model gives an annotation
+    # calculates the entropy, level of dissagrement
     elif sys.argv[4] == 'model':
         classifier = train_classifier(sample_class, samples_features)
 
         # create a pool of 1.0000 sentences
         relationships_pool = list()
-        # read sentences to tag from file
-        # make sure they are different from the ones in the training set
+        # read sentences to annotate from file
         f = open(sys.argv[5], 'r')
         ent = re.compile('<[A-Z]+>[^<]+</[A-Z]+>', re.U)
         for line in f:
             matches = ent.findall(line)
             clean = re.sub(r"</?[A-Z]+>", "", line)
+            # make sure the sentence different from the ones in the training set
             if clean not in tagged:
-                # restringir numero de entidades e tamanho da frase
+                # restrict number of entities and sentence length
                 if len(matches) == 2 and len(clean) <= 200 > 40:
                     sentence = Sentence(line)
                     for rel in sentence.relationships:
@@ -584,6 +442,7 @@ def main():
                 if len(relationships_pool) > 1000:
                     break
 
+        # classify the sentences
         classify(classifier, relationships_pool, hasher)
 
 if __name__ == "__main__":
