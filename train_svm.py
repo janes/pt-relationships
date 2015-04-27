@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from common.Sentence import Sentence, Relationship
 
-__author__ = 'dsbatista'
+__author__ = "David S. Batista"
+__email__ = "dsbatista@inesc-id.pt"
 
 import codecs
 import re
@@ -80,6 +81,78 @@ def load_relationships(data_file):
             rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
             rel_id += 1
             relationships.append(rel)
+
+    return relationships, tagged
+
+
+def load_dbpedia_relationships(data_file):
+    tagged = set()
+    relationships = list()
+    rel_id = 0
+    f_sentences = codecs.open(data_file, encoding='utf-8')
+
+    rel_types = dict()
+
+    for line in f_sentences:
+        if line.startswith("SENTENCE"):
+            sentence = line.split("SENTENCE : ")[1].strip()
+
+        if line.startswith("MANUALLY CHECKED"):
+            checked = line.split("MANUALLY CHECKED : ")[1].strip()
+            if checked == 'FALSE':
+                sentence = None
+                continue
+
+        if line.startswith("ENTITY1") and checked == 'TRUE':
+            e1 = line.split("ENTITY1 : ")[1].strip()
+
+        if line.startswith("ENTITY2") and checked == 'TRUE':
+            e2 = line.split("ENTITY2 : ")[1].strip()
+
+        if line.startswith("TYPE1") and checked == 'TRUE':
+            e1_type = line.split("TYPE1 : ")[1].strip()
+
+        if line.startswith("TYPE2") and checked == 'TRUE':
+            e2_type = line.split("TYPE2 : ")[1].strip()
+
+        if line.startswith("REL TYPE") and checked == 'TRUE':
+            rel_type = line.split("REL TYPE :")[1].strip()
+
+        if line.startswith("*") and 'sentence' in locals() and sentence is not None and checked == 'TRUE':
+
+            #TODO: confirmar as direcções das relações, e acrescentar um (arg1,arg2) ou (arg2,arg1)
+            # conforme o caso
+            e1_pos = re.search(e1, sentence)
+            e2_pos = re.search(e2, sentence)
+            print sentence
+            print "e1", e1, e1_type, e1_pos.start(), e1_pos.end()
+            print "e2", e2, e2_type, e2_pos.start(), e2_pos.end()
+
+            print "type", rel_type
+            print "\n"
+
+            sentence = None
+            if rel_type in rel_types.keys():
+                rel_types[rel_type] += 1
+            else:
+                rel_types[rel_type] = 1
+
+    print rel_types
+    acc = 0
+    for k in rel_types:
+        acc += rel_types[k]
+    print "total", acc
+
+    """
+    rel_type = line.strip().split(':')[1]
+    rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
+    tokens = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
+    rel.before = ' '.join(tokens[-CONTEXT_WINDOW:])
+    tokens = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
+    rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
+    rel_id += 1
+    relationships.append(rel)
+    """
 
     return relationships, tagged
 
@@ -184,13 +257,11 @@ def feature_extraction(reverb, clusters_words, relationships, verbs, word_cluste
         # append features to relationships features collection
         relationship_features.append(rel_features)
 
-        """
-        print rel.arg1type
-        print rel.arg2type
-        print rel.sentence.encode("utf8")
-        print rel_features
-        print "\n"
-        """
+        #print rel.arg1type
+        #print rel.arg2type
+        #print rel.sentence.encode("utf8")
+        #print rel_features
+        #print "\n"
 
         # add the extracted features to a collection containing all the seen features
         for feature in rel_features:
@@ -336,6 +407,11 @@ def classify(classifier, relationships_pool, hasher):
 
 def main():
 
+    print "Loading relationships from", sys.argv[1]
+    relationships, tagged = load_dbpedia_relationships(sys.argv[1])
+    print len(relationships), " loaded"
+
+    """
     global tagger
     print "Loading PoS tagger from", sys.argv[1]
     f_model = open(sys.argv[1], "rb")
@@ -444,6 +520,7 @@ def main():
 
         # classify the sentences
         classify(classifier, relationships_pool, hasher)
+    """
 
 if __name__ == "__main__":
     main()
