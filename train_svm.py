@@ -92,6 +92,7 @@ def load_dbpedia_relationships(data_file):
     f_sentences = codecs.open(data_file, encoding='utf-8')
 
     rel_types = dict()
+    count = 0
 
     for line in f_sentences:
         if line.startswith("SENTENCE"):
@@ -120,16 +121,86 @@ def load_dbpedia_relationships(data_file):
 
         if line.startswith("*") and 'sentence' in locals() and sentence is not None and checked == 'TRUE':
 
-            #TODO: confirmar as direcções das relações, e acrescentar um (arg1,arg2) ou (arg2,arg1)
-            # conforme o caso
+            #TODO: confirmar as direcções das relações, e acrescentar um (arg1,arg2) ou (arg2,arg1) conforme o caso
+            #TODO: imprimir no formato do train_data.txt, acrescentar um campo de origem? (wiki,news,blogs) ?
             e1_pos = re.search(e1, sentence)
             e2_pos = re.search(e2, sentence)
-            print sentence
-            print "e1", e1, e1_type, e1_pos.start(), e1_pos.end()
-            print "e2", e2, e2_type, e2_pos.start(), e2_pos.end()
 
-            print "type", rel_type
-            print "\n"
+            """
+            if rel_type == 'origin':
+                count += 1
+                print count
+                if e1_pos.start() < e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print rel_type+"(arg1,arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print rel_type+"(arg2,arg1)".encode("utf8")
+                    print "\n"
+
+            if rel_type == 'parent':
+                count += 1
+                print count
+                if e1_pos.start() < e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print "parent-of(arg2,arg1)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print "parent-of(arg1,arg2)".encode("utf8")
+                    print "\n"
+            """
+
+            if rel_type == 'deathOrBurialPlace':
+                count += 1
+                print count
+                if e1_pos.start() < e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print "(arg2,arg1)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    print sentence.encode("utf8")
+                    print e1.encode("utf8")
+                    print e2.encode("utf8")
+                    print "(arg1,arg2)".encode("utf8")
+                    print "\n"
+
+            try:
+                e1_pos.start()
+                e1_pos.end()
+                e2_pos.start()
+                e2_pos.end()
+                #print type(e1)
+                #print type(e2)
+                #print type(sentence)
+            except AttributeError, e:
+                print e1_pos
+                print e2_pos
+                print type(e1)
+                print type(e2)
+                print type(sentence)
+                print sentence
+                print checked
+                print e
+                print "e1", e1, e1_type
+                print "e2", e2, e2_type
+                print "type", rel_type
+                print "\n"
+                sys.exit(0)
 
             sentence = None
             if rel_type in rel_types.keys():
@@ -137,7 +208,10 @@ def load_dbpedia_relationships(data_file):
             else:
                 rel_types[rel_type] = 1
 
-    print rel_types
+    for t in rel_types.keys():
+        print t, rel_types[t]
+
+    print "\n"
     acc = 0
     for k in rel_types:
         acc += rel_types[k]
