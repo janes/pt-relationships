@@ -221,6 +221,7 @@ def load_dbpedia_relationships(data_file):
                     print "\n"
             """
 
+            """
             if rel_type == 'partOf':
                 e1_pos = re.search(e1, sentence)
                 e2_pos = re.search(e2, sentence)
@@ -241,8 +242,8 @@ def load_dbpedia_relationships(data_file):
                     print sentence.encode("utf8")
                     print "part-of(arg2,arg1)".encode("utf8")
                     print "\n"
-
             """
+
             if rel_type == 'locatedInArea':
                 e1_pos = re.search(e1, sentence)
                 e2_pos = re.search(e2, sentence)
@@ -255,13 +256,12 @@ def load_dbpedia_relationships(data_file):
                     print "\n"
 
                 elif e1_pos.start() > e2_pos.start():
-                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e2_pos.start()+len(e1):]
-                    e2_pos = re.search(e2, sentence)
-                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e1_pos.start()+len(e2):]
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e1_pos.start()+len(e1):]
                     print sentence.encode("utf8")
                     print "relation:located-in(Arg2,Arg1)".encode("utf8")
                     print "\n"
-            """
             """
             try:
                 e1_pos.start()

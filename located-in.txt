@@ -1,798 +1,146 @@
-A <LOC>América Latina</LOC> localiza-se totalmente no hemisfério ocidental, sendo atravessada pelo Trópico de Câncer, que corta a parte central do México; pelo Equador, que passa pelo Brasil, Colômbia, Equador e toca o norte do Peru; e pelo Trópico de Capricórnio, que atravessa o Brasil, o Paraguai, a <LOC>Argentina</LOC> e o Chile.
+A <LOC>Albânia</LOC> é um país europeu situado na península <LOC>Balcânica</LOC>, cuja capital é Tirana.
 relation:located-in(Arg1,Arg2)
 
-
-A <LOC>América Latina</LOC> não apresenta, ao contrário da América do Norte, grandes extensões lacustres, mas ainda assim possui inúmeras lagoas costeiras, sobretudo na vertente atlântica, como a lagoa dos Patos, no <LOC>Brasil</LOC>; lagoas de inundação nas planícies Amazônica e do Orinoco; e lagos de altitude, como o Titicaca, entre o Peru e a Bolívia.
+<LOC>Erevan</LOC>, a moderna capital da <LOC>República da Arménia</LOC>, foi fundada em 782 a.C.
 relation:located-in(Arg1,Arg2)
 
-
-A <LOC>América Latina</LOC> destaca-se ainda por sua produção de chumbo (Peru e México), níquel (Cuba), prata (México e Peru), zinco (Peru), bauxita (<LOC>Brasil</LOC> e Venezuela) e platina (Colômbia).
+O <LOC>México</LOC> é uma república constitucional federal localizada na <LOC>América do Norte</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-Com as riquezas geradas pela produção e exportação da borracha natural (Hevea brasiliensis) no <LOC>Amazonas</LOC>, <LOC>Manaus</LOC>, capital amazonense, recebeu grandes obras como o Porto de Manaus, o Teatro Amazonas, o Palácio da Justiça, o Reservatório do Mocó, a primeira rede de energia elétrica e os serviços de transporte coletivo em bondes.
-relation:located-in(Arg1,Arg2)
-
-
-A Lei Provincial de 9 de dezembro de 1839 transferiu a capital da Província da cidade de <LOC>Alagoas</LOC> (hoje Marechal Deodoro), para a vila de <LOC>Maceió</LOC>, então elevada a cidade.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Albânia</LOC> é um país europeu situado na península Balcânica, cuja capital é <LOC>Tirana</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>República da Arménia</LO<LOC>Erevan</LOC>l da República da Arménia, foi fundada em 782 a.C.
+Localizado na região nordeste do estado de <LOC>Sergipe</LOC>, <LOC>Amparo de São Francisco</LOC> faz divisiva com Canhoba a oeste e com Telha a leste e sul.
 relation:located-in(Arg2,Arg1)
-
-
-Os estabelecimentos franceses na <LOC>América do Norte</LOC>, desenvolveram-se na Nova França (<LOC>Canadá</LOC>) e na Acádia (litoral da Nova Escócia).
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>América do Norte</LOC>ública constitucional federal loc<LOC>México</LOC>a na América do Norte.
-relation:located-in(Arg2,Arg1)
-
-
-Os três maiores países da <LOC>América</LOC>, Canadá, <LOC>Estados Unidos</LOC> e Brasil, são também as maiores economias, as quais estão entre as dez maiores do mundo.
-relation:located-in(Arg1,Arg2)
-
-
-Para a <LOC>América</LOC>, o século também revelaria um grande abismo entre o seu norte rico e desenvolvido, composto pelos <LOC>Estados Unidos</LOC> e Canadá, e o sul pobre e em desenvolvimento, integrado pela América Latina e Caribe.
-relation:located-in(Arg1,Arg2)
-
-
-Na <LOC>América do Norte</LOC>, a maior quantidade de montanhas com mais de metros ocorrem nos <LOC>Estados Unidos</LOC> e, mais especificamente, no estado do Colorado.
-relation:located-in(Arg1,Arg2)
-
-
-O sudeste da <LOC>América do Norte</LOC> é bem conhecido por sua ocorrência de tornados e furacões, dos quais a grande maioria dos tornados ocorrem no Tornado Alley, nos <LOC>Estados Unidos</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-Localizado na região nordeste do estado de <LOC>Ampa<LOC>Sergipe</LOC>ão Francisco</LOC>Francisco faz divisiva com Canhoba a oeste e com Telha a leste e sul.
-relation:located-in(Arg2,Arg1)
-
-
-O presidente do <LOC>Brasil</LOC> Juscelino Kubitschek (1956–1961), que concebeu e construiu a capital <LOC>Brasília</LOC>, foi outro incentivador de rodovias.
-relation:located-in(Arg1,Arg2)
-
-
-O nome da capital do <LOC>Canadá</LOC>, <LOC>Ottawa</LOC>, vem do termo "adawe", que em língua algonquina significa "negociar".
-relation:located-in(Arg1,Arg2)
-
 
 A capital da <LOC>República Popular da China</LOC> é <LOC>Pequim</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-A  maior economia da <LOC>Paraíba</LOC> - PIB dos principais municípios (Dados 2006 - fonte IBGE) (valores em R$ 1.000,00), é a da cidade capital <LOC>João Pessoa</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-Durante a Guerra Fria, a porção norte da <LOC>Ásia</LOC> era comunista, controlada pela União Soviética e pela <LOC>República Popular da China</LOC>, enquanto que os aliados ocidentais formaram pactos como CENTO e SEATO.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Ásia</LOC> apresenta poucos lagos, embora de grande extensão, como o Baikal e o Balkhash, localizados na <LOC>Rússia</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-Na <LOC>Ásia</LOC> existem países desenvolvidos, como Japão, Israel e parte da <LOC>Rússia</LOC> aí situada, que revelam níveis de prosperidade econômica e social comparáveis aos da Europa ou da América Anglo-Saxônica.
-relation:located-in(Arg1,Arg2)
-
+relation:located-in(Arg2,Arg1)
 
 Em 2007, o <LOC>Rio Grande do Sul</LOC> foi o estado do <LOC>Brasil</LOC> que obteve a média geral mais alta no ENEM, com 56,27 pontos.
 relation:located-in(Arg1,Arg2)
 
-
-As línguas indígenas da <LOC>América do Sul</LOC> incluem o quíchua, no <LOC>Equador</LOC>, Peru e Bolívia; guarani no Paraguai e um pouco na Bolívia; aimará, na Bolívia e Peru; e o Mapudungun é falado em certas regiões do sul do Chile, e mais raramente, na Argentina.
-relation:located-in(Arg1,Arg2)
-
-
-De 1823 a 1838 tentou uma confederação política, a União das Províncias da <LOC>América Central</LOC> (Costa Rica, Guatemala, Honduras, <LOC>Nicarágua</LOC> e El Salvador), mas esta foi derrubada pela rivalidade entre grupos liberais e conservadores e por ciúmes regionais.
-relation:located-in(Arg1,Arg2)
-
-
-Historicamente, a região da <LOC>América Central</LOC> era formada por Guatemala, Honduras, El Salvador, <LOC>Nicarágua</LOC> e Costa Rica por causa de sua história em conjunto e ter feito parte das Províncias Unidas da América Central.
-relation:located-in(Arg1,Arg2)
-
-
-Há aproximadamente 824 escolas no país e duas universidades na capital <LOC>Eritreia</LOC>nomeadamente a Universidade de Asmara (UoA) e o Instituto de Tec<LOC>Asmara</LOC>a da Eritreia (ITE), bem como vários colégios menores e escolas técnicas.
-relation:located-in(Arg2,Arg1)
-
-
-Há um passado judeu nativo na <LOC>Eritreia</LOC>, antes uma comunidade de centenas de pessoas na capital <LOC>Asmara</LOC>, cujos ancestrais atravessaram Aden no século XIX.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Albufeira</LOC> é uma cidade portuguesa pertencente ao Distrito de Faro, região e sub-região do <LOC>Algarve</LOC>, com mais de 22 000 habitantes (2011).
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Alcoutim</LOC> é uma vila portuguesa pertencente ao Distrito de Faro, e região e sub-região do <LOC>Algarve</LOC>, com cerca de 900 habitantes.
-relation:located-in(Arg1,Arg2)
-
-
 A <LOC>Torre</LOC> pertence aos concelhos de Covilhã, Manteigas e <LOC>Seia</LOC>.
 relation:located-in(Arg1,Arg2)
-
 
 <LOC>Mineiros do Tietê</LOC> é um município brasileiro do estado de <LOC>São Paulo</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Tesouro</LOC> é um município brasileiro do estado de <LOC>Mato Grosso</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-Por ocasião da divisão Territorial e Administrativa do estado de <LOC>Tesouro</LOC>osso, de 31 de dezembro de 1937, o <LOC>Mato Grosso</LOC>Tesouro apareceu como distrito do então ”todo-poderoso” município de Santa Rita do Araguaya.
-relation:located-in(Arg2,Arg1)
-
-
-Apesar de ser considerada uma típica cidade pantaneira, <LOC>Cáceres</LOC> está situada dentro da Amazônia Legal, que compreende, além de todo o estado de <LOC>Mato Grosso</LOC>, mais 8 estados brasileiros (o Pantanal Norte, onde fica Cáreces, é chamado também de Pantanal Amazônico por estar totalmente inserido na Amazônia Legal).
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Angicos</LOC> é um município brasileiro do estado do <LOC>Rio Grande do Norte</LOC>, localizado na microrregião homônima.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>Caiçara do Rio do Vento</LOC> é município no estado do Rio Grande do Norte (Brasil), localizado na microrregião de <LOC>Angicos</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Caiçara do Rio do Vento</LOC> é município no estado do <LOC>Rio Grande do Norte</LOC> (Brasil), localizado na microrregião de Angicos.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Campo Grande</LOC> é um município brasileiro da região Centro-Oeste, capital do estado de <LOC>Mato Grosso do Sul</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Padre Bernardo</LOC> possui peculiaridades e características determinantes da origem de seu povo, isto é, há miscigenação cultural entre mineiros, nordestinos, remanescentes de outras partes do país e do próprio estado de <LOC>Goiás</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Uberlândia</LOC> é um município brasileiro do estado de <LOC>Minas Gerais</LOC>.
 relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Museu Oscar Niemeyer</LOC> localiza-se na cidade de Curitiba, capital do estado do <LOC>Paraná</LOC>, Brasil.
-relation:located-in(Arg1,Arg2)
-
-
-O Museu Oscar Niemeyer localiza-se na cidade de <LOC>Paraná</LOC>ba, capital do<LOC>Curitiba</LOC>do Paraná, Brasil.
-relation:located-in(Arg2,Arg1)
-
 
 O <LOC>Museu Oscar Niemeyer</LOC> localiza-se na cidade de <LOC>Curitiba</LOC>, capital do estado do Paraná, Brasil.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Jacobina</LOC> é um município brasileiro do estado da <LOC>Bahia</LOC> criado em 1722.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Santa Helena</LOC> é um município brasileiro do estado do <LOC>Paraná</LOC>.
-relation:located-in(Arg1,Arg2)
-
+O Museu Oscar Niemeyer localiza-se na cidade de <LOC>Curitiba</LOC>, capital do estado do <LOC>Paraná</LOC>, Brasil.
+relation:located-in(Arg2,Arg1)
 
 <LOC>Santa Helena</LOC> está localizada no centro da Costa Oeste do <LOC>Paraná</LOC>, às margens do lago de Itaipu.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>São José do Campestre</LOC> é município no estado do Rio Grande do Norte (Brasil), localizado na microrregião da <LOC>Borborema Potiguar</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Macapá</LOC>, capital do <LOC>Amapá</LOC>, fica situada na latitude 00°02'18.84".
 relation:located-in(Arg1,Arg2)
-
-
-A Escola de 1º Grau Barão do Rio Branco foi a primeira escola em alvenaria de <LOC>Macapá</LOC> (<LOC>Amapá</LOC>), tendo sido inaugurada em 13 de setembro de 1946, pelo governo do Território Federal do Amapá na gestão do capitão Janary Nunes.
-relation:located-in(Arg1,Arg2)
-
-
-Com o Decreto-Lei nº 6.550, a capital (que até então era o município de <LOC>Macapá</LOC> p<LOC>Amapá</LOC>a ser Macapá.
-relation:located-in(Arg2,Arg1)
-
-
-<LOC>Araçagi</LOC> surgiu em meados do século XVIII, quando a região servia de pousada para os mercadores e tangerinos de gado que praticavam o comércio entre Mamanguape, que, na época, era conhecida como Monte-Mor, Guarabira e os sertões da então província da <LOC>Paraíba</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Belém</LOC> é um município brasileiro da região Nordeste, localizado no estado da <LOC>Paraíba</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-De acordo com o levantamento cartográfico do estado da <LOC>Belém</LOC>ba, realizado pela Sudema, a temperatura média anual do mu<LOC>Paraíba</LOC> de Belém está em torno de 26 a 27 graus celsius, com pluviosidade média anual de 1000 a 1200 milímetros, e uma insolação média de 2600 a 2700 horas anuais.
-relation:located-in(Arg2,Arg1)
-
-
-O município de <LOC>Belém</LOC> está inserido em duas bacias hidrográficas, sendo uma de domínio federal, por ultrapassar as fronteiras do estado da <LOC>Paraíba</LOC>, e a outra de domínio estadual, devido à área estar completamente no território paraibano.
-relation:located-in(Arg1,Arg2)
-
 
 O <LOC>Bengo</LOC> é uma província do norte de Angola, com capital na cidade de Caxito, no município de <LOC>Dande</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Guajará</LOC> é um município brasileiro do Estado do <LOC>Amazonas</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Humaitá</LOC> é um município brasileiro do estado do <LOC>Rio Grande do Sul</LOC>.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>Iranduba</LOC> é um município brasileiro do estado do <LOC>Amazonas</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O município de <LOC>Iranduba</LOC> (<LOC>Amazonas</LOC>) está situado à margem esquerda do Rio Solimões, na confluência deste com o Rio Negro, a sul da capital do Amazonas, Manaus, da qual dista, 22 quilômetros.
-relation:located-in(Arg1,Arg2)
-
-
-O Produto interno bruto (PIB) de <LOC>Itumbiara</LOC> é o sétimo maior do estado de <LOC>Goiás</LOC>, destacando-se na área de prestação de serviços.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Rialma</LOC> é um município brasileiro do estado de <LOC>Goiás</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Iguaba Grande</LOC> é um município da Microrregião dos Lagos, no estado do <LOC>Rio de Janeiro</LOC>, no Brasil.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Iguaba Grande</LOC> é um município da <LOC>Microrregião dos Lagos</LOC>, no estado do Rio de Janeiro, no Brasil.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Cananéia</LOC> é um dos 15 municípios paulistas considerados estâncias balneárias pelo estado de <LOC>São Paulo</LOC>, por cumprirem determinados pré-requisitos definidos por Lei Estadual.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Canas</LOC> é um município brasileiro do estado de <LOC>São Paulo</LOC>, na microrregião de Guaratinguetá.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Canas</LOC> é um município brasileiro do estado de São Paulo, na microrregião de <LOC>Guaratinguetá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Cândido Mota</LOC> é um município brasileiro do estado de <LOC>São Paulo</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Palmeirópolis</LOC> é uma cidade polo da Micro-região do Sul do Estado do <LOC>Tocantins</LOC>, com destacada relevância econômica na região, tem um comércio local expressivo, com diversos supermercados, variados estabelecimentos comerciais, hotéis, restaurantes, cerâmica, movelaria, agência do Correio, duas agências bancárias (Banco do Brasil e Bradesco), concessionárias de veículos, postos de combustível, agência lotérica, colégios estaduais, campus universitário avançado, hospital público, cartórios, fórum e prefeitura.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Espinosa</LOC> é um município brasileiro do estado de <LOC>Minas Gerais</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Chaves</LOC> é um município brasileiro do estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Bonito</LOC> é um município brasileiro do estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Barcarena</LOC> é um município brasileiro do estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 A cultura da cidade de <LOC>Barcarena</LOC>, no Estado do <LOC>Pará</LOC>, é composta por elementos que encantam e enriquecem sua história.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Alenquer</LOC> é um município brasileiro do estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Baião</LOC> é um município brasileiro do estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
+relation:located-in(Arg2,Arg1)
 
 <LOC>Vaduz</LOC> é a capital do Principado de <LOC>Liechtenstein</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Deutsche Welle</LOC> é uma empresa de rede de mídia internacional da <LOC>Alemanha</LOC>, sediada em Bonn.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Várzea Grande</LOC> é um município brasileiro do estado de <LOC>Mato Grosso</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Kraft Foods</LOC> Inc. é a maior empresa de alimentos dos <LOC>Estados Unidos</LOC> da América, e a segunda maior do mundo.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Ilha Capraia</LOC> é uma comuna italiana e ilha da região da Toscana, província de <LOC>Livorno</LOC>, com 410 habitantes.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Universidade Federal do Espírito Santo</LOC> (UFES) é uma instituição federal de ensino superior com sede na cidade de <LOC>Vitória</LOC>, Espírito Santo.
-relation:located-in(Arg1,Arg2)
-
-
-É também o Santo que dá nome a um colégio situado em <LOC>Colégio de S<LOC>Coimbra</LOC>ónio</LOC>o de São Teotónio.
+É também o Santo que dá nome a um colégio situado em <LOC>Coimbra</LOC>, chamado <LOC>Colégio de São Teotónio</LOC>.
 relation:located-in(Arg2,Arg1)
-
-
-O vulcão <LOC>Pico de Orizaba</LOC> ou Citlaltépetl (do nahuatl citlalli = estrela, e tepetl = montanha) localiza-se no <LOC>México</LOC> e é a montanha mais alta deste país, a terceira na América do Norte e o terceiro vulcão mais alto no hemisfério Ocidental.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Takatsuki</LOC> (高槻市; -shi) é uma cidade japonesa localizada na província de <LOC>Osaka</LOC>.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Ilha do Retiro</LOC> é um bairro do Recife, <LOC>Pernambuco</LOC>, Brasil.
 relation:located-in(Arg1,Arg2)
 
-
-Em 1654, por exemplo, quando os holandeses deixaram <LOC>Recife</LOC>buco, o hoje<LOC>Pernambuco</LOC> Recife já contava com 300 prédios - entre os quais a Casa da Câmara, a Igreja do Corpo Santo, a Cadeia e vários Armazéns.
-relation:located-in(Arg2,Arg1)
-
-
-Yaiza é um município da <LOC>Espanha</LOC> na província de <LOC>Las Palmas</LOC>, comunidade autónoma das Canárias, de área 211,84 km² com população de 10894 habitantes (2007) e densidade populacional de 38,25 hab/km².
-relation:located-in(Arg1,Arg2)
-
-
-Tinajo é um município da <LOC>Espanha</LOC> na província de <LOC>Las Palmas</LOC>, comunidade autónoma das Canárias, de área 135,28 km² com população de 5588 habitantes (2007) e densidade populacional de 38,03 hab/km².
-relation:located-in(Arg1,Arg2)
-
-
-Puerto de Béjar é um município da <LOC>Espanha</LOC> na província de <LOC>Salamanca</LOC>, comunidade autónoma de Castela e Leão, de área 10,39 km² com população de 422 habitantes (2007) e densidade populacional de 42,69 hab/km².
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Illán de Vacas</LOC> é um município da <LOC>Espanha</LOC> na província de Toledo, comunidade autónoma de Castilla-La Mancha, de área 9 km² com população de 5 habitantes (2010) e densidade populacional de 0,87 hab/km².
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Valdefinjas</LOC> é um município da <LOC>Espanha</LOC> na província de Zamora, comunidade autónoma de Castela e Leão, de área 16 km² com população de 83 habitantes (2007) e densidade populacional de 5,73 hab/km².
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Sentenced</LOC> foi uma banda da <LOC>Finlândia</LOC> formada em 1989 na cidade de Muhos.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Stetten</LOC> é uma comuna da Suíça, no Cantão <LOC>Schaffhausen</LOC>, com cerca de 1087 habitantes.
 relation:located-in(Arg1,Arg2)
-
 
 <LOC>Steinhausen</LOC> é uma comuna da Suíça, no Cantão <LOC>Zug</LOC>, com cerca de 8 901 habitantes.
 relation:located-in(Arg1,Arg2)
 
-
-O <LOC>Forte de Copacabana</LOC> localiza-se na ponta de Copacabana, ao final da praia e bairro de mesmo nome, na cidade do <LOC>Rio de Janeiro</LOC>, no Brasil.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Gabela</LOC> é uma cidade angolana, sede do município de Amboim, na província do <LOC>Kwanza-Sul</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Gabela</LOC> é uma cidade angolana, sede do município de <LOC>Amboim</LOC>, na província do Kwanza-Sul.
 relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Instituto de Pesquisas Tecnológicas</LOC> do Estado de <LOC>São Paulo</LOC> (IPT) foi fundado em 1899 como laboratório de resistência dos materiais da Escola Politécnica da USP.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Muxima</LOC> é uma vila, sede do município da <LOC>Quiçama</LOC>, na província do Bengo, em Angola .
 relation:located-in(Arg1,Arg2)
 
-
-Desde aí, como parte das <LOC>Guadalcana<LOC>Ilhas Salomão</LOC>adalcanal foi ocupada pela Coroa Britânica.
+Desde aí, como parte das <LOC>Ilhas Salomão</LOC>, <LOC>Guadalcanal</LOC> foi ocupada pela Coroa Britânica.
 relation:located-in(Arg2,Arg1)
-
 
 A ilha de <LOC>Linosa</LOC> é uma das ilhas <LOC>Pelágias</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Gharoli</LOC> é uma vila no distrito de East, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Gheora</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Ghitorni</LOC> é uma vila no distrito de South West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Ghoga</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Gokal Pur</LOC> é uma vila no distrito de Ocidental, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Hastsal</LOC> é uma vila no distrito de West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Mundka</LOC> é uma vila no distrito de West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Nangal Dewat</LOC> é uma vila no distrito de South West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Nangal Thakran</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Nangloi Jat</LOC> é uma vila no distrito de West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Siras Pur</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Tigri</LOC> é uma vila no distrito de South, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Pooth Kalan</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Pooth Khurd</LOC> é uma vila no distrito de North West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Pul Pehlad</LOC> é uma vila no distrito sul, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Rajokri</LOC> é uma vila no distrito de South West, no estado indiano de <LOC>Deli</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Toledo</LOC> é uma localidade do norte da ilha de São Jorge, <LOC>Açores</LOC>.
 relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Clube Municipal Ananindeua</LOC> é um clube brasileiro de futebol, da cidade de Ananindeua, no estado do <LOC>Pará</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>São Miguel do Gostoso</LOC> é um município brasileiro do estado do Rio Grande do Norte, localizado na <LOC>Microrregião do Litoral Nordeste</LOC>, Mesorregião do Leste Potiguar e Polo Costa das Dunas.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Foia</LOC> é o nome do ponto mais alto do Algarve, na <LOC>serra de Monchique</LOC>.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Fundinho</LOC> é um bairro nobre da <LOC>Região Central de Uberlândia</LOC>, Minas Gerais, Brasil.
 relation:located-in(Arg1,Arg2)
 
-
-A <LOC>Torre</LOC> é o ponto de maior altitude da <LOC>Serra da Estrela</LOC> e também de Portugal Continental, e o segundo mais elevado da República Portuguesa (apenas a Montanha do Pico, nos Açores, tem maior altitude - 2351 m).
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Quantunna</LOC> é uma tuna académica mista, ligada à Faculdade de Ciências e Tecnologia da Universidade de Coimbra, no Centro de <LOC>Portugal</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Leicester</LOC> é uma cidade da <LOC>Inglaterra</LOC>, a maior da região de East Midlands.
 relation:located-in(Arg1,Arg2)
-
 
 <LOC>Villazón</LOC> é uma cidade do sul da <LOC>Bolívia</LOC> capital da província de Modesto Omiste, departamento de Potosí.
 relation:located-in(Arg1,Arg2)
 
-
 O <LOC>Estádio do Restelo</LOC> está localizado em uma zona nobre da cidade de <LOC>Lisboa</LOC>.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>América Futebol Clube</LOC> foi um clube brasileiro de futebol da cidade de Rio Branco, no estado do <LOC>Acre</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>América Futebol Clube</LOC> foi um clube brasileiro de futebol da cidade de <LOC>Rio Branco</LOC>, no estado do Acre.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Aeroilis</LOC> é uma banda de rock cristão no <LOC>Brasil</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>North Shopping</LOC> de <LOC>Fortaleza</LOC> é um polo de compras e lazer fundado em 1991.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Serra do Bugio</LOC> é uma montanha situada na cidade de Pé de Serra, no estado da <LOC>Bahia</LOC>.
-relation:located-in(Arg1,Arg2)
-
 
 A <LOC>Serra do Bugio</LOC> é uma montanha situada na cidade de <LOC>Pé de Serra</LOC>, no estado da Bahia.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Carson</LOC> é uma cidade localizada no estado americano de Iowa, no <LOC>Condado de Pottawattamie</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Terminal Rodoviário Pedro Fava - Cidade Kemel</LOC> é um dos três terminais de ônibus urbanos localizados no município de Poá no estado de <LOC>São Paulo</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Terminal Rodoviário Pedro Fava - Cidade Kemel</LOC> é um dos três terminais de ônibus urbanos localizados no município de <LOC>Poá</LOC> no estado de São Paulo.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Pico do Monte Negro</LOC> é o ponto mais alto do estado do <LOC>Rio Grande do Sul</LOC>, no Brasil.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>Remy Zero</LOC> é uma banda de rock alternativo, post-grunge e dream pop, de Los Angeles, <LOC>Estados Unidos</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Fistt</LOC> é uma banda no <LOC>Brasil</LOC> de punk rock hardcore.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Associação Atlética Celeste</LOC> é um clube brasileiro de futebol de salão da cidade de Bagé (<LOC>Rio Grande do Sul</LOC>).
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Terminal Rodoviário Ayrton Senna</LOC> é um dos três terminais de ônibus do município de <LOC>Poá</LOC>, no estado brasileiro de São Paulo.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Tidal Basin</LOC> é uma enseada adjacente ao rio Potomac, em <LOC>Washington D.C.</LOC>, que faz parte do West Potomac Park e é cercada pelo Jefferson Memorial e Franklin Delano Roosevelt Memorial.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Terminal Rodoviário de Coronel Fabriciano</LOC> é uma estação rodoviária que funciona como terminal de passageiros no município brasileiro de Coronel Fabriciano, interior do estado de <LOC>Minas Gerais</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Club Deportivo Universidad César Vallejo</LOC>, mais conhecido como Universidad César Vallejo, é um clube de futebol peruano da cidade de <LOC>Trujillo</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Catavento</LOC> é um museu interativo dedicado às ciências, localizado no Palácio das Indústrias, na cidade de <LOC>São Paulo</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Rádio Fronteira FM</LOC> é uma estação de rádio brasileira com sede em <LOC>São Borja</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Leskovac</LOC> é uma cidade e município localizada no sul da <LOC>Sérvia</LOC> no distrito de Jablanica, sendo seu centro administrativo.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Recreativo Nova Estrela</LOC> - RENOVE foi um clube de futebol brasileiro da cidade de <LOC>Fazenda Rio Grande</LOC>, no estado do Paraná.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Hospital Metropolitano</LOC> está localizado no bairro Lapa, na cidade de <LOC>São Paulo</LOC>, Brasil.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Esporte Clube Iranduba da Amazônia</LOC> (E.C.I.A) é um clube de futebol sediado na cidade de Iranduba, no estado do <LOC>Amazonas</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>IURD TV</LOC> é um canal de televisão brasileiro com sede em <LOC>Limeira</LOC>, SP.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>Província do Reno</LOC>, também conhecida por Prússia Renana (Rheinpreußen) ou por vezes impropriamente por Renânia (Rheinland), foi a província mais ocidental do Reino da Prússia e do Estado Livre da Prússia, no contexto do <LOC>Império Alemão</LOC> de 1822 a 1946.
-relation:located-in(Arg1,Arg2)
-
 
 O <LOC>Lago Kainji</LOC>, na <LOC>Nigéria</LOC>, é um reservatório no Rio Níger, formado pela barragem de Kainji.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Vivo TV</LOC> é a empresa de TV por assinatura que, no <LOC>Brasil</LOC>, substitui a Telefônica TV Digital (TTD), Fibra TV e TVA desde 15 de abril de 2012.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Lago George</LOC> é um lago de água doce localizado no condado de Condado de York, na província de New Brunswick, <LOC>Canadá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Lago Grand</LOC> é um lago localizado no centro da província de New Brunswick, <LOC>Canadá</LOC>, e encontra-se a cerca de 40 km a leste de Fredericton, sendo o maior lago de água doce da província.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>TV Ponta da Linha</LOC> é uma emissora de televisão brasileira com sede em <LOC>Santa Inês</LOC>, no Estado do Maranhão.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>TV Ponta da Linha</LOC> é uma emissora de televisão brasileira com sede em Santa Inês, no Estado do <LOC>Maranhão</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Hospital Doutor Ruy Pereira dos Santos</LOC>, ou simplesmente Hospital Ruy Pereira, é um hospital localizado no bairro de <LOC>Petrópolis</LOC>, na cidade de Natal, capital do estado do Rio Grande do Norte.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Christiana</LOC> é uma comunidade não incorporada do <LOC>Condado de New Castle</LOC>, Delaware, perto de Wilmington.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Collins Park</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Henry Clay</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>Kirkwood</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Marshallton</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Minquadale</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Montchanin</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Ogletown</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Port Penn</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
+O <LOC>Lago Gulquac</LOC> é um lago de água doce localizado no <LOC>Condado de York</LOC>, na província de New Brunswick, Canadá.
 relation:located-in(Arg1,Arg2)
-
-
-O <LOC>lago Gulquac</LOC> é um lago de água doce localizado no Condado de York, na província de New Brunswick, <LOC>Canadá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>Lago Alva</LOC> é um lago de água doce localizado no Condado de York, na província de New Brunswick, no <LOC>Canadá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Biddles Corner</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Boyds Corner</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
 relation:located-in(Arg1,Arg2)
 
-
-A <LOC>Ribeira de Alpriate</LOC> é um pequeno curso de água que nasce em Monte Serves no concelho de <LOC>Vila Franca de Xira</LOC> e vai desaguar na margem esquerda do Trancão entre Unhos e Portela da Azóia no concelho de Loures.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>EMEF – Empresa de Manutenção de Equipamento Ferroviário, S.A.</LOC> é uma empresa sediada em <LOC>Portugal</LOC> especializada em manutenção de material circulante ferroviário.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>EMEF</LOC> possui instalações no <LOC>Entroncamento</LOC>, Barreiro, em Vila Real de Santo António.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>EMEF</LOC> possui instalações no Entroncamento, Barreiro, em <LOC>Vila Real de Santo António</LOC>, e em Guifões.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>EMEF</LOC> possui instalações no Entroncamento, <LOC>Barreiro</LOC>, em Vila Real de Santo António, e em Guifões.
-relation:located-in(Arg1,Arg2)
-
-
-A <LOC>89 FM</LOC> é uma emissora de rádio brasileira sediada em <LOC>São Paulo</LOC> na frequência 89.1
-relation:located-in(Arg1,Arg2)
-
-
 <LOC>Erlbach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
 relation:located-in(Arg1,Arg2)
-
-
-<LOC>Feichten</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Garching</LOC> an der Alz é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Haiming</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Halsbach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
 
 <LOC>Kastl</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
 relation:located-in(Arg1,Arg2)
 
-
-O lago <LOC>Lomond</LOC> é um lago de água doce localizado no condado de York, província de New Brunswick, no <LOC>Canadá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
 O <LOC>Lago Long</LOC> é um lago de água doce localizado no condado de <LOC>York</LOC>, na província de New Brunswick, no Canadá.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Castelo Branco</LOC> é um bairro localizado na Zona Leste do município de <LOC>Caicó</LOC>.
+<LOC>Castelo Branco</LOC> é um bairro localizado na zona leste do município de <LOC>Caicó</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Kirchweidach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+<LOC>Gokal Pur</LOC> é uma vila no distrito de Ocidental, no estado indiano de <LOC>Deli</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Mehring</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+<LOC>Hastsal</LOC> é uma vila no distrito de West, no estado indiano de <LOC>Deli</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Perach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+<LOC>Nangal Dewat</LOC> é uma vila no distrito de South West, no estado indiano de <LOC>Deli</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Pleiskirchen</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+<LOC>Pul Pehlad</LOC> é uma vila no distrito sul, no estado indiano de <LOC>Deli</LOC>.
 relation:located-in(Arg1,Arg2)
 
-
-<LOC>Reischach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Stammham</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Teising</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Tüßling</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Tyrlaching</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Unterneukirchen</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-<LOC>Winhöring</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>lago Maquapit</LOC> é um lago de água doce localizado no condado de York, província de New Brunswick, no <LOC>Canadá</LOC>.
-relation:located-in(Arg1,Arg2)
-
-
-O <LOC>lago Miramichi</LOC> é um lago de localizado no condado de York, província de New Brunswick, no <LOC>Canadá</LOC>.
+Tüßling é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de <LOC>Oberbayern</LOC>, no estado da Baviera.
 relation:located-in(Arg1,Arg2)

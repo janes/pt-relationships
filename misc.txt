@@ -1,89 +1,75 @@
 <PER>António Quadros</PER> licenciou-se em Histórico-Filosóficas pela <PER>Faculdade de Letras da Universidade de Lisboa</PER>.
-part-of(arg1,arg2)
+relation:studied-at(Arg1,Arg2)
 
-<ORG>Eisenbahn</ORG> é uma cervejaria internacionalmente premiada localizada em <LOC>Blumenau</LOC>, Santa Catarina, Brasil.
-relation:origin(Arg1,Arg2)
+<PER>José Sergio Gabrielli de Azevedo</PER> (Salvador, 3 de outubro de 1949) é professor titular licenciado da <ORG>Universidade Federal da Bahia  (UFBA)</ORG>.
+relation:studied-at(Arg1,Arg2)
 
-<PER>Antidemon</PER> é uma banda cristã de grindcore brutal death brasileira formada em 12 de janeiro de 1994 em <LOC>São Paulo</LOC>.
-relation:origin(Arg1,Arg2)
 
-A <PER>Desportreino</PER> nasceu em 1995 em Avintes, <LOC>Vila Nova de Gaia</LOC>, Portugal, e tem conseguido manter-se entre as marcas desportivas mais usadas em Portugal em vários desportos, nomeadamente no Futebol.
-relation:origin(Arg1,Arg2)
+
+
+<ORG>Sun Microsystems</ORG> é uma subsidiária da <ORG>Oracle Corporation</ORG> fabricante de computadores, semicondutores e software com sede em Santa Clara, Califórnia, no Silicon Valley (Vale do Silício).
+relation:owns(Arg2,Arg1)
+
+Em 2007, a <ORG>Rádio Baré</ORG> muda o nome para Rádio Globo Manaus, se integrando ao <ORG>Sistema Globo de Rádio</ORG>.
+relations:owns(Arg2,Arg1)
 
 <PER>Hudson Soft</PER> foi adquirida pela <PER>Konami</PER> Corporation.
-part-of(arg1,arg2)
-
-<PER>Angra</PER> é uma banda brasileira de metal, formada na cidade de <LOC>São Paulo</LOC> em 1991, pelo vocalista e tecladista Andre Matos e o guitarrista Rafael Bittencourt, após os dois se conhecerem na Faculdade Santa Marcelina, onde os dois faziam faculdade de composição e regência.
-relation:origin(Arg1,Arg2)
-
-<PER>The Yardbirds</PER> foi uma das mais importantes bandas de blues-rock da <LOC>Inglaterra</LOC> nos anos 60.
-relation:origin(Arg1,Arg2)
-
-O <PER>Family</PER> foi formado em 1966 em <LOC>Leicester</LOC>, Inglaterra, apesar da base da banda já ter sido formada desde 1962 com a banda The Farinas e posteriormente The Roaring Sixties.
-relation:origin(Arg1,Arg2)
-
-Stephen Gary Wozniak, conhecido como <PER>Steve Wozniak</PER>, (<LOC>São José</LOC>, 11 de agosto de 1950), é um engenheiro de computação, co-fundador da Apple, Inc., junto com Steve Jobs (falecido em outubro de 2011).
-relation:origin(Arg1,Arg2)
-
-A <PER>Igreja Apostólica Fonte da Vida</PER> foi fundada em 1994 pelo casal de apóstolos César Augusto Machado de Sousa e Rúbia Pinheiro Fernandes de Sousa na cidade de <LOC>Goiânia</LOC>.
-relation:origin(Arg1,Arg2)
-
-<PER>Bom Gosto</PER> é um grupo musical brasileiro de pagode, formado em 1997 na cidade do <LOC>Rio de Janeiro</LOC>, por Fábio Beça (voz e pandeiro), Thiago Soares (voz e banjo), Flávio Regis (voz, surdo e cuíca), André Neguinho (voz e percussão), Fernando Macaé (voz e tantã) e Mug (voz e cavaquinho).
-relation:origin(Arg1,Arg2)
-
-<PER>Sun Microsystems</PER> é uma subsidiária da <PER>Oracle Corporation</PER> fabricante de computadores, semicondutores e software com sede em Santa Clara, Califórnia, no Silicon Valley (Vale do Silício).
-part-of(arg1,arg2)
-
-
-Em 2009, a <PER>Time Warner</PER> desmembrou a <PER>AOL</PER>, através de um spin-off.
-part-of(arg2,arg1)
-
-Em 2007, a <PER>Rádio Baré</PER> muda o nome para Rádio Globo Manaus, se integrando ao <PER>Sistema Globo de Rádio</PER>.
-part-of(arg1,arg2)
-
-
-Em 2009, a Rádio Globo Manaus volta a se chamar <PER>Rádio Baré</PER>, passando a transmitir a programação da Rede Aleluia de Comunicação, pertencente à <PER>Igreja Universal do Reino de Deus</PER>.
-part-of(arg1,arg2)
-
-<PER>C.I.A.</PER> (Cru' In Action!) foi um trio de hip hop de South Los Angeles, Califórnia, formado por <PER>Sir Jinx</PER> e outros conhecidos rappers norte americanos.
-part-of(arg1,arg2)
-
-
-<PER>Vertigo</PER> é um selo da editora de quadrinhos (em Portugal banda desenhada) <PER>DC Comics</PER>.
-part-of(arg1,arg2)
-
-Em 2009, o <PER>Grupo Bom Gosto</PER> lançou o primeiro DVD initulado Roda de Samba do Grupo Bom Gosto, gravado ao vivo na Fundição Progresso, na sua cidade do <LOC>Rio de Janeiro</LOC>, no dia 4 de Fevereiro de 2009.
-relation:origin(Arg1,Arg2)
+relation:owns(Arg2,Arg1)
 
 <PER>Manhattan Records</PER> é uma gravadora dos Estados Unidos, pertencente a <PER>EMI</PER>.
-part-of(arg1,arg2)
+relation:owns(Arg2,Arg1)
+
+Em 2004, a <ORG>Monolith Productions</ORG> foi adquirida pela <ORG>Time Warner</ORG>, pela sua divisão de jogos, chamada Warner Bros.
+relation:owns(Arg2,Arg1)
 
 
-Em 2004, a <PER>Monolith Productions</PER> foi adquirida pela <PER>Time Warner</PER>, pela sua divisão de jogos, chamada Warner Bros.
-part-of(arg1,arg2)
-
-José <PER>Sergio Gabrielli</PER> de Azevedo (Salvador, 3 de outubro de 1949) é professor titular licenciado da <PER>Universidade Federal da Bahia</PER> (UFBA).
-part-of(arg1,arg2)
-
-A <PER>CBS Corporation</PER> possui controle da CBS, The CW, CBS Radio, <PER>CBS Television Studios</PER>, CBS Television Distribution, CBS Studios International, Simon & Schuster, Showtime Networks, CBS Sports Network, CBS Television Stations, CBS Records, CBS Films, CBS Outdoor, CBS Interactive e MountainWest Sports Network.
-part-of(arg2,arg1)
 
 
-A <PER>CBS Corporation</PER> possui controle da CBS, The CW, CBS Radio, CBS Television Studios, CBS Television Distribution, CBS Studios International, Simon & Schuster, <PER>Showtime Networks</PER>, CBS Sports Network, CBS Television Stations, CBS Records, CBS Films, CBS Outdoor, CBS Interactive e MountainWest Sports Network.
-part-of(arg2,arg1)
+A <ORG>TV Ponta da Linha</ORG> é uma emissora de televisão brasileira com sede em <LOC>Santa Inês</LOC>, no Estado do Maranhão.
+relation:installations-in(Arg1,Arg2)
+
+A <ORG>Rádio Fronteira FM</ORG> é uma estação de rádio brasileira com sede em <LOC>São Borja</LOC>.
+relation:installations-in(Arg1,Arg2)
+
+<ORG>IURD TV</ORG> é um canal de televisão brasileiro com sede em <LOC>Limeira</LOC>, SP.
+relation:installations-in(Arg1,Arg2)
+
+A <ORG>EMEF – Empresa de Manutenção de Equipamento Ferroviário, S.A.</ORG> é uma empresa sediada em <LOC>Portugal</LOC> especializada em manutenção de material circulante ferroviário.
+relation:installations-in(Arg1,Arg2)
+
+A <LOC>EMEF</LOC> possui instalações no <LOC>Entroncamento</LOC>, Barreiro, em Vila Real de Santo António.
+relation:installations-in(Arg1,Arg2)
+
+A <LOC>EMEF</LOC> possui instalações no Entroncamento, Barreiro, em <LOC>Vila Real de Santo António</LOC>, e em Guifões.
+relation:installations-in(Arg1,Arg2)
+
+A <LOC>89 FM</LOC> é uma emissora de rádio brasileira sediada em <LOC>São Paulo</LOC> na frequência 89.1
+relation:installations-in(Arg1,Arg2)
+
+A <LOC>Universidade Federal do Espírito Santo</LOC> (UFES) é uma instituição federal de ensino superior com sede na cidade de <LOC>Vitória</LOC>, Espírito Santo.
+relation:installations-in(Arg1,Arg2)
+
+<LOC>Deutsche Welle</LOC> é uma empresa de rede de mídia internacional da Alemanha, sediada em <LOC>Bonn</LOC>.
+relation:installations-in(Arg1,Arg2)
+
+<ORG>Eisenbahn</ORG> é uma cervejaria internacionalmente premiada localizada em <LOC>Blumenau</LOC>, Santa Catarina, Brasil.
+relation:installations-in(Arg1,Arg2)
 
 
-A <PER>CBS Corporation</PER> seria revivida por uma das empresas, a ser liderada pelo executivo de televisão (e co-presidente da Viacom) Leslie Moonves, e incluiria a CBS, UPN, Infinity Broadcasting, Viacom Outdoor, <PER>Showtime Networks</PER>, e Paramount Television, assim como outros estúdios televisivos.
-part-of(arg2,arg1)
 
-<PER>MEG</PER> (Ishikane Yusuke, Okinawa, 15 de novembro de 1984) é um guitarrista japonês e co-fundador (junto com SASSY) da banda <PER>High and Mighty Color</PER>.
-part-of(arg1,arg2)
+
+
+<ORG>Angra</ORG> é uma banda brasileira de metal, formada na cidade de São Paulo em 1991, pelo vocalista e tecladista <PER>Andre Matos</PER> e o guitarrista Rafael Bittencourt.
+relation:founded-by(Arg1,Arg2)
+
+Stephen Gary Wozniak, conhecido como <PER>Steve Wozniak</PER>, (<LOC>São José</LOC>, 11 de agosto de 1950), é um engenheiro de computação, co-fundador da <ORG>Apple, Inc.</ORG>, junto com Steve Jobs (falecido em outubro de 2011).
+relation:founded-by(Arg2,Arg1)
+
+<PER>MEG</PER> (Ishikane Yusuke, Okinawa, 15 de novembro de 1984) é um guitarrista japonês e co-fundador (junto com SASSY) da banda <ORG>High and Mighty Color</ORG>.
+relation:founded-by(Arg2,Arg1)
 
 <PER>SASSY</PER> (Okinawa, 23 de agosto de 1984) é um baterista japonês e co-fundador (junto com MEG) da banda <PER>High and Mighty Color</PER>.
-part-of(arg1,arg2)
+relation:founded-by(Arg2,Arg1)
 
-<PER>Weta Cave</PER> é um mini-museu, parte da <PER>Weta Workshop</PER>, em Miramar, Nova Zelândia.
-part-of(arg1,arg2)
-
-<PER>Innis College</PER> é uma das faculdades constituentes da <PER>Universidade de Toronto</PER>.
-part-of(arg1,arg2)
+A <ORG>Igreja Apostólica Fonte da Vida</ORG> foi fundada em 1994 pelo casal de apóstolos <PER>César Augusto Machado de Sousa</PER> e Rúbia Pinheiro Fernandes de Sousa na cidade de Goiânia.
+relation:founded-by(Arg1,Arg2)
