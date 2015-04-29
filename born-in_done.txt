@@ -1,0 +1,195 @@
+<PER>Stéphane Lupasco</PER> nasceu em <LOC>Bucareste</LOC> no dia 11 de Agosto de 1900.
+relation:born-in(Arg1,Arg2)
+
+Biografia <PER>Preslava</PER> nasceu em <LOC>Dobrich</LOC>, Bulgária, sendo a filha mais nova do casal Kolyo e Yanka .
+relation:born-in(Arg1,Arg2)
+
+Vida <PER>Heinrich Pantaleon</PER> nasceu e viveu em <LOC>Basileia</LOC>.
+relation:born-in(Arg1,Arg2)
+
+<PER>Albert Einstein</PER> nasceu na região alemã de Württemberg, na cidade de <LOC>Ulm</LOC>, numa família judaica.
+relation:born-in(Arg1,Arg2)
+
+É em <LOC>Ulm</LOC> que nasce <PER>Albert Einstein</PER>, em 14 de março de 1879.
+relation:born-in(Arg2,Arg1)
+
+<PER>Augusto dos Anjos</PER> nasceu no Engenho Pau d'Arco, atualmente no município de Sapé, Estado da <LOC>Paraíba</LOC>.
+relation:born-in(Arg1,Arg2)
+
+Filho de Adamastor Bráulio Silva Rocha e de Lúcia Mendes de Andrade Rocha, <PER>Glauber Rocha</PER> nasceu na cidade de <LOC>Vitória da Conquista</LOC>, sudoeste da Bahia.
+relation:born-in(Arg1,Arg2)
+
+<PER>João Gordo</PER> (nome artístico de João Francisco Benedan (<LOC>São Paulo</LOC>, 13 de março de 1964) é um músico, repórter e apresentador de televisão brasileiro.
+relation:born-in(Arg1,Arg2)
+
+<PER>Dom Afonso de Portugal</PER> (<LOC>Lisboa</LOC>, 18 de Maio de 1475 – Santarém, 13 de Julho de 1491) era filho único.
+relation:born-in(Arg1,Arg2)
+
+<PER>Alexandre Rodrigues Ferreira</PER> (<LOC>Cidade da Bahia</LOC> , 27 de abril de 1756 — Lisboa, 23 de abril de 1815) foi um naturalista português.
+relation:born-in(Arg1,Arg2)
+
+<PER>Antoine Henri Becquerel</PER> (<LOC>Paris</LOC>, 15 de Dezembro de 1852 — Le Croisic, 25 de Agosto de 1908) foi um físico francês.
+relation:born-in(Arg1,Arg2)
+
+<PER>André-Marie Ampère</PER> (<LOC>Lyon</LOC>, 20 de janeiro de 1775 — Marselha, 10 de junho de 1836) foi um físico, filósofo, cientista e matemático francês que fez importantes contribuições para o estudo do electromagnetismo .
+relation:born-in(Arg1,Arg2)
+
+<PER>Anders Jonas Ångström</PER> (<LOC>Medelpad</LOC>, 13 de Agosto de 1814 — Uppsala, 21 de Junho de 1874) foi um físico sueco.
+relation:born-in(Arg1,Arg2)
+
+<PER>Antônio Mariano de Oliveira</PER> (<LOC>Saquarema</LOC>, 28 de abril de 1857 — Niterói, 19 de Janeiro de 1937), mais conhecido pelo pseudônimo Alberto de Oliveira, foi um poeta, professor e farmacêutico brasileiro.
+relation:born-in(Arg1,Arg2)
+
+<PER>Augusto dos Anjos</PER> nasceu no Engenho Pau d'Arco, atualmente no município de Sapé, Estado da <LOC>Paraíba</LOC>.
+relation:born-in(Arg1,Arg2)
+
+<PER>Eric Steven Raymond</PER> (4 de Dezembro, 1957 em <LOC>Boston</LOC>, Massachusetts), conhecido também como ESR, é um famoso hacker e escritor americano.
+relation:born-in(Arg1,Arg2)
+
+<PER>José Mário Frota Moreira</PER> é um advogado e político brasileiro natural do <LOC>Ceará</LOC> e que fez carreira política no Amazonas.
+relation:born-in(Arg1,Arg2)
+
+<PER>São Vicente de Paulo</PER> nasceu em uma terça-feira de Páscoa, em 24 de abril de 1581, na aldeia Pouy, sul da <LOC>França</LOC>.
+relation:born-in(Arg1,Arg2)
+
+<PER>Laura Carmine</PER> nasceu no norte da Pensilvânia, na cidade de <LOC>Filadelfia</LOC>, mas desde muito pequena foi viver com sua família em Porto Rico.
+relation:born-in(Arg1,Arg2)
+
+<PER>Preslava</PER> se tornou garota propaganda do licor de mástique "Karnobatska" e lançou o jingle comercial "Preday Se Na Zhelanieto", obtendo grande sucesso na sua terra natal <LOC>Bulgária</LOC>, e mais uma vez ela participa da turnê de verão onde ela se apresenta com a canção "Parvi V Sartseto", um dueto com Boris Dali.
+relation:born-in(Arg1,Arg2)
+
+<PER>Sergey Brin</PER>, emigrou em 1979 para os Estados Unidos juntamente com a família, fugindo ao anti-semitismo da <LOC>União Soviética</LOC>, seu local de origem.
+relation:born-in(Arg1,Arg2)
+
+<PER>São Vicente de Paulo</PER> nasceu em uma terça-feira de Páscoa, em 24 de abril de 1581, na aldeia <LOC>Pouy</LOC>, sul da França.
+relation:born-in(Arg1,Arg2)
+
+<PER>Sir John Major</PER> (29 de Março de 1943, <LOC>Londres</LOC>) foi primeiro-ministro britânico de 1990 a 1997.
+relation:born-in(Arg1,Arg2)
+
+<PER>Alanis Morissette</PER> nasceu em <LOC>Ottawa</LOC>, Canadá.
+relation:born-in(Arg1,Arg2)
+
+<PER>Jacob Palis Jr.</PER> (<LOC>Uberaba</LOC>, 15 de março de 1940) é um matemático brasileiro.
+relation:born-in(Arg1,Arg2)
+
+<PER>Fritz Todt</PER> nasceu em <LOC>Pforzheim</LOC>, filho de proprietário de uma pequena fábrica.
+relation:born-in(Arg1,Arg2)
+
+<PER>Vicky Vette</PER> (<LOC>Stavanger</LOC>, Noruega, 12 de Junho de 1965) é uma atriz pornográfica estadounidense de origem norueguesa.
+relation:born-in(Arg1,Arg2)
+
+<PER>Mário Gomes</PER> (<LOC>Rio de Janeiro</LOC>, 11 de dezembro de 1952) é um ator brasileiro.
+relation:born-in(Arg1,Arg2)
+
+<PER>Valdemiro Santiago de Oliveira</PER> é natural de <LOC>Cisneiros</LOC>, distrito de Palma, na Zona da Mata de Minas Gerais, a 400 quilômetros de Belo Horizonte.
+relation:born-in(Arg1,Arg2)
+
+<PER>Jennifer Love Hewitt</PER> (<LOC>Waco</LOC>, 21 de fevereiro de 1979) é uma atriz e cantora norte-americana.
+relation:born-in(Arg1,Arg2)
+
+<PER>William Godwin</PER> (<LOC>Cambridgeshire</LOC>, 3 de março de 1756 — 7 de abril de 1836) foi um jornalista inglês, filósofo político e novelista.
+relation:born-in(Arg1,Arg2)
+
+<PER>Brian Laudrup</PER> (Viena, 22 de Fevereiro de 1969) é um ex-futebolista dinamarquês nascido na <LOC>Áustria</LOC>.
+relation:born-in(Arg1,Arg2)
+
+<PER>Jenny McCarthy</PER> (<LOC>Chicago</LOC>, 1 de Novembro de 1972) é uma actriz norte-americana.
+relation:born-in(Arg1,Arg2)
+
+<PER>Sara Bareilles</PER> (<LOC>Eureka</LOC>, Califórnia, 7 de dezembro de 1979) é uma cantora, compositora e pianista estadunidense.
+relation:born-in(Arg1,Arg2)
+
+<PER>Luiz Mattar</PER> (<LOC>São Paulo</LOC>, 18 de agosto de 1963) é um empresário e ex-tenista brasileiro.
+relation:born-in(Arg1,Arg2)
+
+Apesar de não ter nascido em uma família de músicos, <PER>Nathalia Siqueira</PER>, nascida no <LOC>Rio de Janeiro</LOC>, mas criada em Vila Velha, no Espirito Santo, sempre apresentou o sonho de ser cantora.
+relation:born-in(Arg1,Arg2)
+
+<PER>Gustav Michaelis</PER> (<LOC>Magdeburgo</LOC>, 27 de junho de 1813 — Berlim, 9 de agosto de 1895) foi um matemático alemão.
+relation:born-in(Arg2,Arg1)
+
+<PER>John Child</PER> (<LOC>Toronto</LOC>, 4 de maio de 1967) é um ex-voleibolista de praia canadense.
+relation:born-in(Arg2,Arg1)
+
+Nascido e criado em Leicester, <LOC>Inglaterra</LOC>, <PER>Colin Wilson</PER> abandonou a escola aos 16 anos de idade.
+relation:born-in(Arg2,Arg1)
+
+Nascido e criado em <LOC>Leicester</LOC>, Inglaterra, <PER>Colin Wilson</PER> abandonou a escola aos 16 anos de idade.
+relation:born-in(Arg2,Arg1)
+
+<PER>Michele Massimo Tarantini</PER> (<LOC>Roma</LOC>, Itália, 7 de Agosto de 1942) é um cineasta italiano.
+relation:born-in(Arg1,Arg2)
+
+<PER>Célia David</PER> (<LOC>Santiago do Cacém</LOC>, 1965) é actriz de televisão portuguesa.
+relation:born-in(Arg1,Arg2)
+
+<PER>Mariano Laurenti</PER> (<LOC>Roma</LOC>, Itália, 15 de Abril de 1929) é um cineasta e roteirista italiano.
+relation:born-in(Arg1,Arg2)
+
+<PER>Frederico Rodrigues Santos</PER> (<LOC>Belo Horizonte</LOC>, 5 de março de 1993) é um futebolista brasileiro que atua como meia.
+relation:born-in(Arg1,Arg2)
+
+<PER>Aleksander Krupa</PER>, mais conhecido como Olek Krupa (<LOC>Rybnik</LOC>, 31 de agosto de 1955) é um ator polonês atuante no cenário norte-americano .
+relation:born-in(Arg1,Arg2)
+
+<PER>Gary Burton</PER> (<LOC>Anderson</LOC>, Indiana, 23 de janeiro de 1943) é um vibrafonista de jazz estadunidense.
+relation:born-in(Arg1,Arg2)
+
+<PER>Preslava</PER> nasceu em Dobrich, <LOC>Bulgária</LOC>, sendo a filha mais nova do casal Kolyo e Yanka .
+relation:born-in(Arg1,Arg2)
+
+<PER>Preslava</PER>, da cidade de <LOC>Dobrich</LOC>, iniciou sua carreira ao lado de Milko Kalayjhiev, considerado seu descobridor .
+relation:born-in(Arg1,Arg2)
+
+<PER>Eduardo Sirotsky Melzer</PER> (nascido em <LOC>Porto Alegre</LOC>) é vice-presidente executivo do Grupo RBS desde 1º de janeiro de 2010.
+relation:born-in(Arg1,Arg2)
+
+<PER>Philip Kassel</PER> nasceu na <LOC>Alemanha</LOC> a 26 de setembro de 1876.
+relation:born-in(Arg1,Arg2)
+
+<PER>Salvatore D'Onofrio</PER> é um escritor e professor nascido na <LOC>Itália</LOC>, naturalizado brasileiro, docente em Teoria da Literatura.
+relation:born-in(Arg1,Arg2)
+
+<PER>Demba Ba</PER> (<LOC>Sèvres</LOC>, 25 de maio de 1985) é um futebolista senegalês nascido na França que atua como atacante.
+relation:born-in(Arg1,Arg2)
+
+<PER>Iranildo Campos</PER> (<LOC>Rio de Janeiro</LOC>, 27 de julho de 1954) é um político brasileiro.
+relation:born-in(Arg1,Arg2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
