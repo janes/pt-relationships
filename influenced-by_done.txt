@@ -1,81 +1,47 @@
 A segunda fase começa por volta de 1640, onde <PER>Rembrandt</PER> utiliza com maior profusão a monocromia em tons dourados, uma influência clara de <PER>Caravaggio</PER>, um dos primeiros grandes mestres do chiaroscuro, técnica com uma justaposição muito forte entre luzes e sombras, cujo resultado final é um efeito visual impressionante, criada por Leonardo Da Vinci.
-influenced-by(Arg1,Arg2)
-
+relation:influenced-by(Arg1,Arg2)
 
 <PER>James Chadwick</PER> (Cheshire, 20 de Outubro de 1891 — Cambridge, 24 de Julho de 1974) foi um físico britânico, que trabalhou sob orientação de <PER>Ernest Rutherford</PER>.
-influenced-by(Arg1,Arg2)
-
+relation:influenced-by(Arg1,Arg2)
 
 Foi no curso de Božidar Debenjak na Universidade de Liubliana que <PER>Slavoj Žižek</PER> leu "O capital", de Karl Marx, com a Fenomenologia do Espírito, de <PER>Georg Wilhelm Friedrich Hegel</PER>, perspectiva essa que influenciou muito - e ainda influencia - seus estudos posteriores.
-influenced-by(Arg1,Arg2)
+relation:influenced-by(Arg1,Arg2)
 
-
-<PER>Gal Costa</PER> interpretou a canção A História de Lili Braun, musicado pela dupla Chico Buarque e <PER>Edu Lobo</PER>.
-influenced-by(Arg1,Arg2)
-
-
-Depois de torturados, Raul e Paulo foram exilados para os Estados Unidos onde <PER>Raul Seixas</PER> teria supostamente se encontrado com <PER>John Lennon</PER>.
-influenced-by(Arg1,Arg2)
-
-
-O som inicial do <PER>U2</PER> foi influenciado por bandas como Television e <PER>Joy Division</PER>, sendo descrito como "contendo uma sensação de alegria", que resultou de The Edge "acordes radiantes" e um "vocal ardente" de Bono.
-influenced-by(Arg1,Arg2)
-
+O som inicial do <ORG>U2</PER> foi influenciado por bandas como Television e <ORG>Joy Division</ORG>, sendo descrito como "contendo uma sensação de alegria", que resultou de The Edge "acordes radiantes" e um "vocal ardente" de Bono.
+relation:influenced-by(Arg1,Arg2)
 
 A família de <PER>Elton John</PER> era uma exímia colecionadora de álbuns, o que o fez-se interessar pelo estilo de Elvis Presley e <PER>Bill Haley</PER> & His Comets durante a década de 1950.
-influenced-by(Arg1,Arg2)
-
+relation:influenced-by(Arg1,Arg2)
 
 Segundo ela, o pai estava «sempre a ouvir fado e, na hora das refeições, nunca se via televisão; ouviam-se discos, sempre de fado…» Fernando Farinha, Fernando Maurício, <PER>Amália Rodrigues</PER>, Carlos do Carmo, entre muitos outros, eram os predilectos de José Nunes, e foram os que mais influenciaram a forma de cantar de <PER>Mariza</PER>.
-influenced-by(Arg2,Arg1)
-
+relation:influenced-by(Arg2,Arg1)
 
 <PER>Walther Müller</PER> (Hannover, 6 de setembro de 1905 — Walnut Creek, 4 de dezembro de 1979) foi um físico alemão, mais conhecido pelo aperfeiçoamento do contador Geiger do seu orientador <PER>Hans Geiger</PER>, hoje em dia conhecido como tubo de Geiger-Müller.
-influenced-by(Arg1,Arg2)
+relation:influenced-by(Arg1,Arg2)
 
-
-História O <PER>14 Bis</PER> foi criado no final do ano de 1979, por músicos que já se conheciam e alimentavam a ideia de ter uma banda brasileira nos moldes daquelas bandas internacionais que tanto influenciaram e emocionaram seus integrantes como Beatles, Rolling Stones, <PER>Deep Purple</PER>, Yes, Led Zeppelin, Pink Floyd entre muitas outras.
-influenced-by(Arg1,Arg2)
-
+O <ORG>14 Bis</ORG> foi criado no final do ano de 1979, por músicos que já se conheciam e alimentavam a ideia de ter uma banda brasileira nos moldes daquelas bandas internacionais que tanto influenciaram e emocionaram seus integrantes como <ORG>Beatles</ORG>, Rolling Stones, Deep Purple, Yes, Led Zeppelin, Pink Floyd entre muitas outras.
+relation:influenced-by(Arg1,Arg2)
 
 <PER>Diógenes de Sínope</PER> foi exilado de sua cidade natal e se mudou para Atenas, onde teria se tornado um discípulo de <PER>Antístenes</PER>, antigo pupilo de Sócrates.
-influenced-by(Arg1,Arg2)
-
+relation:influenced-by(Arg1,Arg2)
 
 <PER>Willard Van Orman Quine</PER> nasceu a 25 de junho de 1908 nos Estados Unidos, educado no Oberlain Colege, tendo obtido o título de doutor em Harvard, sob orientação de <PER>Alfred North Whitehead</PER>.
-influenced-by(Arg1,Arg2)
-
+relation:influenced-by(Arg1,Arg2)
 
 Em 26 de julho <PER>Kelly</PER> lança o single promocional K Diferente, explorando elementos de Synthpop, inspirado no estilo de música americana, lembrando por muitos críticos a canção Piece Of Me de <PER>Britney Spears</PER> e remetendo à sonoridade do primeiro álbum da cantora.
-influenced-by(Arg1,Arg2)
+relation:influenced-by(Arg1,Arg2)
 
+<PER>Georg Hamel</PER> estudou na Rheinisch-Westfälische Technische Hochschule Aachen (RWTH Aachen), Universidade Humboldt de Berlim e Universidade de Göttingen, onde concluiu o doutorado em 1901 sob a orientação de <PER>David Hilbert</PER>, com a tese "Über die Geometrien, in denen die Geraden die Kürzesten sind".
+relation:influenced-by(Arg1,Arg2)
 
-Segundo Dan McCafferty, "Roger Glover acabou envolvendo-se naquele álbum, pois o <PER>Nazareth</PER> estava abrindo para o <PER>Deep Purple</PER> na parte inglesa da turnê".
-influenced-by(Arg1,Arg2)
-
-
-Cantoras como <PER>Whitney Houston</PER>, Etta James, Britney Spears, Jordin Sparks, Céline Dion e Kelly Clarkson, entre outras, declararam que <PER>Christina Aguilera</PER> era uma das melhores vocalistas da história.
-influenced-by(Arg2,Arg1)
-
-
-Vida <PER>Georg Hamel</PER> estudou na Rheinisch-Westfälische Technische Hochschule Aachen (RWTH Aachen), Universidade Humboldt de Berlim e Universidade de Göttingen, onde concluiu o doutorado em 1901 sob a orientação de <PER>David Hilbert</PER>, com a tese Über die Geometrien, in denen die Geraden die Kürzesten sind.
-influenced-by(Arg1,Arg2)
-
-
-Sir <PER>Konstantin Novoselov</PER> (Nizhny Tagil, 23 de agosto de 1974) é um físico russo-britânico, conhecido por seus trabalhos na descoberta do grafeno, em conjunto com o seu orientador <PER>Andre Geim</PER>.
-influenced-by(Arg1,Arg2)
-
+<PER>Konstantin Novoselov</PER> (Nizhny Tagil, 23 de agosto de 1974) é um físico russo-britânico, conhecido por seus trabalhos na descoberta do grafeno, em conjunto com o seu orientador <PER>Andre Geim</PER>.
+relation:influenced-by(Arg1,Arg2)
 
 <PER>Theodor Estermann</PER> (Neubrandenburg, 5 de fevereiro de 1902 — 29 de novembro de 1991) foi um matemático britânico Doutorado em 1925, orientado por <PER>Hans Rademacher</PER>.
-influenced-by(Arg1,Arg2)
+relation:influenced-by(Arg1,Arg2)
 
-
-Vida <PER>Ludwig Flamm</PER> estudou física na Universidade de Viena com doutorado orientado por <PER>Friedrich Hasenöhrl</PER> em 1909 com a tese Eigentliche Wellensysteme.
-influenced-by(Arg1,Arg2)
-
+<PER>Ludwig Flamm</PER> estudou física na Universidade de Viena com doutorado orientado por <PER>Friedrich Hasenöhrl</PER> em 1909 com a tese "Eigentliche Wellensysteme".
+relation:influenced-by(Arg1,Arg2)
 
 <PER>Dirk ter Haar</PER> (Dr, B.Sc., M.Sc., MA, D.Sc., FRSE) estudou física na Universidade de Leiden, foi pesquisador associado de Niels Bohr em Copenhagen, e obteve o doutorado na Universidade de Leiden, orientado por <PER>Hendrik Anthony Kramers</PER>, com uma tese sobre a origem do sistema solar.
-influenced-by(Arg1,Arg2)
-
-
-0  loaded
+relation:influenced-by(Arg1,Arg2)
