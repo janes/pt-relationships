@@ -9,8 +9,9 @@ import codecs
 entities = dict()
 relationships = []
 
+
 class Entity:
-    def __init__(self,_term,_name,_etype,_start,_end):
+    def __init__(self, _term, _name, _etype, _start, _end):
         self.term = _term
         self.name = _name
         self.etype = _etype
@@ -85,7 +86,7 @@ def main():
             args_reversed = True
 
         # writes the sentence with inline XML annotations and the relationship type with the arguments order
-        if (args_reversed==True):
+        if args_reversed is True:
             ent2_start = sentence.find(entity2.name)
             sentence = sentence[:ent2_start] + '<'+entity2.etype+'>' + entity2.name + '</'+entity2.etype+'>' + sentence[ent2_start+len(entity2.name):]
             ent1_start = sentence.find(entity1.name)

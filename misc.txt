@@ -1,0 +1,32 @@
+<ORG>Eisenbahn</ORG> é uma cervejaria internacionalmente premiada localizada em <LOC>Blumenau</LOC>, Santa Catarina, Brasil.
+relation:origin(Arg1,Arg2)
+
+<PER>Antidemon</PER> é uma banda cristã de grindcore brutal death brasileira formada em 12 de janeiro de 1994 em <LOC>São Paulo</LOC>.
+relation:origin(Arg1,Arg2)
+
+A <PER>Desportreino</PER> nasceu em 1995 em Avintes, <LOC>Vila Nova de Gaia</LOC>, Portugal, e tem conseguido manter-se entre as marcas desportivas mais usadas em Portugal em vários desportos, nomeadamente no Futebol.
+relation:origin(Arg1,Arg2)
+
+
+<PER>Angra</PER> é uma banda brasileira de metal, formada na cidade de <LOC>São Paulo</LOC> em 1991, pelo vocalista e tecladista Andre Matos e o guitarrista Rafael Bittencourt, após os dois se conhecerem na Faculdade Santa Marcelina, onde os dois faziam faculdade de composição e regência.
+relation:origin(Arg1,Arg2)
+
+<PER>The Yardbirds</PER> foi uma das mais importantes bandas de blues-rock da <LOC>Inglaterra</LOC> nos anos 60.
+relation:origin(Arg1,Arg2)
+
+O <PER>Family</PER> foi formado em 1966 em <LOC>Leicester</LOC>, Inglaterra, apesar da base da banda já ter sido formada desde 1962 com a banda The Farinas e posteriormente The Roaring Sixties.
+relation:origin(Arg1,Arg2)
+
+
+Stephen Gary Wozniak, conhecido como <PER>Steve Wozniak</PER>, (<LOC>São José</LOC>, 11 de agosto de 1950), é um engenheiro de computação, co-fundador da Apple, Inc., junto com Steve Jobs (falecido em outubro de 2011).
+relation:origin(Arg1,Arg2)
+
+A <PER>Igreja Apostólica Fonte da Vida</PER> foi fundada em 1994 pelo casal de apóstolos César Augusto Machado de Sousa e Rúbia Pinheiro Fernandes de Sousa na cidade de <LOC>Goiânia</LOC>.
+relation:origin(Arg1,Arg2)
+
+<PER>Bom Gosto</PER> é um grupo musical brasileiro de pagode, formado em 1997 na cidade do <LOC>Rio de Janeiro</LOC>, por Fábio Beça (voz e pandeiro), Thiago Soares (voz e banjo), Flávio Regis (voz, surdo e cuíca), André Neguinho (voz e percussão), Fernando Macaé (voz e tantã) e Mug (voz e cavaquinho).
+relation:origin(Arg1,Arg2)
+
+
+Em 2009, o <PER>Grupo Bom Gosto</PER> lançou o primeiro DVD initulado Roda de Samba do Grupo Bom Gosto, gravado ao vivo na Fundição Progresso, na sua cidade do <LOC>Rio de Janeiro</LOC>, no dia 4 de Fevereiro de 2009.
+relation:origin(Arg1,Arg2)

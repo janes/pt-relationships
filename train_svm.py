@@ -123,62 +123,146 @@ def load_dbpedia_relationships(data_file):
 
             #TODO: confirmar as direcções das relações, e acrescentar um (arg1,arg2) ou (arg2,arg1) conforme o caso
             #TODO: imprimir no formato do train_data.txt, acrescentar um campo de origem? (wiki,news,blogs) ?
-            e1_pos = re.search(e1, sentence)
-            e2_pos = re.search(e2, sentence)
 
             """
             if rel_type == 'origin':
-                count += 1
-                print count
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
                 if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
                     print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print rel_type+"(arg1,arg2)".encode("utf8")
+                    print "relation:origin(Arg1,Arg2)".encode("utf8")
                     print "\n"
 
                 elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
                     print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print rel_type+"(arg2,arg1)".encode("utf8")
-                    print "\n"
-
-            if rel_type == 'parent':
-                count += 1
-                print count
-                if e1_pos.start() < e2_pos.start():
-                    print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print "parent-of(arg2,arg1)".encode("utf8")
-                    print "\n"
-
-                elif e1_pos.start() > e2_pos.start():
-                    print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print "parent-of(arg1,arg2)".encode("utf8")
+                    print "relation:origin(Arg2,Arg1)".encode("utf8")
                     print "\n"
             """
 
-            if rel_type == 'deathOrBurialPlace':
-                count += 1
-                print count
+            """
+            if rel_type == 'parent':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
                 if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
                     print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print "(arg2,arg1)".encode("utf8")
+                    print "relation:parent-of(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "parent-of(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'partner':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:spouse".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'keyPerson':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                # founded-by (PER,ORG)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<ORG>' + e1 + '</ORG>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "founded-by(Arg1,Arg2)".encode("utf8")
                     print "\n"
 
                 elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<ORG>' + e1 + '</ORG>' + sentence[e1_pos.start()+len(e1):]
                     print sentence.encode("utf8")
-                    print e1.encode("utf8")
-                    print e2.encode("utf8")
-                    print "(arg1,arg2)".encode("utf8")
+                    print "founded-by(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'influencedBy':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "influenced-by(Arg1,Arg2)".encode("utf8")
                     print "\n"
 
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "influenced-by(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            if rel_type == 'partOf':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                # member-of (PER,ORG)
+                # owns (ORG,ORG)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "part-of(arg1,arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "part-of(arg2,arg1)".encode("utf8")
+                    print "\n"
+
+            """
+            if rel_type == 'locatedInArea':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:located-in(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e2_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e1_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:located-in(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+            """
             try:
                 e1_pos.start()
                 e1_pos.end()
@@ -201,6 +285,7 @@ def load_dbpedia_relationships(data_file):
                 print "type", rel_type
                 print "\n"
                 sys.exit(0)
+            """
 
             sentence = None
             if rel_type in rel_types.keys():
@@ -208,6 +293,7 @@ def load_dbpedia_relationships(data_file):
             else:
                 rel_types[rel_type] = 1
 
+    """
     for t in rel_types.keys():
         print t, rel_types[t]
 
@@ -216,6 +302,7 @@ def load_dbpedia_relationships(data_file):
     for k in rel_types:
         acc += rel_types[k]
     print "total", acc
+    """
 
     """
     rel_type = line.strip().split(':')[1]
