@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from common.Sentence import Sentence, Relationship
 
-__author__ = 'dsbatista'
+__author__ = "David S. Batista"
+__email__ = "dsbatista@inesc-id.pt"
 
 import codecs
 import re
@@ -80,6 +81,239 @@ def load_relationships(data_file):
             rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
             rel_id += 1
             relationships.append(rel)
+
+    return relationships, tagged
+
+
+def load_dbpedia_relationships(data_file):
+    tagged = set()
+    relationships = list()
+    rel_id = 0
+    f_sentences = codecs.open(data_file, encoding='utf-8')
+
+    rel_types = dict()
+    count = 0
+
+    for line in f_sentences:
+        if line.startswith("SENTENCE"):
+            sentence = line.split("SENTENCE : ")[1].strip()
+
+        if line.startswith("MANUALLY CHECKED"):
+            checked = line.split("MANUALLY CHECKED : ")[1].strip()
+            if checked == 'FALSE':
+                sentence = None
+                continue
+
+        if line.startswith("ENTITY1") and checked == 'TRUE':
+            e1 = line.split("ENTITY1 : ")[1].strip()
+
+        if line.startswith("ENTITY2") and checked == 'TRUE':
+            e2 = line.split("ENTITY2 : ")[1].strip()
+
+        if line.startswith("TYPE1") and checked == 'TRUE':
+            e1_type = line.split("TYPE1 : ")[1].strip()
+
+        if line.startswith("TYPE2") and checked == 'TRUE':
+            e2_type = line.split("TYPE2 : ")[1].strip()
+
+        if line.startswith("REL TYPE") and checked == 'TRUE':
+            rel_type = line.split("REL TYPE :")[1].strip()
+
+        if line.startswith("*") and 'sentence' in locals() and sentence is not None and checked == 'TRUE':
+
+            #TODO: confirmar as direcções das relações, e acrescentar um (arg1,arg2) ou (arg2,arg1) conforme o caso
+            #TODO: imprimir no formato do train_data.txt, acrescentar um campo de origem? (wiki,news,blogs) ?
+
+            """
+            if rel_type == 'origin':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:origin(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "relation:origin(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'parent':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:parent-of(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "parent-of(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'partner':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:spouse".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'keyPerson':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                # founded-by (PER,ORG)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<ORG>' + e1 + '</ORG>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "founded-by(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<ORG>' + e1 + '</ORG>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "founded-by(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'influencedBy':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "influenced-by(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "influenced-by(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            """
+            if rel_type == 'partOf':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                # member-of (PER,ORG)
+                # owns (ORG,ORG)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "part-of(arg1,arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<PER>' + e2 + '</PER>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<PER>' + e1 + '</PER>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "part-of(arg2,arg1)".encode("utf8")
+                    print "\n"
+            """
+
+            if rel_type == 'locatedInArea':
+                e1_pos = re.search(e1, sentence)
+                e2_pos = re.search(e2, sentence)
+                if e1_pos.start() < e2_pos.start():
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e1_pos.start()+len(e1):]
+                    e2_pos = re.search(e2, sentence)
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    print sentence.encode("utf8")
+                    print "relation:located-in(Arg1,Arg2)".encode("utf8")
+                    print "\n"
+
+                elif e1_pos.start() > e2_pos.start():
+                    sentence = sentence[:e2_pos.start()] + '<LOC>' + e2 + '</LOC>' + sentence[e2_pos.start()+len(e2):]
+                    e1_pos = re.search(e1, sentence)
+                    sentence = sentence[:e1_pos.start()] + '<LOC>' + e1 + '</LOC>' + sentence[e1_pos.start()+len(e1):]
+                    print sentence.encode("utf8")
+                    print "relation:located-in(Arg2,Arg1)".encode("utf8")
+                    print "\n"
+            """
+            try:
+                e1_pos.start()
+                e1_pos.end()
+                e2_pos.start()
+                e2_pos.end()
+                #print type(e1)
+                #print type(e2)
+                #print type(sentence)
+            except AttributeError, e:
+                print e1_pos
+                print e2_pos
+                print type(e1)
+                print type(e2)
+                print type(sentence)
+                print sentence
+                print checked
+                print e
+                print "e1", e1, e1_type
+                print "e2", e2, e2_type
+                print "type", rel_type
+                print "\n"
+                sys.exit(0)
+            """
+
+            sentence = None
+            if rel_type in rel_types.keys():
+                rel_types[rel_type] += 1
+            else:
+                rel_types[rel_type] = 1
+
+    """
+    for t in rel_types.keys():
+        print t, rel_types[t]
+
+    print "\n"
+    acc = 0
+    for k in rel_types:
+        acc += rel_types[k]
+    print "total", acc
+    """
+
+    """
+    rel_type = line.strip().split(':')[1]
+    rel = Relationship(sentence, None, None, None, None, None, None, None, rel_type, rel_id)
+    tokens = re.findall(TOKENIZER, rel.before, flags=re.UNICODE)
+    rel.before = ' '.join(tokens[-CONTEXT_WINDOW:])
+    tokens = re.findall(TOKENIZER, rel.after, flags=re.UNICODE)
+    rel.after = ' '.join(tokens[:CONTEXT_WINDOW])
+    rel_id += 1
+    relationships.append(rel)
+    """
 
     return relationships, tagged
 
@@ -184,13 +418,11 @@ def feature_extraction(reverb, clusters_words, relationships, verbs, word_cluste
         # append features to relationships features collection
         relationship_features.append(rel_features)
 
-        """
-        print rel.arg1type
-        print rel.arg2type
-        print rel.sentence.encode("utf8")
-        print rel_features
-        print "\n"
-        """
+        #print rel.arg1type
+        #print rel.arg2type
+        #print rel.sentence.encode("utf8")
+        #print rel_features
+        #print "\n"
 
         # add the extracted features to a collection containing all the seen features
         for feature in rel_features:
@@ -342,6 +574,17 @@ def main():
     tagger = pickle.load(f_model)
     f_model.close()
     reverb = ReverbPT(tagger)
+    print "Loading relationships from", sys.argv[1]
+    relationships, tagged = load_dbpedia_relationships(sys.argv[1])
+    print len(relationships), " loaded"
+
+    """
+    global tagger
+    print "Loading PoS tagger from", sys.argv[1]
+    f_model = open(sys.argv[1], "rb")
+    tagger = pickle.load(f_model)
+    f_model.close()
+    reverb = ReverbPT(tagger)
 
     global word_cluster
     global clusters_words
@@ -358,8 +601,11 @@ def main():
     verbs = pickle.load(verbs_conj)
     verbs_conj.close()
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 48a5a6f839c4c6b1e4605b6a1ad633329032a03c
     # print number of samples per class
     per_class = dict()
     for rel in relationships:
@@ -416,9 +662,13 @@ def main():
     #tfidf = TfidfTransformer()
     #hashing_tfidf = Pipeline([("hashing", hashing), ("tidf", tfidf)])
 
+    # makes a cross-vold validation with the training data
     if sys.argv[4] == 'fold':
         cross_validation(per_class, relationships, relationships_by_id, sample_class, samples_features)
 
+    # trains a model with the training data
+    # selects a sentence not in the train data, each SVM model gives an annotation
+    # calculates the entropy, level of dissagrement
     elif sys.argv[4] == 'model':
         classifier = train_classifier(sample_class, samples_features)
 
@@ -442,6 +692,7 @@ def main():
 
         # classify the sentences
         classify(classifier, relationships_pool, hasher)
+    """
 
 if __name__ == "__main__":
     main()

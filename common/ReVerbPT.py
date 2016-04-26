@@ -15,6 +15,9 @@ from nltk.classify.maxent import MaxentClassifier
 
 class ReverbPT(object):
 
+    #TODO: fazer uma versao que usa a Floresta Sintática
+    #TODO: testar os padrões ReVerb e a detecção de passiva
+
     def __init__(self, tagger):
         self.lmtzr = WordNetLemmatizer()
         self.aux_verbs = ['be']
