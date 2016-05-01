@@ -1,0 +1,146 @@
+A <LOC>Albânia</LOC> é um país europeu situado na península <LOC>Balcânica</LOC>, cuja capital é Tirana.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Erevan</LOC>, a moderna capital da <LOC>República da Arménia</LOC>, foi fundada em 782 a.C.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>México</LOC> é uma república constitucional federal localizada na <LOC>América do Norte</LOC>.
+relation:located-in(Arg1,Arg2)
+
+Localizado na região nordeste do estado de <LOC>Sergipe</LOC>, <LOC>Amparo de São Francisco</LOC> faz divisiva com Canhoba a oeste e com Telha a leste e sul.
+relation:located-in(Arg2,Arg1)
+
+A capital da <LOC>República Popular da China</LOC> é <LOC>Pequim</LOC>.
+relation:located-in(Arg2,Arg1)
+
+Em 2007, o <LOC>Rio Grande do Sul</LOC> foi o estado do <LOC>Brasil</LOC> que obteve a média geral mais alta no ENEM, com 56,27 pontos.
+relation:located-in(Arg1,Arg2)
+
+A <LOC>Torre</LOC> pertence aos concelhos de Covilhã, Manteigas e <LOC>Seia</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Mineiros do Tietê</LOC> é um município brasileiro do estado de <LOC>São Paulo</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Angicos</LOC> é um município brasileiro do estado do <LOC>Rio Grande do Norte</LOC>, localizado na microrregião homônima.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Campo Grande</LOC> é um município brasileiro da região Centro-Oeste, capital do estado de <LOC>Mato Grosso do Sul</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Uberlândia</LOC> é um município brasileiro do estado de <LOC>Minas Gerais</LOC>.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Museu Oscar Niemeyer</LOC> localiza-se na cidade de <LOC>Curitiba</LOC>, capital do estado do Paraná, Brasil.
+relation:located-in(Arg1,Arg2)
+
+O Museu Oscar Niemeyer localiza-se na cidade de <LOC>Curitiba</LOC>, capital do estado do <LOC>Paraná</LOC>, Brasil.
+relation:located-in(Arg2,Arg1)
+
+<LOC>Santa Helena</LOC> está localizada no centro da Costa Oeste do <LOC>Paraná</LOC>, às margens do lago de Itaipu.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Macapá</LOC>, capital do <LOC>Amapá</LOC>, fica situada na latitude 00°02'18.84".
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Bengo</LOC> é uma província do norte de Angola, com capital na cidade de Caxito, no município de <LOC>Dande</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Humaitá</LOC> é um município brasileiro do estado do <LOC>Rio Grande do Sul</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Rialma</LOC> é um município brasileiro do estado de <LOC>Goiás</LOC>.
+relation:located-in(Arg1,Arg2)
+
+A cultura da cidade de <LOC>Barcarena</LOC>, no Estado do <LOC>Pará</LOC>, é composta por elementos que encantam e enriquecem sua história.
+relation:located-in(Arg2,Arg1)
+
+<LOC>Vaduz</LOC> é a capital do Principado de <LOC>Liechtenstein</LOC>.
+relation:located-in(Arg1,Arg2)
+
+É também o Santo que dá nome a um colégio situado em <LOC>Coimbra</LOC>, chamado <LOC>Colégio de São Teotónio</LOC>.
+relation:located-in(Arg2,Arg1)
+
+<LOC>Ilha do Retiro</LOC> é um bairro do Recife, <LOC>Pernambuco</LOC>, Brasil.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Stetten</LOC> é uma comuna da Suíça, no Cantão <LOC>Schaffhausen</LOC>, com cerca de 1087 habitantes.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Steinhausen</LOC> é uma comuna da Suíça, no Cantão <LOC>Zug</LOC>, com cerca de 8 901 habitantes.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Gabela</LOC> é uma cidade angolana, sede do município de <LOC>Amboim</LOC>, na província do Kwanza-Sul.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Muxima</LOC> é uma vila, sede do município da <LOC>Quiçama</LOC>, na província do Bengo, em Angola .
+relation:located-in(Arg1,Arg2)
+
+Desde aí, como parte das <LOC>Ilhas Salomão</LOC>, <LOC>Guadalcanal</LOC> foi ocupada pela Coroa Britânica.
+relation:located-in(Arg2,Arg1)
+
+A ilha de <LOC>Linosa</LOC> é uma das ilhas <LOC>Pelágias</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Toledo</LOC> é uma localidade do norte da ilha de São Jorge, <LOC>Açores</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Fundinho</LOC> é um bairro nobre da <LOC>Região Central de Uberlândia</LOC>, Minas Gerais, Brasil.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Leicester</LOC> é uma cidade da <LOC>Inglaterra</LOC>, a maior da região de East Midlands.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Villazón</LOC> é uma cidade do sul da <LOC>Bolívia</LOC> capital da província de Modesto Omiste, departamento de Potosí.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Estádio do Restelo</LOC> está localizado em uma zona nobre da cidade de <LOC>Lisboa</LOC>.
+relation:located-in(Arg1,Arg2)
+
+A <LOC>Serra do Bugio</LOC> é uma montanha situada na cidade de <LOC>Pé de Serra</LOC>, no estado da Bahia.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Pico do Monte Negro</LOC> é o ponto mais alto do estado do <LOC>Rio Grande do Sul</LOC>, no Brasil.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Lago Kainji</LOC>, na <LOC>Nigéria</LOC>, é um reservatório no Rio Níger, formado pela barragem de Kainji.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Henry Clay</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Ogletown</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Lago Gulquac</LOC> é um lago de água doce localizado no <LOC>Condado de York</LOC>, na província de New Brunswick, Canadá.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Boyds Corner</LOC> é uma comunidade sem personalidade jurídica do <LOC>Condado de New Castle</LOC>, Delaware, Estados Unidos.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Erlbach</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Kastl</LOC> é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de Oberbayern, no estado da Baviera.
+relation:located-in(Arg1,Arg2)
+
+O <LOC>Lago Long</LOC> é um lago de água doce localizado no condado de <LOC>York</LOC>, na província de New Brunswick, no Canadá.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Castelo Branco</LOC> é um bairro localizado na zona leste do município de <LOC>Caicó</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Gokal Pur</LOC> é uma vila no distrito de Ocidental, no estado indiano de <LOC>Deli</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Hastsal</LOC> é uma vila no distrito de West, no estado indiano de <LOC>Deli</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Nangal Dewat</LOC> é uma vila no distrito de South West, no estado indiano de <LOC>Deli</LOC>.
+relation:located-in(Arg1,Arg2)
+
+<LOC>Pul Pehlad</LOC> é uma vila no distrito sul, no estado indiano de <LOC>Deli</LOC>.
+relation:located-in(Arg1,Arg2)
+
+Tüßling é um município da Alemanha, no distrito de <LOC>Altötting</LOC>, na região administrativa de <LOC>Oberbayern</LOC>, no estado da Baviera.
+relation:located-in(Arg1,Arg2)

@@ -1,0 +1,3 @@
+grep -oP '[^< ]+ <PER>[^<]+</PER>,\sd[a|o]\s<ORG>[^<]+</ORG>' publico_sentences_to_tag.txt
+
+ grep -oP '<[A-Z]+>[^<]+</[A-Z]+>[^<]+(divergência|confronto|confrontação|braço-de-ferro)[^<]+<[A-Z]+>[^<]+</[A-Z]+>' publico_sentences_to_tag.txt

@@ -1,0 +1,47 @@
+<PER>Marisa Letícia Lula da Silva</PER>, nascida Marisa Letícia Rocco Casa, (São Bernardo do Campo, 7 de abril de 1950) foi a primeira-dama do Brasil de 1 de janeiro de 2003 a 1 de janeiro de 2011, quando seu marido, <PER>Luiz Inácio Lula da Silva</PER>, esteve no cargo de presidente da República.
+relation:spouse
+
+Em mitos posteriores sobre <PER>Ísis</PER>, ela teve um irmão, <PER>Osíris</PER>, que veio a tornar-se seu marido, tendo se afirmado que ela havia concebido Horus.
+relation:spouse
+
+<PER>Paulo Goulart</PER> é casado com a atriz <PER>Nicette Bruno</PER>, com quem se casou logo após conhecê-la em 1952.
+relation:spouse
+
+Em 1999, após um ano de namoro, <PER>Marília Gabriela</PER> casou-se com o modelo e ator <PER>Reynaldo Gianecchini</PER>, vinte e quatro anos mais novo do que ela (inclusive mais novo do que o primeiro filho).
+relation:spouse
+
+<PER>António Ferro</PER> foi casado com a poetisa <PER>Fernanda de Castro</PER>, pai do escritor António Quadros e avô da escritora Rita Ferro.
+relation:spouse
+
+<PER>John Neschling</PER> é casado com a escritora <PER>Patrícia Melo</PER> e é pai do ator Pedro Neschling (com a atriz Lucélia Santos).
+relation:spouse
+
+O deus <PER>Amon</PER> era acompanhado de sua mulher <PER>Mut</PER> (representada num corpo de mulher mas com cabeça de abutre ou coroas).
+relation:spouse
+
+<PER>Tommy Mottola</PER> critica a ex-mulher <PER>Mariah Carey</PER>.
+relation:spouse
+
+<PER>Dita Von Teese</PER> foi casada com <PER>Marilyn Manson</PER>, seu casamento com ele terminou em dezembro de 2006, quando ela saiu de casa.
+relation:spouse
+
+Martha Dandridge Custis Washington, mais comumente conhecida por <PER>Martha Washington</PER> (21 de julho de 1731 &mdash; 22 de maio de 1802) foi a esposa do presidente estadunidense <PER>George Washington</PER>, e por conseguinte, a  primeira-dama da nação estadunidense.
+relation:spouse
+
+<PER>Adelaide de Morais e Barros</PER>, nascida Adelaide Benvinda da Silva Gordo (Santos, 1845 &ndash; Berlim, 8 de novembro de 1911) foi a esposa de <PER>Prudente de Morais</PER>, o terceiro presidente da República do Brasil, e a primeira-dama do país entre 1894 e 1898.
+relation:spouse
+
+<PER>Maria da Conceição de Manso Saião</PER> (Rio de Janeiro, 8 de novembro de 1878 — Rio de Janeiro, 31 de outubro de 1958) foi a segunda esposa de <PER>Epitácio Pessoa</PER>, ex-presidente do Brasil, e a primeira-dama do país de 1919 a 1922.
+relation:spouse
+
+<PER>Emilie Schindler</PER> (Alt Moletein, 22 de Outubro de 1907 &mdash; Berlim, 5 de Outubro de 2001) - Trabalhou em conjunto com o marido, <PER>Oskar Schindler</PER>, para salvar 1200 judeus durante a Segunda Guerra Mundial.
+relation:spouse
+
+<PER>Martha Wayles Skelton Jefferson</PER>, nascida Martha Wayles (30 de outubro/19 de outubro (Velho estilo) de 1748 – 6 de setembro de 1782) foi a esposa do <PER>Thomas Jefferson</PER>.
+relation:spouse
+
+<PER>Marcela Temer</PER>, mulher do vice-presidente <PER>Michel Temer</PER>, rouba a cena durante a posse de Dilma Rousseff.
+relation:spouse
+
+<PER>Carola Scarpa</PER> foi casada com <PER>Chiquinho Scarpa</PER> e entre 2002 e 2003 participou dos programas Casa dos Artistas 2 e Casa dos Artistas 3, do SBT.
+relation:spouse
