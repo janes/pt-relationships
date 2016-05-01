@@ -3,7 +3,7 @@
 import pickle
 
 from nltk import TreebankWordTokenizer
-#from nltk.parse import MaltParser
+from nltk.parse import MaltParser
 
 from malt import MaltParser
 
@@ -12,14 +12,12 @@ __author__ = 'dsbatista'
 
 def main():
     print "Loading PoS tagger"
-    model = open('postagger/datasets/trained_model.pkl', "rb")
+    model = open('postagger/pos-tagger_all_.pkl', "rb")
     pos_tagger = pickle.load(model)
     model.close()
 
     parser = MaltParser(working_dir="/home/dsbatista/maltparser-1.8", mco="dep-parser-model3",
                         additional_java_args=['-Xmx512m'])
-
-
 
     txt = "A explosao, que ocorreu pelas 12h00, destruiu quase por completo um edificio de quatro andares do " \
           "complexo da fabrica Stockline Plastics, localizada no centro de Glasgow."
