@@ -199,7 +199,7 @@ relation:disagreement(Arg1,Arg2)
 Quando às obras de ampliação da sede da <ORG>Polícia Judiciária ( PJ )</ORG>, em <LOC>Lisboa</LOC>, vão manter-se e podem iniciar-se ainda este ano, disse.
 relation:installations-in(Arg1,Arg2)
 
-Até ao presidente do grupo, o também presidente do <ORG>Tribunal de Contas</ORG>, <PER>Guilherme d'Oliveira Martins</PER>, se queixou da "lentidão e a forma parcelar com que a administração" estava a fornecer as informações, e avisou que tal situação colocava "em risco o cumprimento da missão" do grupo.
+Até ao presidente do grupo, o também presidente do <ORG>Tribunal de Contas</ORG>, <PER>Guilherme d`Oliveira Martins</PER>, se queixou da "lentidão e a forma parcelar com que a administração" estava a fornecer as informações, e avisou que tal situação colocava "em risco o cumprimento da missão" do grupo.
 relation:member-of(Arg2,Arg1)
 
 No dia 23 de Novembro, <PER>Francisco Lousã</PER>, deputado do <ORG>Bloco de Esquerda</ORG>, regressava de uma visita à Galiza e criticava o Governo espanhol de "total incompetência" quanto à gestão do caso do "Prestige".
@@ -256,7 +256,7 @@ relation:member-of(Arg1,Arg2)
 <PER>Sampaio da Veiga</PER>, o director clínico do <ORG>CHNE</ORG> não quer, para já, fazer comentários, pelo menos até haver conclusões de um inquérito que mandou instaurar para esclarecer se na origem deste caso esteve negligência ou defeito do material.
 relation:member-of(Arg1,Arg2)
 
-A acreditar no "Diário da República '', para lá do imóvel em questão, que serve de sede à secção local dos social-democratas desde 1995, o PSD, na AML, é dono da sua sede nacional ( <LOC>Rua de São Caetano</LOC>, em <LOC>Lisboa</LOC> ) da sede distrital ( Rua da Junqueira ) e das sedes de Agualva-Cacém ( sem morada no rol publicado ), Algés, Amadora, Mafra e Rio de Mouro.
+A acreditar no "Diário da República", para lá do imóvel em questão, que serve de sede à secção local dos social-democratas desde 1995, o PSD, na AML, é dono da sua sede nacional ( <LOC>Rua de São Caetano</LOC>, em <LOC>Lisboa</LOC> ) da sede distrital ( Rua da Junqueira ) e das sedes de Agualva-Cacém ( sem morada no rol publicado ), Algés, Amadora, Mafra e Rio de Mouro.
 relation:located-in(Arg1,Arg2)
 
 Na última quarta-feira, outra central sindical ( a <ORG>CGT</ORG> dissidente, liderada por <PER>Hugo Moyano</PER> ) convocou uma paralisação em protesto contra a intenção do Governo de seguir os conselhos económicos do Fundo Monetário Internacional ( FMI ), que considera penalizantes para os trabalhadores argentinos.
@@ -334,7 +334,7 @@ relation:member-of(Arg1,Arg2)
 Mas <PER>Marine Le Pen</PER>, a líder do partido de extrema-direita <ORG>Frente Nacional</ORG> -- muito bem cotada nas sondagens para as eleições europeias de Maio --, acusou o Presidente de estar a "germanizar" a França e de "se ter convertido à economia ultraliberal".
 relation:member-of(Arg1,Arg2)
 
-<PER>Nobre dos Santos</PER>, dirigente da <ORG>Federação dos Sindicatos da Administração Pública</ORG> ( FESAP ) da UGT, usa a teoria da "sopa de pedra" para explicar a acção do Governo: "Faz-se um grande caldeirão com o inflacionar da dívida pública e depois tenta-se explicar o crescimento desta com a contratação na Função Pública ''.
+<PER>Nobre dos Santos</PER>, dirigente da <ORG>Federação dos Sindicatos da Administração Pública</ORG> ( FESAP ) da UGT, usa a teoria da "sopa de pedra" para explicar a acção do Governo: "Faz-se um grande caldeirão com o inflacionar da dívida pública e depois tenta-se explicar o crescimento desta com a contratação na Função Pública".
 relation:member-of(Arg1,Arg2)
 
 <PER>Miguel Oliveira da Silva</PER> é o novo presidente do <ORG>Conselho de Ética</ORG>.
@@ -364,7 +364,7 @@ relation:member-of(Arg1,Arg2)
 O terceiro participante no debate, <PER>Sandro Paim</PER>, presidente da <ORG>Câmara de e Indústria dos Açores</ORG>, defendeu a importância da aposta na exportação e da promoção do sector do turismo.
 relation:member-of(Arg1,Arg2)
 
-<PER>Duarte Caldeira</PER>, presidente da <ORG>Liga de Bombeiros Portugueses</ORG>, diz que a mensagem do Governo '' é transmitir ao país que pelo lado do Governo está tudo feito o que é preciso fazer" e que "se o país arder, a culpa será dos bombeiros, porque afinal foram foram investidos 131 milhões de euros", ironizou.
+<PER>Duarte Caldeira</PER>, presidente da <ORG>Liga de Bombeiros Portugueses</ORG>, diz que a mensagem do Governo "é transmitir ao país que pelo lado do Governo está tudo feito o que é preciso fazer" e que "se o país arder, a culpa será dos bombeiros, porque afinal foram foram investidos 131 milhões de euros", ironizou.
 relation:member-of(Arg1,Arg2)
 
 <PER>Eduardo Catroga</PER>, que lidera a equipa do <ORG>PSD</ORG> no encontro desta manhã com a Chegado pelas 09h10 à sede do PSD, onde decorrerá o encontro, Catroga reforçou que os social-democratas vão assinar o acordo para a ajuda externa a Portugal -- "Já disse que ia assinar", relembrou -- mas que não deixará de "fazer reservas técnicas" se assim o entender.
@@ -445,7 +445,7 @@ relation:disagreement(Arg1,Arg2)
 Em Janeiro, a comissão parlamentar de inquérito ao Banco Português de Negócios ( BPN ) confrontou <PER>António Coutinho Rebelo</PER> ( antigo administrador do <ORG>Excellence Assets</ORG> ) com um acordo assinado por Dias Loureiro que punha fim à participação do fundo na empresa <ORG>Biometrics</ORG>, de <LOC>Porto Rico</LOC>.
 relation:installations-in(Arg1,Arg2)
 
-E <PER>Tahmoures Yassami</PER>, dirigente da <ORG>Associação Irano-Sueca da cidade de Malmo</ORG>, afirmou ao site de língua inglesa "The Local '' que muitas famílias imigrantes se encontram aterrorizadas.
+E <PER>Tahmoures Yassami</PER>, dirigente da <ORG>Associação Irano-Sueca da cidade de Malmo</ORG>, afirmou ao site de língua inglesa "The Local" que muitas famílias imigrantes se encontram aterrorizadas.
 relation:member-of(Arg1,Arg2)
 
 "Em Brisbane vê água que se calhar nem tem aquela cor que tem no Brasil", disse ao PÚBLICO <PER>Eugénio Sequeira</PER>, engenheiro e conselheiro da <ORG>Liga para a Protecção da Natureza</ORG>, referindo-se às cheias que afectaram a terceira cidade mais densa da Austrália e que já mataram ao todo 15 pessoas, após observar as duas fotografias abaixo escolhidas pelo PÚBLICO.
@@ -661,7 +661,7 @@ relation:located-in(Arg1,Arg2)
 A GNR informou hoje em comunicado que o corpo do alferes Daniel Simões, vítima de doença súbita ocorrida durante uma missão em Timor Leste, está prevista para as 16h00 horas de amanhã, no <LOC>aeroporto da Portela</LOC>, em <LOC>Lisboa</LOC>.
 relation:located-in(Arg1,Arg2)
 
-Na distribuição dos bens imóveis que possuía à data da morte, a antiga secretária e companheira de Tomé Feteira resolveu contemplar o "Instituto de Oncologia de <LOC>Lisboa</LOC> '', legando-lhe um apartamento situado no número seis da <LOC>Alameda de Santo António dos Capuchos</LOC>, em Lisboa.
+Na distribuição dos bens imóveis que possuía à data da morte, a antiga secretária e companheira de Tomé Feteira resolveu contemplar o "Instituto de Oncologia de <LOC>Lisboa</LOC>", legando-lhe um apartamento situado no número seis da <LOC>Alameda de Santo António dos Capuchos</LOC>, em Lisboa.
 relation:located-in(Arg1,Arg2)
 
 As equipas de resgate conseguiram salvar as restantes 14 pessoas que seguiam na embarcação, de acordo com Madine Ba, responsável pelos assuntos marítimos da cidade de <LOC>Nouadhibou</LOC>, na costa da <LOC>Mauritânia</LOC>.
@@ -727,7 +727,7 @@ relation:studied-at(Arg1,Arg2)
 A nova <PER>ministra</PER> frequentou o Liceu Francês Charles Lepierre, onde concluiu o ensino secundário e licenciou-se a seguir em Filosofia na <ORG>Faculdade de Letras de Lisboa</ORG>.
 relation:studied-at(Arg1,Arg2)
 
-Já o advogado <PER>António Marinho</PER> tinha criticado a decisão do <ORG>Governo</ORG> de proibir a entrada do barco em águas portuguesas, considerando-a uma "prepotência à maneira do doutor Salazar ''.
+Já o advogado <PER>António Marinho</PER> tinha criticado a decisão do <ORG>Governo</ORG> de proibir a entrada do barco em águas portuguesas, considerando-a uma "prepotência à maneira do doutor Salazar".
 relation:disagreement(Arg1,Arg2)
 
 <PER>Agostinho Branquinho</PER> é licenciado em História pela <ORG>Faculdade de Letras da Universidade do Porto</ORG> e frequentou o curso de contabilidade do Instituto Superior de Contabilidade e Administração do Porto.
@@ -1117,7 +1117,7 @@ relation:owns(Arg1,Arg2)
 A <ORG>ESFG</ORG> é a que detém o Banco Espírito Santo (BES), o grupo segurador Tranquilidade e a <ORG>Espírito Santo Saúde</ORG>.
 relation:owns(Arg1,Arg2)
 
-O "Jornal de Negócios '' refere que a decisão do <ORG>La Caixa</ORG> ( que detém 25 por cento do capital do <ORG>BPI</ORG> ) já terá sido comunicada aos restantes accionistas do núcleo principal do banco português e à administração da instituição bancária.
+O "Jornal de Negócios" refere que a decisão do <ORG>La Caixa</ORG> ( que detém 25 por cento do capital do <ORG>BPI</ORG> ) já terá sido comunicada aos restantes accionistas do núcleo principal do banco português e à administração da instituição bancária.
 relation:hold-shares-of(Arg1,Arg2)
 
 A <ORG>Caixa Galicia</ORG> reforçou, em Dezembro, a participação directa no capital social da <ORG>Galp Energia</ORG> para 3 por cento, passando a deter directa e indirectamente 7,5 por cento, disse à agência Lusa fonte da instituição financeira.
@@ -1180,7 +1180,7 @@ relation:merge
 O presidente do Banco Nacional de Desenvolvimento Económico e Social ( BNDES ) admitiu ontem que a empresa resultante da fusão entre <ORG>Varig</ORG> e <ORG>TAM</ORG>, que herdará o nome da primeira, terá uma grande participação estatal, mas assegurou que o controlo do capital será privado.
 relation:merge
 
-O sindicato americano do sector automóvel UAW ( United Auto Workers ) obterá 55 por cento do capital do grupo que saia de uma possível fusão entre a <ORG>Chrysler</ORG> e o grupo italiano <ORG>FIAT</ORG>, se o acordo concluído com a direcção do construtor americano se concretizar, revelou ontem o diário de negócios "Wall Street Journal ''.
+O sindicato americano do sector automóvel UAW ( United Auto Workers ) obterá 55 por cento do capital do grupo que saia de uma possível fusão entre a <ORG>Chrysler</ORG> e o grupo italiano <ORG>FIAT</ORG>, se o acordo concluído com a direcção do construtor americano se concretizar, revelou ontem o diário de negócios "Wall Street Journal".
 relation:merge
 
 No comunicado dos resultados anuais, o presidente executivo da Sonaecom, Ângelo Paupério, destacou a fusão entre a <ORG>Optimus</ORG> e a <ORG>Zon</ORG>, que classificou como o "principal objectivo estratégico".
@@ -1252,7 +1252,7 @@ relation:owns(Arg1,Arg2)
 Àquele jornal, também o empresário <PER>Luís Montez</PER> ( dono da <ORG>Música no Coração</ORG> ) confirmou ter sido contactado no sentido de "fazer parte de uma solução".
 relation:owns(Arg1,Arg2)
 
-Segundo a edição do "Cinco Dias '', o consórcio alemão <ORG>Volkswagen</ORG>, dono da <ORG>Seat</ORG>, justificou os resultados com a queda de vendas no mercado espanhol, que a subida de vendas em mercados estratégicos, como a Alemanha ou Reino Unido, não chegou para compensar.
+Segundo a edição do "Cinco Dias", o consórcio alemão <ORG>Volkswagen</ORG>, dono da <ORG>Seat</ORG>, justificou os resultados com a queda de vendas no mercado espanhol, que a subida de vendas em mercados estratégicos, como a Alemanha ou Reino Unido, não chegou para compensar.
 relation:owns(Arg1,Arg2)
 
 Questionado sobre a presença em Lisboa de <PER>German Efromovich</PER>, dono do grupo <ORG>Synergy</ORG>, que foi o único candidato à compra da TAP, para reuniões nos ministérios das Finanças e da Economia, noticiada pela Lusa, o secretário de Estado afirmou "não ter condições para" confirmar esta informação, uma vez que regressou hoje da Estónia.
@@ -1393,10 +1393,10 @@ relation:studied-at(Arg1,Arg2)
 Os resultados recentes de <ORG>Portugal</ORG> foram "impressionantes" e surpreenderam o BCE, afirmou esta terça-feira o membro do conselho executivo da autoridade monetária europeia, <PER>Peter Praet</PER> destacou que Portugal, mesmo com uma saída "limpa" do programa, continuará a ser alvo de uma vigilância reforçada por parte da troika.
 relation:agreement(Arg2,Arg1)
 
-O <ORG>PSD</ORG> agradeceu nesta segunda-feira o "inestimável serviço prestado a Portugal '' pelo <PER>ex-ministro das Finanças</PER>, Vítor Gaspar, e atribuiu à sua substituta, Maria Luís Albuquerque, competência e solidez financeira e económica.
+O <ORG>PSD</ORG> agradeceu nesta segunda-feira o "inestimável serviço prestado a Portugal" pelo <PER>ex-ministro das Finanças</PER>, Vítor Gaspar, e atribuiu à sua substituta, Maria Luís Albuquerque, competência e solidez financeira e económica.
 relation:agreement(Arg1,Arg2)
 
-Num comício a que assistiram representantes de missões diplomáticas baseadas em Díli, <PER>Alkatiri</PER> destacou o papel de <ORG>Portugal</ORG> e dos países de língua oficial portuguesa no apoio à luta dos timorenses "quando mais ninguém queria ouvir falar de Timor-Leste '' e defendeu a adesão do novo país à Comunidade dos Países de Língua Portuguesa.
+Num comício a que assistiram representantes de missões diplomáticas baseadas em Díli, <PER>Alkatiri</PER> destacou o papel de <ORG>Portugal</ORG> e dos países de língua oficial portuguesa no apoio à luta dos timorenses "quando mais ninguém queria ouvir falar de Timor-Leste" e defendeu a adesão do novo país à Comunidade dos Países de Língua Portuguesa.
 relation:agreement(Arg1,Arg2)
 
 O líder do PSD/Algarve, ex-vice-presidente de Luís Filipe Menezes, foi apoiante de Santana Lopes na disputa do Verão passado, enquanto <PER>Macário Correia</PER>, ex-vice-presidente de Marques Mendes, apoiou <PER>Manuela Ferreira Leite</PER>.
@@ -1579,7 +1579,7 @@ relation:agreement(Arg1,Arg2)
 O principal partido da oposição, o <ORG>Partido Liberal</ORG>, declarou que não apoia a moção do <ORG>Bloc Québécois</ORG>, mas deixou em aberto a hipóetese de aprovar a moção governamental.
 relation:disagreement(Arg1,Arg2)
 
-O diário norte-americano "<ORG>The New York Times</ORG> '' apoia o candidato democrata, <PER>Barack Obama</PER>, para Presidente dos Estados Unidos, num editorial publicado ontem "on-line" e hoje na edição impressa.
+O diário norte-americano "<ORG>The New York Times</ORG>" apoia o candidato democrata, <PER>Barack Obama</PER>, para Presidente dos Estados Unidos, num editorial publicado ontem "on-line" e hoje na edição impressa.
 relation:agreement(Arg1,Arg2)
 
 <PER>Ramalho Eanes</PER> elogia <PER>Cavaco Silva</PER> em artigo de opinião.
@@ -1591,7 +1591,7 @@ relation:agreement(Arg1,Arg2)
 O líder da Liga Norte, <PER>Umberto Bossi</PER>, aliado de longa data do ex-primeiro-ministro, confirmou também que o seu partido não vai apoiar um Governo liderado pelo economista <PER>Mario Monti</PER>.
 relation:disagreement(Arg1,Arg2)
 
-O Presidente de Taiwan, <PER>Chen Shui-bian</PER>, elogiou hoje o líder espiritual dos tibetanos no exílio, o <PER>Dalai Lama</PER>, pelo trabalho que desenvolve e as "grandes dificuldades" que enfrenta na sua luta pela "democracia no Tibete ''.
+O Presidente de Taiwan, <PER>Chen Shui-bian</PER>, elogiou hoje o líder espiritual dos tibetanos no exílio, o <PER>Dalai Lama</PER>, pelo trabalho que desenvolve e as "grandes dificuldades" que enfrenta na sua luta pela "democracia no Tibete".
 relation:agreement(Arg1,Arg2)
 
 <PER>Manuela Ferreira Leite</PER> apoiou a eleição de <PER>António Preto</PER> à liderança do PSD/Lisboa, sendo ela presidente da Assembleia Distrital.
@@ -1618,7 +1618,7 @@ relation:agreement(Arg1,Arg2)
 Quanto ao líder do parceiro de coligação e ministro de Estado e da Defesa, <PER>Paulo Portas</PER>, que tem uma óptima relação pessoal com <PER>Santana Lopes</PER>, cansado das questões de Defesa, ambicionará a pasta dos Negócios Estrangeiros.
 relation:agreement(Arg1,Arg2)
 
-O processo ainda não terminou e os peritos continuam o seu trabalho", sustentou o porta-voz de <PER>Tony Blair</PER> -- o principal aliado de <PER>Bush</PER> na guerra contra o Iraque.. O diário londrino "The Times '' noticia, na sua edição de hoje, que o Parlamento britânico pretende abrir um novo inquérito às informações fornecidas ao Governo pelos serviços secretos britânicos antes da guerra no Iraque.
+O processo ainda não terminou e os peritos continuam o seu trabalho", sustentou o porta-voz de <PER>Tony Blair</PER> -- o principal aliado de <PER>Bush</PER> na guerra contra o Iraque.. O diário londrino "The Times" noticia, na sua edição de hoje, que o Parlamento britânico pretende abrir um novo inquérito às informações fornecidas ao Governo pelos serviços secretos britânicos antes da guerra no Iraque.
 relation:agreement(Arg1,Arg2)
 
 O <PER>primeiro-ministro designado Benjamin Netanyahu</PER> e o seu principal parceiro na próxima coligação governamental, <PER>Avigdor Lieberman</PER>, terão feito um acordo secreto para a construção na Cisjordânia ocupada, noticiou a Rádio do Exército de Israel.
@@ -1627,7 +1627,7 @@ relation:work-together
 <PER>Monicelli</PER> trabalhou ainda com <PER>Vittorio De Sica</PER>, Sophia Loren, Anna Magnani, Nino Manfredi ou Alberto Sordi.
 relation:work-together
 
-Um bombista suicida tomou esta manhã por alvo em grupo de paramilitares sunitas, aliados dos Estados Unidos, em <LOC>Iskandariya</LOC>, cidade a sul de <LOC>Bagdad</LOC> que fazia parte do chamado "Triângulo da Morte ''.
+Um bombista suicida tomou esta manhã por alvo em grupo de paramilitares sunitas, aliados dos Estados Unidos, em <LOC>Iskandariya</LOC>, cidade a sul de <LOC>Bagdad</LOC> que fazia parte do chamado "Triângulo da Morte".
 relation:located-in(Arg1,Arg2)
 
 Financiado pelo Programa Operacional para o Emprego , Formação e Desenvolvimento Social, o <ORG>FIC</ORG> possui uma estrutura organizativa própria, sedeada no <LOC>Porto</LOC>, e uma rede de parceiros operacionais ( associações empresariais ) nas regiões do norte e do centro do país e institucionais, nomeadamente a Associação rial de Portugal e a Associação Industrial Portuguesa.
@@ -1684,7 +1684,7 @@ relation:member-of(Arg2,Arg1)
 O líder do <ORG>PSD</ORG>, <PER>Marques Mendes</PER>, acusou hoje o executivo socialista de ser "um Governo adiado" e defendeu a necessidade de um "choque vital" para dar alma e esperança aos portugueses.
 relation:member-of(Arg2,Arg1)
 
-O <ORG>BE</ORG> saudou hoje o "grande consenso que se formou na <ORG>Assembleia da República</ORG> '' sobre o relatório do inquérito ao caso PT/TVI e criticou o PS, considerando que os socialistas tinha uma "ideia pré concebida" sobre o assunto.
+O <ORG>BE</ORG> saudou hoje o "grande consenso que se formou na <ORG>Assembleia da República</ORG>" sobre o relatório do inquérito ao caso PT/TVI e criticou o PS, considerando que os socialistas tinha uma "ideia pré concebida" sobre o assunto.
 relation:agreement(Arg1,Arg2)
 
 <PER>Mário Soares</PER> elogia <PER>Rosado Correia</PER> como um "homem generoso".
@@ -1768,7 +1768,7 @@ relation:agreement(Arg1,Arg2)
 Para as presidenciais, o eurodeputado defendeu o apoio do <ORG>CDS-PP</ORG> a <PER>Cavaco Silva</PER>, "o candidato com mais chances de obter um bom resultado".
 relation:agreement(Arg1,Arg2)
 
-O diário "<ORG>The New York Times</ORG> '' apoiou hoje "entusiasticamente", em editorial, a reeleição de <PER>Hillary Clinton</PER> como senadora de Nova Iorque.
+O diário "<ORG>The New York Times</ORG>" apoiou hoje "entusiasticamente", em editorial, a reeleição de <PER>Hillary Clinton</PER> como senadora de Nova Iorque.
 relation:agreement(Arg1,Arg2)
 
 Em contrapartida, o <ORG>PS</ORG> apoiou a candidatura de <PER>Fátima Felgueiras</PER> a um novo mandato depois de esta se ter comprometido a abandonar o cargo, caso viesse a ser objecto de acusação por parte do Ministério Público.
@@ -1942,7 +1942,7 @@ relation:disagreement(Arg1,Arg2)
 O eurodeputado do PSD <PER>Paulo Rangel</PER> admitiu esta sexta-feira discordar da decisão do <ORG>Tribunal Constitucional (TC)</ORG> sobre a limitação de mandatos e apelou ao aperfeiçoamento da lei, agora com "uma redação à prova de bala".
 relation:disagreement(Arg1,Arg2)
 
-"O <PER>ministro do Ambiente</PER> passou um atestado de incompetência ao seu colega de governação <PER>António Mexia</PER>, actual ministro das Obras Públicas, Transportes e Comunicações, que na altura presidia à administração da Petrogal e da Galp Energia '', disse à Lusa o representante da comissão de trabalhadores, Hugo Basto.
+"O <PER>ministro do Ambiente</PER> passou um atestado de incompetência ao seu colega de governação <PER>António Mexia</PER>, actual ministro das Obras Públicas, Transportes e Comunicações, que na altura presidia à administração da Petrogal e da Galp Energia", disse à Lusa o representante da comissão de trabalhadores, Hugo Basto.
 relation:disagreement(Arg1,Arg2)
 
 A construção de uma nova unidade chegou a estar prevista para 2001, mas os prazos foram adiados depois de negociações que envolveram o Ministério da Economia, os trabalhadores e a Imocapital, empresa do grupo <ORG>Sonae</ORG> que detém a maioria do capital da <ORG>Gescartão</ORG>.
@@ -2053,10 +2053,10 @@ relation:member-of(Arg1,Arg2)
 As tropas britânicas afirmam controlar a " maior parte" da cidade de <LOC>Bassorá</LOC>, no <LOC>Sul do Iraque</LOC>.
 relation:located-in(Arg1,Arg2)
 
-`` Acreditamos que possa existir um eventual aumento deste tipo de furtos, mas não possuímos dados desagregados que nos indiquem esse fundamento", disse o comissário <PER>Paulo Flor</PER>, porta-voz da <ORG>Direcção Nacional da PSP</ORG>.
+"Acreditamos que possa existir um eventual aumento deste tipo de furtos, mas não possuímos dados desagregados que nos indiquem esse fundamento", disse o comissário <PER>Paulo Flor</PER>, porta-voz da <ORG>Direcção Nacional da PSP</ORG>.
 relation:member-of(Arg1,Arg2)
 
-`` Fazer uma ciclovia para a qual é preciso deslocar-se de carro não serve para nada", afirma <PER>José Caetano</PER>, presidente da <ORG>Federação Portuguesa de Cicloturismo e Utilizadores de Bicicleta</ORG>.
+"Fazer uma ciclovia para a qual é preciso deslocar-se de carro não serve para nada", afirma <PER>José Caetano</PER>, presidente da <ORG>Federação Portuguesa de Cicloturismo e Utilizadores de Bicicleta</ORG>.
 relation:member-of(Arg1,Arg2)
 
 O indivíduo detido é natural do <LOC>Faial</LOC>, concelho de <PER>Santana</PER>, e tem entre 20 e os 30 anos de idade.
@@ -2146,7 +2146,7 @@ relation:merge
 Um incêndio com várias frentes deflagrou cerca das 17h00 na zona de <LOC>Porto de Lagos</LOC>, concelho de <LOC>Portimão</LOC>.
 relation:located-in(Arg1,Arg2)
 
-`` Esperava a absolvição devido às várias atenuantes que foram apresentadas neste caso, entre elas as más condições da estrada e a péssima sinalização", disse ao diário espanhol <PER>Elizardo Sánchez</PER>, presidente da <ORG>Comissão Cubana dos Direitos Humanos e Reconciliação Nacional</ORG>.
+"Esperava a absolvição devido às várias atenuantes que foram apresentadas neste caso, entre elas as más condições da estrada e a péssima sinalização", disse ao diário espanhol <PER>Elizardo Sánchez</PER>, presidente da <ORG>Comissão Cubana dos Direitos Humanos e Reconciliação Nacional</ORG>.
 relation:member-of(Arg1,Arg2)
 
 A <ORG>Coreia do Norte</ORG> acusou hoje os <ORG>EUA</ORG> de estarem a fazer " chantagem" e de pretenderem destruir o país " com armas nucleares".
@@ -2170,10 +2170,10 @@ relation:member-of(Arg1,Arg2)
 Entre os 11 títulos que terminaram a valorizar, destaque ainda para os três títulos do grupo <ORG>Sonae</ORG> ( proprietário do <ORG>PÚBLICO</ORG> ), que avançaram entre um e quase três por cento.
 relation:owns(Arg1,Arg2)
 
-`` Se houver grande adesão podemos chegar hoje às 1500 assinaturas", diz, lembrando que a recolha e o contacto com os militantes do partido serão feitos na sede do <ORG>PSD/Algarve</ORG>, <LOC>Faro</LOC>, entre as 16h e as 23h.
+"Se houver grande adesão podemos chegar hoje às 1500 assinaturas", diz, lembrando que a recolha e o contacto com os militantes do partido serão feitos na sede do <ORG>PSD/Algarve</ORG>, <LOC>Faro</LOC>, entre as 16h e as 23h.
 relation:installations-in(Arg1,Arg2)
 
-`` Alguns engenhos explosivos foram colocados pelos nossos operacionais que trabalham nos serviços governamentais de segurança", dizia o " e-mail", assinado por <PER>Jomo Gbomo</PER>, porta-voz do <ORG>MEND</ORG>.
+"Alguns engenhos explosivos foram colocados pelos nossos operacionais que trabalham nos serviços governamentais de segurança", dizia o " e-mail", assinado por <PER>Jomo Gbomo</PER>, porta-voz do <ORG>MEND</ORG>.
 relation:member-of(Arg1,Arg2)
 
 O partido Socialista acusou hoje o primeiro-ministro de fazer um discurso insensível e contraditório e disse que <PER>Pedro Passos Coelho</PER> insiste em pressionar o <ORG>Tribunal Constitucional</ORG>.
@@ -2248,7 +2248,7 @@ relation:member-of(Arg1,Arg2)
 Neste momento encontra-se ainda por circunscrever um outro incêndio em <LOC>Moldes</LOC>, concelho de <LOC>Arouca ( Aveiro</LOC> ).
 relation:located-in(Arg1,Arg2)
 
-`` Com o pescado disponível na natureza a atingir níveis alarmantes e sem precedentes de esgotamento, a produção cultivada precisa ser considerada como uma alternativa", alertou, em comunicado, <PER>Sebastian Troeng</PER>, vice-presidente de conservação marinha da <ORG>Conservation International</ORG>.
+"Com o pescado disponível na natureza a atingir níveis alarmantes e sem precedentes de esgotamento, a produção cultivada precisa ser considerada como uma alternativa", alertou, em comunicado, <PER>Sebastian Troeng</PER>, vice-presidente de conservação marinha da <ORG>Conservation International</ORG>.
 relation:member-of(Arg1,Arg2)
 
 O presidente da <ORG>Comissão Europeia</ORG>, <PER>Durão Barroso</PER>, defendeu hoje que a economia portuguesa só tem futuro através da internacionalização das empresas e recomendou que a primeira aposta seja feita no mercado europeu, devido aos seus 500 milhões de consumidores.
@@ -2266,7 +2266,7 @@ relation:member-of(Arg2,Arg1)
 O líder do <ORG>Bloco de Esquerda ( BE )</ORG>, <PER>Francisco Louçã</PER>, defendeu hoje que o seu partido vai levar a cabo " uma campanha que atravessa as ruas do país", de forma a auscultar directamente a população.
 relation:member-of(Arg2,Arg1)
 
-`` Temos uma atitude de abertura mas, a não ser que a sociedade civil suscite este problema, o conselho não vai colocá-lo porque há outros problemas a resolver antes desse", reage o presidente do <ORG>Conselho Nacional de Procriação Medicamente Assistida</ORG>, <PER>Eurico Reis</PER>, endossando assim o problema para a sociedade civil.
+"Temos uma atitude de abertura mas, a não ser que a sociedade civil suscite este problema, o conselho não vai colocá-lo porque há outros problemas a resolver antes desse", reage o presidente do <ORG>Conselho Nacional de Procriação Medicamente Assistida</ORG>, <PER>Eurico Reis</PER>, endossando assim o problema para a sociedade civil.
 relation:member-of(Arg2,Arg1)
 
 A presidente do <ORG>CNE</ORG>, <PER>Tibisay Lucena</PER>, explicou que uma auditoria seria lançada após a " proclamação do candidato eleito".
@@ -2281,7 +2281,7 @@ relation:owns(Arg1,Arg2)
 A empresa têxtil <ORG>Eres</ORG>, localizada no <LOC>Vale de Canas</LOC>, no Fundão, emitiu cartas de rescisão de contratos de trabalho a 112 dos 500 funcionários da unidade fabril, num movimento de contenção de custos que se espalha um pouco por todas as empresas do sector.
 relation:located-in(Arg1,Arg2)
 
-O presidente da <ORG>Associação Portuguesa de Bancos</ORG>, <PER>João Salgueiro</PER>, desvalorizou hoje o crescimento de meio por cento registado pela economia portuguesa no segundo trimestre deste ano, considerando que não altera a situação dos portugueses nem a imagem do país. ''
+O presidente da <ORG>Associação Portuguesa de Bancos</ORG>, <PER>João Salgueiro</PER>, desvalorizou hoje o crescimento de meio por cento registado pela economia portuguesa no segundo trimestre deste ano, considerando que não altera a situação dos portugueses nem a imagem do país.
 relation:member-of(Arg2,Arg1)
 
 <ORG>Angola</ORG> e a <ORG>República Democrática do Congo</ORG> chegaram a acordo para suspender as expulsões de cidadãos entre os dois países, noticiaram os media locais.
@@ -2401,7 +2401,7 @@ relation:member-of(Arg1,Arg2)
 O seu maxilar inferior foi encontrado em 2000 na escavação arqueológica de Dmanisi ( a uns 100 quilómetros de <LOC>Tbilisi</LOC>, a capital da <LOC>Geórgia</LOC> ) -- e o resto do seu rosto e cabeça em 2005.
 relation:located-in(Arg1,Arg2)
 
-`` Eles são enormes, andam por aí, parecem que estão a olhar para as pessoas e a comunicar com elas, e as pessoas gostam disso", explica <PER>Denise Feiber</PER>, porta-voz do <ORG>Departamento para a Agricultura e para os Serviços dos Consumidores</ORG>.
+"Eles são enormes, andam por aí, parecem que estão a olhar para as pessoas e a comunicar com elas, e as pessoas gostam disso", explica <PER>Denise Feiber</PER>, porta-voz do <ORG>Departamento para a Agricultura e para os Serviços dos Consumidores</ORG>.
 relation:member-of(Arg1,Arg2)
 
 <PER>Dionísio Mendes</PER>, presidente da <ORG>Câmara Municipal de Coruche</ORG>, disse que, apesar de algumas provocações, as pessoas que ontem decidiram mostrar publicamente a sua revolta " contiveram-se" e conseguiram manter-se calmas.
@@ -2482,7 +2482,7 @@ relation:located-in(Arg1,Arg2)
 Só de quarta para quinta-feira morreram três pessoas, assassinadas a tiro, na cidade de <LOC>Valencia</LOC>, capital do estado de <LOC>Carabobo</LOC>, a cerca de 200 quilómetros da capital, onde há relatos de estarem em acção milícias chavistas denominadas " colectivos".
 relation:located-in(Arg1,Arg2)
 
-As equipas de salvamento dão já como impossível encontrar mais alguém com vida -- nenhum sobrevivente foi encontrado, de resto, nas últimas 24 horas -- na totalmente devastada cidade de <LOC>L'Aquila</LOC>, na <LOC>região de Abruzzo</LOC>.
+As equipas de salvamento dão já como impossível encontrar mais alguém com vida -- nenhum sobrevivente foi encontrado, de resto, nas últimas 24 horas -- na totalmente devastada cidade de <LOC>L`Aquila</LOC>, na <LOC>região de Abruzzo</LOC>.
 relation:located-in(Arg1,Arg2)
 
 A apoiar a manifestação estiveram 15 cidadãos da cidade de <LOC>Soguksu</LOC>, no <LOC>Norte da Turquia</LOC>, onde estão armazenados alguns dos resíduos tóxicos, contendo metais pesados.
@@ -2494,7 +2494,7 @@ relation:located-in(Arg1,Arg2)
 Sete pessoas morreram e seis ficaram feridas na explosão de uma mina numa estrada a 36 quilómetros da cidade de <LOC>Mavinga</LOC>, no <LOC>sudeste de Angola</LOC>.
 relation:located-in(Arg1,Arg2)
 
-`` É um choque absoluto que isto aconteça nesta reunião e é uma absoluta desgraça porque dizer que a caça à baleia se faz em nome da Ciência está errado", disse <PER>James Lorenz</PER>, da organização ecologista <ORG>Greenpeace</ORG>, à televisão australiana.
+"É um choque absoluto que isto aconteça nesta reunião e é uma absoluta desgraça porque dizer que a caça à baleia se faz em nome da Ciência está errado", disse <PER>James Lorenz</PER>, da organização ecologista <ORG>Greenpeace</ORG>, à televisão australiana.
 relation:member-of(Arg1,Arg2)
 
 <PER>Jean-Claude Trichet</PER>, presidente do <ORG>Banco Central Europeu ( BCE )</ORG>, disse que a consolidação das finanças públicas é " um trabalho que deve ser feito a nível mundial".
@@ -2530,7 +2530,7 @@ relation:founded-by(Arg2,Arg1)
 O escritor <PER>José Saramago</PER> acusou hoje o <PER>papa Bento XVI</PER> de " cinismo" e defendeu que à " insolência reaccionária" da Igreja há que responder com a " insolência da inteligência viva".
 relation:disagreement(Arg1,Arg2)
 
-`` Parece-nos haver um aumento no número de desistências em função da crise económica", reconhece a directora do gabinete de relações internacionais do <ORG>Politécnico de Tomar</ORG>, <PER>Conceição Catroga</PER>.
+"Parece-nos haver um aumento no número de desistências em função da crise económica", reconhece a directora do gabinete de relações internacionais do <ORG>Politécnico de Tomar</ORG>, <PER>Conceição Catroga</PER>.
 relation:member-of(Arg2,Arg1)
 
 A deputada do BE <PER>Cecília Honório</PER> apoiou a iniciativa do <ORG>PCP</ORG>, alegando a " necessidade de esclarecer se não foi por esta via que foi construído um cenário de apocalipse".
@@ -2638,7 +2638,7 @@ relation:member-of(Arg1,Arg2)
 O deputado socialista <PER>Pedro Silva Pereira</PER> considerou " deplorável que o <PER>ministro do Ambiente</PER> permaneça em absoluto silêncio sobre aquela que devia ser, como sucedeu no passado, uma grande jornada de educação ambiental".
 relation:disagreement(Arg1,Arg2)
 
-`` Eles também bombardearam outras três aldeias no domingo", acrescentou o porta-voz, precisando que os ataques ocorreram numa zona a norte de <LOC>Nyala</LOC>, capital do estado de <LOC>Darfur Sul</LOC>.
+"Eles também bombardearam outras três aldeias no domingo", acrescentou o porta-voz, precisando que os ataques ocorreram numa zona a norte de <LOC>Nyala</LOC>, capital do estado de <LOC>Darfur Sul</LOC>.
 relation:located-in(Arg1,Arg2)
 
 Os seis bombeiros que hoje morreram num incêndio em <LOC>Famalicão da Serra</LOC>, concelho da <LOC>Guarda</LOC>, foram cercados pelas chamas cerca das 14h10, tendo ficado acabado por falecer no local.
@@ -2683,7 +2683,7 @@ relation:located-in(Arg1,Arg2)
 <PER>José Varela</PER>, da <ORG>CDU</ORG>, explicou que os comunistas " concordam com o sentido global da proposta", mas lamentou que esta não tivesse " ido mais longe".
 relation:member-of(Arg1,Arg2)
 
-`` Não há maneira de predizer qual será o futuro das relações entre a <ORG>Síria</ORG> e os <ORG>EUA</ORG> ''.
+Não há maneira de predizer qual será o futuro das relações entre a <ORG>Síria</ORG> e os <ORG>EUA</ORG>.
 relation:other
 
 O ultramaratonista português, que se define como " um corredor de montanha que já conseguiu alguns resultados também em desertos", admite que este desafio é o maior da carreira, mas lembra outro grande feito conseguido em Janeiro último, quando se tornou no homem mais rápido do mundo na ascensão do ponto mais alto do hemisfério sul, o <LOC>Aconcágua</LOC>, na <LOC>Argentina</LOC>.
@@ -2764,7 +2764,7 @@ relation:installations-in(Arg1,Arg2)
 O <ORG>Canadá</ORG> e o <ORG>Panamá</ORG> chegaram a acordo para celebrarem um pacto de comércio livre bilateral, anúncio oficial que hoje deverá ser feito na capital panamiana.
 relation:agreement(Arg1,Arg2)
 
-`` Estamos interessados em comprar os 50 por cento da <ORG>Portugal Telecom</ORG> na <ORG>Vivo</ORG>.
+"Estamos interessados em comprar os 50 por cento da <ORG>Portugal Telecom</ORG> na <ORG>Vivo</ORG>."
 relation:hold-shares-of(Arg1,Arg2)
 
 <PER>Carvalho da Silva</PER> acusou o <ORG>Governo</ORG> de estar a promover uma " ofensiva liberal", que resulta do facto de " não haver eleições nos próximos dois anos e de o contexto internacional ser favorável a essa ofensiva".
@@ -2863,7 +2863,7 @@ relation:founded-by(Arg1,Arg2)
 Quando a <PER>Abertis</PER> reforçou a sua participação no capital da <ORG>Brisa</ORG>, e chegou aos actuais 15,20 por cento, fez ruir a parceria estratégica que foi assumida pelas duas gestoras de infra-estruturas.
 relation:hold-shares-of(Arg1,Arg2)
 
-`` São os primeiros documentos que provam que houve troca de informação entre a <ORG>Sociedade de Geografia de Lisboa</ORG> e a <ORG>Royal Geographical Society</ORG>.
+São os primeiros documentos que provam que houve troca de informação entre a <ORG>Sociedade de Geografia de Lisboa</ORG> e a <ORG>Royal Geographical Society</ORG>.
 relation:agreement(Arg1,Arg2)
 
 Em Israel, a <ORG>Comissão Kahn</ORG> acusa <PER>Sharon</PER> de " responsabilidade indirecta".
@@ -2875,7 +2875,7 @@ relation:installations-in(Arg1,Arg2)
 O incidente ocorreu no mesmo dia em que um outro pacote suspeito foi encontrado na sala de correio da sede do <ORG>Banco Central Europeu</ORG>, em <LOC>Frankfurt</LOC>.
 relation:installations-in(Arg1,Arg2)
 
-<PER>David Neves</PER> manifestou, por outro lado, concordância com as palavras do <PER>ministro do Ambiente</PER> sobre a necessidade de " intensificar as acções inspectivas" às suiniculturas, mas defendeu que a fiscalização deve ser feita também a outros sectores de actividade. ''
+<PER>David Neves</PER> manifestou, por outro lado, concordância com as palavras do <PER>ministro do Ambiente</PER> sobre a necessidade de " intensificar as acções inspectivas" às suiniculturas, mas defendeu que a fiscalização deve ser feita também a outros sectores de actividade.
 relation:agreement(Arg1,Arg2)
 
 O <ORG>Estado</ORG> é o maior accionista da <ORG>Inapa</ORG>, com uma posição de 32,7 %, através da Parpública, estando esta participação há muito na lista de reprivatizações.
@@ -2911,7 +2911,7 @@ relation:agreement(Arg1,Arg2)
 Por seu lado, o <PER>presidente da Câmara dos Deputados</PER>, <PER>Guido Anez</PER>, anunciou que os 157 parlamentares poderão, nos próximos dias, diminuir os seus subsídios em doze por cento.
 relation:agreement(Arg1,Arg2)
 
-`` São necessários homens de serviço público e com capacidade de gestão", sendo o engenheiro <PER>Pedro Cunha Serra</PER> um exemplo a seguir, afirmou <PER>Ferro Rodrigues</PER>.
+"São necessários homens de serviço público e com capacidade de gestão", sendo o engenheiro <PER>Pedro Cunha Serra</PER> um exemplo a seguir, afirmou <PER>Ferro Rodrigues</PER>."
 relation:agreement(Arg2,Arg1)
 
 <PER>João Gomes Ferreira</PER>, investigador docente da <ORG>Faculdade de Ciências e Tecnologia da Universidade de Lisboa</ORG>, estima que o estuário tem capacidade para produzir entre sete e 12 mil toneladas de ostras por ano, que, se forem vendidas a cinco euros por quilo, podem render 35 a 60 milhões de euros.
@@ -2941,7 +2941,7 @@ relation:owns(Arg1,Arg2)
 <PER>João Nunes da Silva</PER>, um dos fundadores da <ORG>Quercus</ORG>, fala sobre 22 anos de fotojornalismo da natureza.Quando abriu a máquina para tirar o rolo e revelar as imagens, percebeu que ... não tinha colocado rolo.
 relation:founded-by(Arg1,Arg2)
 
-Continuamos a trabalhar, mas não sabemos o que vai acontecer com a fusão do <ORG>IPA</ORG> e do <ORG>IPPAR</ORG>. ''
+Continuamos a trabalhar, mas não sabemos o que vai acontecer com a fusão do <ORG>IPA</ORG> e do <ORG>IPPAR</ORG>.
 relation:merge
 
 O presidente da <ORG>Câmara Municipal da Amadora</ORG>, <PER>Joaquim Raposo</PER>, defendeu hoje a instalação de sistemas de videovigilância nos bairros considerados perigosos para, juntamente com aumento de patrulhamento policial e novas apostas sociais, dissuadir comportamentos criminais.
@@ -3040,7 +3040,7 @@ relation:owns(Arg2,Arg1)
 O ex-chefe da polícia secreta sérvia <PER>Radomir Markovic</PER> foi hoje acusado pelo <ORG>Ministério Público de Belgrado</ORG> de " participação num assassinato e tentativa de homicídio", noticiou a rádio independente B-92.
 relation:disagreement(Arg2,Arg1)
 
-<PER>Vernon Cormier</PER>, da <ORG>Universidade do Connecticut</ORG>, diz que a pressão e as altas temperaturas tornam impossível uma deslocação tão profunda. ''
+<PER>Vernon Cormier</PER>, da <ORG>Universidade do Connecticut</ORG>, diz que a pressão e as altas temperaturas tornam impossível uma deslocação tão profunda.
 relation:member-of(Arg1,Arg2)
 
 O presidente executivo da nova empresa que resultará da fusão entre a <ORG>PT</ORG> e a <ORG>Oi</ORG>, a CorpCo, anunciou que irá pagar aos seus accionistas dividendos de 500 milhões de reais ( mais de 166 milhões de euros ) em 2014, 2015 e 2016.
@@ -3073,7 +3073,7 @@ relation:hold-shares-of(Arg1,Arg2)
 A Tutela lançou um novo concurso e a linha vai passar para as mãos da <ORG>PT Contact -- Telemarketing e Serviços de Informação</ORG>, do grupo <ORG>Portugal Telecom</ORG>, adianta o jornal na sua edição desta quarta-feira.
 relation:owns(Arg2,Arg1)
 
-`` Se me tivesse telefonado há dez anos a gente falaria a mesma coisa", disse <PER>João Sette Whitaker</PER>, doutorado em Estruturas Ambientais Urbanas, da <ORG>Universidade de São Paulo</ORG>.
+"Se me tivesse telefonado há dez anos a gente falaria a mesma coisa", disse <PER>João Sette Whitaker</PER>, doutorado em Estruturas Ambientais Urbanas, da <ORG>Universidade de São Paulo</ORG>.
 relation:studied-at(Arg1,Arg2)
 
 O <ORG>PS</ORG> acusa o <ORG>PSD</ORG> de ter a intenção de aumentar os impostos ao propor a redução da taxa social única em quatro por cento no seu programa eleitoral.
@@ -3190,7 +3190,7 @@ relation:founded-by(Arg2,Arg1)
 <PER>Stuart Cable</PER>, baterista e membro fundador dos britânicos <PER>Sterophonics</PER>, já não faz parte da banda.
 relation:founded-by(Arg2,Arg1)
 
-O alvo das atenções são o <ORG>Moto Clube</ORG> e um dos seus membros, <PER>Manú da Silva</PER>, já falecido, antigo gerente do bar da banda, o Eddie 's Bar, em Santa Bárbara de Nexe, Faro, e amigo pessoal do fundador do grupo, Steve Harris.
+O alvo das atenções são o <ORG>Moto Clube</ORG> e um dos seus membros, <PER>Manú da Silva</PER>, já falecido, antigo gerente do bar da banda, o Eddie`s Bar, em Santa Bárbara de Nexe, Faro, e amigo pessoal do fundador do grupo, Steve Harris.
 relation:member-of(Arg2,Arg1)
 
 Houve "conflito" com outras prisioneiras e <PER>Maria Alyokhina</PER>, membro da banda <ORG>Pussy Riot</ORG>, foi transferida para uma cela individual na prisão de <PER>Bereziniki</PER>, onde cumpre uma pena de dois anos.
@@ -3313,7 +3313,7 @@ relation:installations-in(Arg2,Arg1)
 Em declarações ao Rádio Clube, <PER>Rangel</PER> diz mesmo que <PER>Sócrates</PER> está a ter um comportamento de adolescente, em referência às palavras do chefe de Governo durante o último debate quinzenal na Assembleia da República sobre o porta-voz de Cavaco Silva.
 relation:disagreement(Arg1,Arg2)
 
-O deputado socialista e ex-director do jornal " Público" <PER>Vicente Jorge Silva</PER> manifestou o seu " veemente desacordo" com as posições de <PER>Mário Soares</PER> sobre a Al-Qaeda, após lembrar que foi autor de um voto de protesto na Assembleia da República `` contra declarações insultuosas proferidas pelo porta-voz do CDS-PP, Pires de Lima '', em relação a Soares.
+O deputado socialista e ex-director do jornal Público <PER>Vicente Jorge Silva</PER> manifestou o seu "veemente desacordo" com as posições de <PER>Mário Soares</PER> sobre a Al-Qaeda, após lembrar que foi autor de um voto de protesto na Assembleia da República "contra declarações insultuosas proferidas pelo porta-voz do CDS-PP, Pires de Lima", em relação a Soares.
 relation:disagreement(Arg1,Arg2)
 
 A compra de acções da <ORG>Cimpor</ORG> pela <ORG>CGD</ORG> ao empresário Manuel Fino e o aumento do desemprego dominaram ontem o debate quinzenal com o primeiro-ministro.
@@ -3370,7 +3370,7 @@ relation:work-together
 O documento enviado para o Tribunal Administrativo de Lisboa começa precisamente por comparar a situação de Sócrates com a de <PER>Miguel Relvas</PER>, que se licenciou pela <ORG>Universidade Lusófona</ORG>, também privada.
 relation:studied-at(Arg1,Arg2)
 
-`` São uma coisa muito nossa e que desenha a identidade de Guimarães '', salienta a vereadora da Cultura, <PER>Francisca Abreu</PER>, que foi estudante e professora na <ORG>Secundária Martins Sarmento</ORG>.
+"São uma coisa muito nossa e que desenha a identidade de Guimarães", salienta a vereadora da Cultura, <PER>Francisca Abreu</PER>, que foi estudante e professora na <ORG>Secundária Martins Sarmento</ORG>.
 relation:studied-at(Arg1,Arg2)
 
 <PER>José Sócrates</PER> foi aluno da <ORG>Universidade Independente</ORG> e a forma como concluiu a sua licenciatura em engenharia suscitou muita polémica.
@@ -3412,7 +3412,7 @@ relation:studied-at(Arg1,Arg2)
 <ORG>Moscovo</ORG> ripostou, acusando a <ORG>Geórgia</ORG> de violar a interdição de sobrevoo daquela região autónoma.
 relation:disagreement(Arg1,Arg2)
 
-<PER>Belmiro Magalhães</PER> explicou em tribunal que colaborou com <PER>José Faria</PER> durante muitos anos mas que agora está " de relações cortadas com ele" e disse à juíza que preside ao colectivo " que já apresentou queixa no <ORG>Ministério Público</ORG> ''.
+<PER>Belmiro Magalhães</PER> explicou em tribunal que colaborou com <PER>José Faria</PER> durante muitos anos mas que agora está " de relações cortadas com ele" e disse à juíza que preside ao colectivo "que já apresentou queixa no <ORG>Ministério Público</ORG>".
 relation:work-together
 
 Do complexo industrial da <ORG>Foxconn</ORG> em <LOC>Shenzhen</LOC>, China, saem milhares de produtos que andam nas mãos dos consumidores de todo o mundo nos seus iPhones, iPods, telemóveis Nokia e computadores HP, Dell e Intel.
@@ -3436,13 +3436,13 @@ relation:member-of(Arg1,Arg2)
 A explosão, que ocorreu pelas 12h00, destruiu quase por completo um edifício de quatro andares do complexo da fábrica <PER>Stockline Plastics</PER>, localizada no <LOC>centro de Glasgow</LOC>.
 relation:installations-in(Arg1,Arg2)
 
-`` Nos termos da Constituição e da lei essas competências estão atribuídas aos órgãos judiciais, os quais gozam de independência e de autonomia e se eu me pronunciasse ou comentasse esses processos podia ser acusado de estar a tentar interferir no seu desenvolvimento", sustentou, em declarações aos jornalistas em <LOC>Estarreja</LOC>, no final de uma visita à fábrica da <ORG>Tensai Portugal</ORG>.
+"Nos termos da Constituição e da lei essas competências estão atribuídas aos órgãos judiciais, os quais gozam de independência e de autonomia e se eu me pronunciasse ou comentasse esses processos podia ser acusado de estar a tentar interferir no seu desenvolvimento", sustentou, em declarações aos jornalistas em <LOC>Estarreja</LOC>, no final de uma visita à fábrica da <ORG>Tensai Portugal</ORG>.
 relation:installations-in(Arg2,Arg1)
 
 <PER>Cohen</PER> terá tido divergências com os membros da banda <ORG>Queen</ORG> em relação à perspectiva e direcção que a película ia seguir.
 relation:disagreement(Arg1,Arg2)
 
-<PER>António Pires de Lima</PER>, que mantém divergências políticas públicas com <PER>Nobre Guedes</PER>, considerou que a ausência do ex-ministro do Ambiente `` vai limitar o âmbito do próprio Congresso ''.
+<PER>António Pires de Lima</PER>, que mantém divergências políticas públicas com <PER>Nobre Guedes</PER>, considerou que a ausência do ex-ministro do Ambiente "vai limitar o âmbito do próprio Congresso".
 relation:disagreement(Arg1,Arg2)
 
 Após a ultra-mediatizada e politizada saída da historiadora <PER>Dalila Rodrigues</PER> na sequência de um braço-de-ferro público com a então <PER>ministra da Cultura Isabel Pires de Lima</PER>.

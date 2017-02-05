@@ -5,6 +5,7 @@ import subprocess
 
 
 def main():
+
     sentence = """
     Quase 900 funcionários do Departamento de Estado assinaram memorando que
     critica Trump.
