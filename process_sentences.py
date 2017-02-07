@@ -87,18 +87,10 @@ def extract_features(rel):
         - the words before and single word after E1 and E2 respectively
 
     """
-    # case 1
-    # both entities len(parts) = 1
 
-    if len(rel.ent1_parts) == len(rel.ent2_parts) == 1:
-        BEF = rel.syntaxnet_info[0:rel.ent1_begin]
-        BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin-1]
-        AFT = rel.syntaxnet_info[rel.ent2_end+1:]
-
-    else:
-        BEF = rel.syntaxnet_info[0:rel.ent1_begin]
-        BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin]
-        AFT = rel.syntaxnet_info[rel.ent2_end+1:]
+    BEF = rel.syntaxnet_info[0:rel.ent1_begin]
+    BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin]
+    AFT = rel.syntaxnet_info[rel.ent2_end+1:]
 
     print rel.sentence
     print
@@ -257,9 +249,23 @@ def main():
     rel = get_contexts(relationships[int(sys.argv[2])])
 
     # TODO: write tests
-    # both entities len(1)
-    #    - ent2: end of sentence -> 830
+    #  len(both entities) = 1
+    #     - ent1: middle of sentence
+    #     - ent2: end of sentence -> 830
+    #
+    #  len(both entities) = 1
+    #     - ent1: middle of sentence
+    #     - ent2: middle of sentence
+    #     - len(BET) = 1
+    #                       16
+    # len(ent2) = 1
+    #     - ent1: begin of sentence -> 10
 
+    # TODO: corrigir entidades
+    # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )
+    # <ORG>Instituto de Apoio à Criança (IAC)</ORG>
+
+    # ./process_sentences.py train_data.txt `jot -r 1  0 1083`
 
     extract_features(rel)
     # TODO: para visualizar a dep-tree procurar um CONLL2GraphTree
