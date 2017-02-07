@@ -29,9 +29,6 @@ class Relationship:
         self.ent1_end = None
         self.ent2_begin = None
         self.ent2_end = None
-        self.bef = None
-        self.bet = None
-        self.aft = None
 
 
 def load_relationships(data_file):
@@ -90,6 +87,37 @@ def extract_features(rel):
         - the words before and single word after E1 and E2 respectively
 
     """
+    # case 1
+    # both entities len(parts) = 1
+
+    if len(rel.ent1_parts) == len(rel.ent2_parts) == 1:
+        BEF = rel.syntaxnet_info[0:rel.ent1_begin]
+        BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin-1]
+        AFT = rel.syntaxnet_info[rel.ent2_end+1:]
+
+    else:
+        BEF = rel.syntaxnet_info[0:rel.ent1_begin]
+        BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin]
+        AFT = rel.syntaxnet_info[rel.ent2_end+1:]
+
+    print rel.sentence
+    print
+
+    for word_info in BEF:
+        print word_info[1],
+    print
+
+    print
+
+    for word_info in BET:
+        print word_info[1],
+    print
+    print
+
+    for word_info in AFT:
+        print word_info[1],
+    print
+    print
 
 
 def syntactic_path(sentence):
@@ -111,21 +139,13 @@ def syntactic_path(sentence):
 
 
 def get_contexts(rel):
-
-    print rel.sentence
-
     ent1_parts = get_entity_parts(rel.ent1)
     ent2_parts = get_entity_parts(rel.ent2)
-
     rel.ent1_begin, rel.ent1_end = get_entity_position(ent1_parts, rel)
     rel.ent2_begin, rel.ent2_end = get_entity_position(ent2_parts, rel)
-
-    print
-    print rel.syntaxnet_info[rel.ent1_begin]
-    print rel.syntaxnet_info[rel.ent1_end]
-    print
-    print rel.syntaxnet_info[rel.ent2_begin]
-    print rel.syntaxnet_info[rel.ent2_end]
+    rel.ent1_parts = ent1_parts
+    rel.ent2_parts = ent2_parts
+    return rel
 
 
 def get_entity_position(ent_parts, rel):
@@ -135,7 +155,7 @@ def get_entity_position(ent_parts, rel):
     end = 0
 
     for i in range(len(rel.syntaxnet_info)):
-        if rel.syntaxnet_info[i][1].strip(",") == ent_parts[z].encode("utf8"):
+        if rel.syntaxnet_info[i][1].strip(",.") == ent_parts[z].encode("utf8"):
 
             # entity is a single token
             if z == 0 and len(ent_parts) == 1:
@@ -234,8 +254,14 @@ def main():
     for x in range(0, len(relationships)):
         relationships[x].syntaxnet_info = sentences_processed[x]
 
-    get_contexts(relationships[int(sys.argv[2])])
+    rel = get_contexts(relationships[int(sys.argv[2])])
 
+    # TODO: write tests
+    # both entities len(1)
+    #    - ent2: end of sentence -> 830
+
+
+    extract_features(rel)
     # TODO: para visualizar a dep-tree procurar um CONLL2GraphTree
     """
     for word_info in rel.syntaxnet_info:
