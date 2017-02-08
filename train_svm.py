@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from common.Sentence import Sentence, Relationship
-
-__author__ = "David S. Batista"
-__email__ = "dsbatista@inesc-id.pt"
 
 import codecs
 import re
@@ -19,8 +15,12 @@ from nltk import bigrams
 from sklearn import svm
 from sklearn.cross_validation import KFold
 from math import log
-from common.ReVerbPT import ReverbPT
 
+from common.ReVerbPT import ReverbPT
+from common.Sentence import Sentence, Relationship
+
+__author__ = "David S. Batista"
+__email__ = "dsbatista@inesc-id.pt"
 
 # Parameters for relationship extraction from Sentence
 MAX_TOKENS_AWAY = 9

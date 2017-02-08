@@ -9,6 +9,8 @@ import codecs
 import sys
 
 from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.parse import DependencyGraph
+from nltk import Tree
 
 __author__ = "David S. Batista"
 __email__ = "dsbatista@gmail.com"
@@ -29,6 +31,9 @@ class Relationship:
         self.ent1_end = None
         self.ent2_begin = None
         self.ent2_end = None
+        self.before_context = None
+        self.between_context = None
+        self.after_context = None
 
 
 def load_relationships(data_file):
@@ -88,31 +93,10 @@ def extract_features(rel):
 
     """
 
-    BEF = rel.syntaxnet_info[0:rel.ent1_begin]
-    BET = rel.syntaxnet_info[rel.ent1_end+1:rel.ent2_begin]
-    AFT = rel.syntaxnet_info[rel.ent2_end+1:]
-
-    print rel.sentence
-    print
-
-    for word_info in BEF:
-        print word_info[1],
-    print
-
-    print
-
-    for word_info in BET:
-        print word_info[1],
-    print
-    print
-
-    for word_info in AFT:
-        print word_info[1],
-    print
-    print
+    return rel
 
 
-def syntactic_path(sentence):
+def extract_syntactic_path(rel):
     """
     1  ID: Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes.
     2  FORM: Word form or punctuation symbol.
@@ -125,22 +109,90 @@ def syntactic_path(sentence):
     9  DEPS: Enhanced dependency graph in the form of a list of head-deprel pairs.
     10 MISC: Any other annotation.
 
-    :param sentence:
+    :param rel:
     :return:
     """
 
+    """
+    for word_info in rel.before_context:
+        print word_info[1],
+    print
+
+    print
+
+    for word_info in rel.between_context:
+        print word_info[1],
+    print
+    print
+
+    for word_info in rel.after_context:
+        print word_info[1],
+    print
+    print
+    """
+
+    print rel.sentence
+    print
+
+    s = ''
+    for e in rel.syntaxnet_info:
+        s += "\t".join(e) + '\n'
+
+    print s
+
+    graph = DependencyGraph(tree_str=s.decode("utf8"))
+    #print dir(graph)
+    tree = graph.tree()
+
+    triples = sorted([t for t in graph.triples()])
+    for t in triples:
+        print t
+
+    #print dir(tree)
+
+    tree.pretty_print()
+
+    """
+     reduce each relation example to the smallest subtree in the parse or
+     dependency tree that includes both entities.
+    """
+
+    #[to_nltk_tree(s.root).pretty_print()]
+    #print tree.pprint_latex_qtree()
+    #tree.draw()
+    #word, lemma, ctag, tag, feats, head, rel
+
 
 def get_contexts(rel):
+    """
+    identifies the BEFORE, BETWEEN and AFTER context in a sentence
+    :param rel:
+    :return:
+    """
+
     ent1_parts = get_entity_parts(rel.ent1)
     ent2_parts = get_entity_parts(rel.ent2)
+
     rel.ent1_begin, rel.ent1_end = get_entity_position(ent1_parts, rel)
     rel.ent2_begin, rel.ent2_end = get_entity_position(ent2_parts, rel)
+
     rel.ent1_parts = ent1_parts
     rel.ent2_parts = ent2_parts
+
+    rel.before_context = rel.syntaxnet_info[0:rel.ent1_begin]
+    rel.between_context = rel.syntaxnet_info[rel.ent1_end + 1:rel.ent2_begin]
+    rel.after_context = rel.syntaxnet_info[rel.ent2_end + 1:]
+
     return rel
 
 
 def get_entity_position(ent_parts, rel):
+    """
+    gets an entity position in a sentence as processed by SyntaxNet
+    :param ent_parts:
+    :param rel:
+    :return:
+    """
 
     z = 0
     begin = 0
@@ -247,19 +299,7 @@ def main():
         relationships[x].syntaxnet_info = sentences_processed[x]
 
     rel = get_contexts(relationships[int(sys.argv[2])])
-
-    # TODO: write tests
-    #  len(both entities) = 1
-    #     - ent1: middle of sentence
-    #     - ent2: end of sentence -> 830
-    #
-    #  len(both entities) = 1
-    #     - ent1: middle of sentence
-    #     - ent2: middle of sentence
-    #     - len(BET) = 1
-    #                       16
-    # len(ent2) = 1
-    #     - ent1: begin of sentence -> 10
+    extract_syntactic_path(rel)
 
     # TODO: corrigir entidades
     # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )
@@ -267,12 +307,6 @@ def main():
 
     # ./process_sentences.py train_data.txt `jot -r 1  0 1083`
 
-    extract_features(rel)
-    # TODO: para visualizar a dep-tree procurar um CONLL2GraphTree
-    """
-    for word_info in rel.syntaxnet_info:
-        print word_info[0], word_info[1], word_info[3], word_info[6], word_info[7]
-    """
 
 if __name__ == "__main__":
     main()
