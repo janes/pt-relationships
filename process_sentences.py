@@ -96,6 +96,61 @@ def extract_features(rel):
     return rel
 
 
+def get_path_up_to_root(path, tree, node):
+    while int(node[6]) != 0:
+        node = tree[int(node[6])-1]
+        path.append(node)
+    return path
+
+
+def extract_shortest_syntactic_path(rel):
+
+    s = ''
+    for e in rel.syntaxnet_info:
+        s += "\t".join(e) + '\n'
+
+    graph = DependencyGraph(tree_str=s.decode("utf8"))
+    tree = graph.tree()
+    triples = sorted([t for t in graph.triples()])
+    """
+    for t in triples:
+        print t
+
+    for e in rel.syntaxnet_info:
+        print e[0], e[1], e[6], e[7], e[8]
+    """
+
+    tree.pretty_print()
+
+    print rel.ent1
+    print rel.ent2
+
+    # for both entities get path until ROOT, find lowest tree intersection
+    path = [rel.syntaxnet_info[rel.ent1_end]]
+    ent1_path = get_path_up_to_root(path, rel.syntaxnet_info,
+                                    rel.syntaxnet_info[rel.ent1_end])
+
+    path = [rel.syntaxnet_info[rel.ent2_end]]
+    ent2_path = get_path_up_to_root(path, rel.syntaxnet_info,
+                                    rel.syntaxnet_info[rel.ent2_end])
+
+    print
+    print "ent1_path", ent1_path
+    print
+    print "ent2_path", ent2_path
+
+
+    """
+    lenght = len(ent1_path) if len(ent1_path) > len(ent2_path) else len(ent2_path)
+
+    path = ''
+
+    for i in range(lenght):
+        if ent1_path[i] != ent2_path[i]:
+            print ent1_path, ent2_path
+    """
+
+
 def extract_syntactic_path(rel):
     """
     1  ID: Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes.
@@ -299,7 +354,7 @@ def main():
         relationships[x].syntaxnet_info = sentences_processed[x]
 
     rel = get_contexts(relationships[int(sys.argv[2])])
-    extract_syntactic_path(rel)
+    extract_shortest_syntactic_path(rel)
 
     # TODO: corrigir entidades
     # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )
