@@ -67,7 +67,6 @@ def load_relationships(data_file):
 
 def extract_features(rel):
     """
-
     BETWEEN:
         - the words
         - parts of speech
@@ -91,6 +90,23 @@ def extract_features(rel):
     BEFORE:
         - the words before and single word after E1 and E2 respectively
 
+    Syntactic Dependencies Trees
+    ============================
+
+    - reduce each relation example to the smallest subtree in the parse or
+      dependency tree that includes both entities.
+
+      e.g.:
+        s = ''
+        for e in rel.syntaxnet_info:
+            s += "\t".join(e) + '\n'
+        graph = DependencyGraph(tree_str=s.decode("utf8"))
+        tree = graph.tree()
+        tree.pretty_print()
+        for t in tree.subtrees():
+            t.pretty_print()
+
+    - path between two entities
     """
 
     return rel
@@ -103,54 +119,6 @@ def get_path_up_to_root(path, tree, node):
     return path
 
 
-def extract_shortest_syntactic_path(rel):
-
-    s = ''
-    for e in rel.syntaxnet_info:
-        s += "\t".join(e) + '\n'
-
-    graph = DependencyGraph(tree_str=s.decode("utf8"))
-    tree = graph.tree()
-    triples = sorted([t for t in graph.triples()])
-    """
-    for t in triples:
-        print t
-
-    for e in rel.syntaxnet_info:
-        print e[0], e[1], e[6], e[7], e[8]
-    """
-
-    tree.pretty_print()
-
-    print rel.ent1
-    print rel.ent2
-
-    # for both entities get path until ROOT, find lowest tree intersection
-    path = [rel.syntaxnet_info[rel.ent1_end]]
-    ent1_path = get_path_up_to_root(path, rel.syntaxnet_info,
-                                    rel.syntaxnet_info[rel.ent1_end])
-
-    path = [rel.syntaxnet_info[rel.ent2_end]]
-    ent2_path = get_path_up_to_root(path, rel.syntaxnet_info,
-                                    rel.syntaxnet_info[rel.ent2_end])
-
-    print
-    print "ent1_path", ent1_path
-    print
-    print "ent2_path", ent2_path
-
-
-    """
-    lenght = len(ent1_path) if len(ent1_path) > len(ent2_path) else len(ent2_path)
-
-    path = ''
-
-    for i in range(lenght):
-        if ent1_path[i] != ent2_path[i]:
-            print ent1_path, ent2_path
-    """
-
-
 def extract_syntactic_path(rel):
     """
     1  ID: Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes.
@@ -159,63 +127,55 @@ def extract_syntactic_path(rel):
     4  UPOSTAG: Universal part-of-speech tag.
     5  XPOSTAG: Language-specific part-of-speech tag; underscore if not available.
     6  FEATS: List of morphological features from the universal feature inventory or from a defined language-specific extension; underscore if not available.
-    7  HEAD: Head of the current word, which is either a value of ID or zero (0).
+    7  HEAD: Head of the current word, which is either a value of ID or zero (0)
     8  DEPREL: Universal dependency relation to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one.
     9  DEPS: Enhanced dependency graph in the form of a list of head-deprel pairs.
     10 MISC: Any other annotation.
-
-    :param rel:
-    :return:
     """
-
-    """
-    for word_info in rel.before_context:
-        print word_info[1],
-    print
-
-    print
-
-    for word_info in rel.between_context:
-        print word_info[1],
-    print
-    print
-
-    for word_info in rel.after_context:
-        print word_info[1],
-    print
-    print
-    """
-
-    print rel.sentence
-    print
 
     s = ''
     for e in rel.syntaxnet_info:
         s += "\t".join(e) + '\n'
 
-    print s
+    path = [rel.syntaxnet_info[rel.ent1_end]]
+    ent1_path = get_path_up_to_root(path, rel.syntaxnet_info,
+                                    rel.syntaxnet_info[rel.ent1_end])
 
-    graph = DependencyGraph(tree_str=s.decode("utf8"))
-    #print dir(graph)
-    tree = graph.tree()
+    path = [rel.syntaxnet_info[rel.ent2_end]]
+    ent2_path = get_path_up_to_root(path, rel.syntaxnet_info,
+                                    rel.syntaxnet_info[rel.ent2_end])
 
-    triples = sorted([t for t in graph.triples()])
-    for t in triples:
-        print t
+    ent1 = [(x[0], x[1], x[3], x[6], x[7]) for x in ent1_path]
+    ent2 = [(x[0], x[1], x[3], x[6], x[7]) for x in ent2_path]
 
-    #print dir(tree)
+    # find common nodes
+    path = [val for val in ent1 if val in ent2]
 
-    tree.pretty_print()
+    # extract full path between the two named entities
+    full_path = []
 
-    """
-     reduce each relation example to the smallest subtree in the parse or
-     dependency tree that includes both entities.
-    """
+    if path[0][4] == 'ROOT':
+        for node in ent1[:-1]:
+            full_path.append(node)
+        for node in reversed(ent2):
+            full_path.append(node)
 
-    #[to_nltk_tree(s.root).pretty_print()]
-    #print tree.pprint_latex_qtree()
-    #tree.draw()
-    #word, lemma, ctag, tag, feats, head, rel
+    else:
+        for node in ent1:
+            if node == path[0]:
+                full_path.append(node)
+                break
+            else:
+                full_path.append(node)
+
+        found_common = False
+        for node in reversed(ent2):
+            if found_common:
+                full_path.append(node)
+            if node == path[0]:
+                found_common = True
+
+    return full_path
 
 
 def get_contexts(rel):
@@ -354,7 +314,10 @@ def main():
         relationships[x].syntaxnet_info = sentences_processed[x]
 
     rel = get_contexts(relationships[int(sys.argv[2])])
-    extract_shortest_syntactic_path(rel)
+    syntactic_path = extract_syntactic_path(rel)
+    rel.syntactic_path = syntactic_path
+
+    print rel
 
     # TODO: corrigir entidades
     # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )
