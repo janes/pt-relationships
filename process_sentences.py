@@ -7,8 +7,8 @@ import re
 import subprocess
 import codecs
 import sys
+import numpy as np
 
-from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.parse import DependencyGraph
 from nltk import Tree
 
@@ -65,8 +65,12 @@ def load_relationships(data_file):
     return relationships
 
 
-def extract_features(rel):
+def extract_features(rel, words_between, pos_between, words_syntactic_path,
+                     pos_syntactic_path):
     """
+    Contexts
+    ========
+
     BETWEEN:
         - the words
         - parts of speech
@@ -86,6 +90,8 @@ def extract_features(rel):
         - Finally, we also use the number of words between the nominals as a
         feature because relations such as Product-Producer and Entity-Origin
         often have no intervening tokens (e.g., organ builder or Coconut oil).
+
+        - ReVerb pattern
 
     BEFORE:
         - the words before and single word after E1 and E2 respectively
@@ -109,7 +115,35 @@ def extract_features(rel):
     - path between two entities
     """
 
-    return rel
+    # TODO: remover entidades da synt_path
+    rel.words_between = [x[1] for x in rel.between_context]
+    rel.pos_between = [x[3] for x in rel.between_context]
+    rel.words_syntactic_path = [x[1] for x in rel.syntactic_path]
+    rel.pos_syntactic_path = [x[2] for x in rel.syntactic_path]
+    rel.nr_words_between = len(words_between)
+
+    # add to global tracking of features
+    words_between.append(rel.words_between)
+    pos_between.append(rel.pos_between)
+    words_syntactic_path.append(rel.words_syntactic_path)
+    pos_syntactic_path.append(rel.pos_syntactic_path)
+
+
+def build_feature_vectors(rel, words_between, pos_between,
+                          words_syntactic_path, pos_syntactic_path):
+
+    assert len(words_between) == len(pos_between) == \
+           len(words_syntactic_path) == len(pos_syntactic_path)
+
+    """
+    print words_between.index(rel.words_between)
+    print pos_between.index(rel.pos_between)
+    print words_syntactic_path.index(rel.words_syntactic_path)
+    print pos_syntactic_path.index(rel.pos_syntactic_path)
+    """
+
+    words_between_array = np.zeros(len(words_between))
+    words_between_array[words_between.index(rel.words_between)] = 1
 
 
 def get_path_up_to_root(path, tree, node):
@@ -292,12 +326,6 @@ def read_syntaxnet_output(sentences):
     """
 
 
-def lemmatize():
-    lmtzr = WordNetLemmatizer()
-    lmtzr.lemmatize("owns", "v")
-    lmtzr.lemmatize("owned", "v")
-
-
 def main():
     relationships = load_relationships(sys.argv[1])
 
@@ -313,11 +341,39 @@ def main():
     for x in range(0, len(relationships)):
         relationships[x].syntaxnet_info = sentences_processed[x]
 
+    """
     rel = get_contexts(relationships[int(sys.argv[2])])
-    syntactic_path = extract_syntactic_path(rel)
-    rel.syntactic_path = syntactic_path
+    rel.syntactic_path = extract_syntactic_path(rel)
+    extract_features(rel)
+    """
 
-    print rel
+    words_between = []
+    pos_between = []
+    words_syntactic_path = []
+    pos_syntactic_path = []
+
+    for x in range(0, len(relationships)):
+        rel = get_contexts(relationships[x])
+        rel.syntactic_path = extract_syntactic_path(rel)
+        extract_features(rel, words_between, pos_between, words_syntactic_path,
+                         pos_syntactic_path)
+
+    """
+    print words_between
+    print pos_between
+    print words_syntactic_path
+    print pos_syntactic_path
+
+    print len(words_between)
+    print len(pos_between)
+    print len(words_syntactic_path)
+    print len(pos_syntactic_path)
+    print len(relationships)
+    """
+
+    for x in range(0, len(relationships)):
+        build_feature_vectors(relationships[x], words_between, pos_between,
+                              words_syntactic_path, pos_syntactic_path)
 
     # TODO: corrigir entidades
     # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )

@@ -8,6 +8,7 @@ import codecs
 
 sentences = set()
 
+
 def main():
     # read files already tagged
     # for each sentence, generate an hash code
