@@ -65,72 +65,7 @@ def load_relationships(data_file):
     return relationships
 
 
-def extract_features(rel, words_between, pos_between, words_syntactic_path,
-                     pos_syntactic_path):
-    """
-    Contexts
-    ========
-
-    BETWEEN:
-        - the words
-        - parts of speech
-
-        - prefixes of length 5
-        - words between the nominals can be strong indicators for the
-        type of relation, using the prefixes of length 5 for the words
-        between the nominals provides a kind of stemming
-
-        - extract a coarse-grained part of speech sequence for the words
-        between the nominals; a string using the first letter of each
-        token’s Treebank POS tag. This feature is motivated by the fact that
-        relations such as Member-Collection usually invoke prepositional
-        phrases such as:  of, in the, and of various.
-        The corresponding POS sequences we extract are: “I”, “I D”, and “I J”.
-
-        - Finally, we also use the number of words between the nominals as a
-        feature because relations such as Product-Producer and Entity-Origin
-        often have no intervening tokens (e.g., organ builder or Coconut oil).
-
-        - ReVerb pattern
-
-    BEFORE:
-        - the words before and single word after E1 and E2 respectively
-
-    Syntactic Dependencies Trees
-    ============================
-
-    - reduce each relation example to the smallest subtree in the parse or
-      dependency tree that includes both entities.
-
-      e.g.:
-        s = ''
-        for e in rel.syntaxnet_info:
-            s += "\t".join(e) + '\n'
-        graph = DependencyGraph(tree_str=s.decode("utf8"))
-        tree = graph.tree()
-        tree.pretty_print()
-        for t in tree.subtrees():
-            t.pretty_print()
-
-    - path between two entities
-    """
-
-    # TODO: remover entidades da synt_path
-    rel.words_between = [x[1] for x in rel.between_context]
-    rel.pos_between = [x[3] for x in rel.between_context]
-    rel.words_syntactic_path = [x[1] for x in rel.syntactic_path]
-    rel.pos_syntactic_path = [x[2] for x in rel.syntactic_path]
-    rel.nr_words_between = len(words_between)
-
-    # add to global tracking of features
-    words_between.append(rel.words_between)
-    pos_between.append(rel.pos_between)
-    words_syntactic_path.append(rel.words_syntactic_path)
-    pos_syntactic_path.append(rel.pos_syntactic_path)
-
-
-def build_feature_vectors(rel, words_between, pos_between,
-                          words_syntactic_path, pos_syntactic_path):
+def build_feature_vectors(rel, words_between, pos_between, words_syntactic_path, pos_syntactic_path):
 
     assert len(words_between) == len(pos_between) == \
            len(words_syntactic_path) == len(pos_syntactic_path)
@@ -141,7 +76,6 @@ def build_feature_vectors(rel, words_between, pos_between,
     print words_syntactic_path.index(rel.words_syntactic_path)
     print pos_syntactic_path.index(rel.pos_syntactic_path)
     """
-
     words_between_array = np.zeros(len(words_between))
     words_between_array[words_between.index(rel.words_between)] = 1
 
@@ -171,13 +105,13 @@ def extract_syntactic_path(rel):
     for e in rel.syntaxnet_info:
         s += "\t".join(e) + '\n'
 
+    #print_triples_tree(s)
+
     path = [rel.syntaxnet_info[rel.ent1_end]]
-    ent1_path = get_path_up_to_root(path, rel.syntaxnet_info,
-                                    rel.syntaxnet_info[rel.ent1_end])
+    ent1_path = get_path_up_to_root(path, rel.syntaxnet_info, rel.syntaxnet_info[rel.ent1_end])
 
     path = [rel.syntaxnet_info[rel.ent2_end]]
-    ent2_path = get_path_up_to_root(path, rel.syntaxnet_info,
-                                    rel.syntaxnet_info[rel.ent2_end])
+    ent2_path = get_path_up_to_root(path, rel.syntaxnet_info, rel.syntaxnet_info[rel.ent2_end])
 
     ent1 = [(x[0], x[1], x[3], x[6], x[7]) for x in ent1_path]
     ent2 = [(x[0], x[1], x[3], x[6], x[7]) for x in ent2_path]
@@ -185,31 +119,55 @@ def extract_syntactic_path(rel):
     # find common nodes
     path = [val for val in ent1 if val in ent2]
 
-    # extract full path between the two named entities
+    # extract the syntactic path between the two named entities
     full_path = []
 
+    # case_1) where the ROOT node is part of the common nodes
+    #         add everything from ROOT until entity is found direction ent_1
+    #         add everything from ROOT until entity is found direction ent_2
     if path[0][4] == 'ROOT':
+        # start at ROOT node
         for node in ent1[:-1]:
-            full_path.append(node)
-        for node in reversed(ent2):
-            full_path.append(node)
+            if node[1].strip(",.").decode("utf8") not in rel.ent1_parts:
+                full_path.append(node)
 
+        for node in reversed(ent2):
+            if node[1].strip(",.").decode("utf8") not in rel.ent2_parts:
+                full_path.append(node)
+
+    # case_2) where the ROOT node is not part of the common nodes
     else:
         for node in ent1:
+            print node
             if node == path[0]:
-                full_path.append(node)
+                if node[1].strip(",.").decode("utf8") not in rel.ent1_parts:
+                    full_path.append(node)
                 break
             else:
-                full_path.append(node)
+                if node[1].strip(",.").decode("utf8") not in rel.ent1_parts:
+                    full_path.append(node)
 
         found_common = False
+
         for node in reversed(ent2):
             if found_common:
-                full_path.append(node)
+                if node[1].strip(",.").decode("utf8") not in rel.ent2_parts:
+                    full_path.append(node)
             if node == path[0]:
                 found_common = True
 
     return full_path
+
+
+def print_triples_tree(s):
+    graph = DependencyGraph(tree_str=s.decode("utf8"))
+    tree = graph.tree()
+    """
+    triples = sorted([t for t in graph.triples()])
+    for t in triples:
+        print t
+    """
+    tree.pretty_print()
 
 
 def get_contexts(rel):
@@ -316,13 +274,96 @@ def read_syntaxnet_output(sentences):
     pickle.dump(processed_sentences, f_out)
     f_out.close()
 
+
+def extract_features(rel):
     """
-    # find ROOT verb
-    for word in sentence:
-        if len(word) == 1:
-            continue
-        if word[7] == 'ROOT' and word[3] == 'VERB':
-            print word
+    Contexts
+    ========
+
+    BETWEEN:
+        - the words
+        - parts of speech
+
+        - prefixes of length 5
+        - words between the nominals can be strong indicators for the
+        type of relation, using the prefixes of length 5 for the words
+        between the nominals provides a kind of stemming
+
+        - extract a coarse-grained part of speech sequence for the words
+        between the nominals; a string using the first letter of each
+        token’s Treebank POS tag. This feature is motivated by the fact that
+        relations such as Member-Collection usually invoke prepositional
+        phrases such as:  of, in the, and of various.
+        The corresponding POS sequences we extract are: “I”, “I D”, and “I J”.
+
+        - Finally, we also use the number of words between the nominals as a
+        feature because relations such as Product-Producer and Entity-Origin
+        often have no intervening tokens (e.g., organ builder or Coconut oil).
+
+        - ReVerb pattern
+
+    BEFORE:
+        - the words before and single word after E1 and E2 respectively
+
+    Syntactic Dependencies Trees
+    ============================
+
+    - reduce each relation example to the smallest subtree in the parse or
+      dependency tree that includes both entities.
+
+      e.g.:
+        s = ''
+        for e in rel.syntaxnet_info:
+            s += "\t".join(e) + '\n'
+        graph = DependencyGraph(tree_str=s.decode("utf8"))
+        tree = graph.tree()
+        tree.pretty_print()
+        for t in tree.subtrees():
+            t.pretty_print()
+
+    - path between two entities
+    """
+
+    rel.words_between = [x[1] for x in rel.between_context]
+    rel.pos_between = [x[3] for x in rel.between_context]
+    rel.words_syntactic_path = [x[1] for x in rel.syntactic_path]
+    rel.pos_syntactic_path = [x[2] for x in rel.syntactic_path]
+    rel.nr_words_between = len(rel.words_between)
+
+    print
+    print rel.sentence
+    print
+    print "BET", rel.between_context
+    print
+    print
+    print rel.pos_between
+    print rel.words_syntactic_path
+    print
+    #print dir(rel)
+
+    """
+    For verbs and nouns (and their respective word classes) occurring along
+    a dependency path we also use an additional suffix ’(-)’ to indicate a
+    negative polarity item. In the case of verbs, this suffix is used when
+    the verb (or an attached auxiliary) is modified by a negative polarity
+    adverb such as ’not’ or ’never’. Nouns get the negative suffix whenever
+    they are modified by negative determiners such as ’no’ , ’neither’ or
+    ’nor’.
+
+    For example, the phrase:
+     “He never went to Paris” is associated
+     with the dependency path ’He → went(-) ← to ← Paris’.
+    """
+
+    # TODO: cartesian product over the 3 sets of features
+    # TODO: define kernel
+
+    """
+    # add to global tracking of features
+    words_between.append(rel.words_between)
+    pos_between.append(rel.pos_between)
+    words_syntactic_path.append(rel.words_syntactic_path)
+    pos_syntactic_path.append(rel.pos_syntactic_path)
     """
 
 
@@ -341,22 +382,25 @@ def main():
     for x in range(0, len(relationships)):
         relationships[x].syntaxnet_info = sentences_processed[x]
 
-    """
     rel = get_contexts(relationships[int(sys.argv[2])])
     rel.syntactic_path = extract_syntactic_path(rel)
-    extract_features(rel)
-    """
 
+    extract_features(rel)
+
+    """
     words_between = []
     pos_between = []
     words_syntactic_path = []
     pos_syntactic_path = []
+    """
 
+    """
     for x in range(0, len(relationships)):
         rel = get_contexts(relationships[x])
         rel.syntactic_path = extract_syntactic_path(rel)
         extract_features(rel, words_between, pos_between, words_syntactic_path,
                          pos_syntactic_path)
+    """
 
     """
     print words_between
@@ -371,13 +415,11 @@ def main():
     print len(relationships)
     """
 
+    """
     for x in range(0, len(relationships)):
         build_feature_vectors(relationships[x], words_between, pos_between,
                               words_syntactic_path, pos_syntactic_path)
-
-    # TODO: corrigir entidades
-    # <ORG>Instituto de Apoio à Criança</ORG> ( IAC )
-    # <ORG>Instituto de Apoio à Criança (IAC)</ORG>
+    """
 
     # ./process_sentences.py train_data.txt `jot -r 1  0 1083`
 
