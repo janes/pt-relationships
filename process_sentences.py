@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import StringIO
 import pickle
-
 import os
 import re
 import subprocess
 import codecs
 import sys
 import numpy as np
-
 import pandas as pd
 
 from sklearn.svm import SVC, LinearSVC
 from sklearn.multiclass import OneVsOneClassifier
 from sklearn.model_selection import train_test_split
 
+from nltk import ngrams
+from nltk import bigrams
 from nltk.parse import DependencyGraph
 
 from gensim.models import KeyedVectors
@@ -49,6 +49,10 @@ rel_type_id['owns(Arg2,Arg1)'] = 17
 rel_type_id['studied-at(Arg1,Arg2)'] = 18
 rel_type_id['studied-at(Arg2,Arg1)'] = 19
 rel_type_id['work-together'] = 20
+
+
+TOKENIZER = r'\,|\(|\)|\w+(?:-\w+)+|\d+(?:[:|/]\d+)+|\d+(?:[.]?[oaºª°])+|\w+\'\w+|\d+(?:[,|.]\d+)*\%?|[\w+\.-]+@[\w\.' \
+            r'-]+|https?://[^\s]+|\w+'
 
 
 class Relationship:
@@ -314,6 +318,7 @@ def extract_features(rel):
 
     rel.words_between = [x[1] for x in rel.between_context]
     rel.pos_between = [x[3] for x in rel.between_context]
+    rel.word_pos_between = [(x[1], x[3]) for x in rel.between_context]
     rel.words_syntactic_path = [x[1] for x in rel.syntactic_path]
     rel.pos_syntactic_path = [x[2] for x in rel.syntactic_path]
 
@@ -441,6 +446,207 @@ def compute_gram_matrix(x_train):
     return gram_matrix
 
 
+def train_shortest_path_kernel(data_frame):
+
+    x = data_frame['relationship']
+    y = []
+    for rel_type in data_frame[['rel_type']].values.tolist():
+        y.append(rel_type_id[rel_type[0]])
+    y = np.array(y)
+
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
+
+    # train
+    train_gram_matrix = compute_gram_matrix(x_train)
+    for x in train_gram_matrix:
+        print x
+    exit(-1)
+
+    print "train"
+    # print train_gram_matrix.shape, type(train_gram_matrix)
+    # print y_train.shape, type(y_train)
+    svm = SVC(kernel='precomputed', decision_function_shape='ovo')
+    svm.fit(train_gram_matrix, y_train)
+    # print svm.classes_
+    # http://stackoverflow.com/questions/35022270/which-support-vectors-returned-in-multiclass-svm-sklearn
+    # test
+
+    print "test"
+    # http://stats.stackexchange.com/questions/92101/prediction-with-scikit-and-an-precomputed-kernel-svm
+    test_gram_matrix = compute_gram_matrix(x_test)
+    predictions = svm.predict(test_gram_matrix)
+    print predictions, len(predictions)
+    print y_test, len(y_test)
+
+
+def extract_bigrams(text, context):
+    tokens = re.findall(TOKENIZER, text, flags=re.UNICODE)
+    return [gram[0]+'_'+gram[1]+'_'+context for gram in bigrams(tokens)]
+
+
+def extract_reverb_patterns(text):
+        """
+        Extract ReVerb relational patterns
+        http://homes.cs.washington.edu/~afader/bib_pdf/emnlp11.pdf
+
+        VERB - verbs (all tenses and modes)
+        NOUN - nouns (common and proper)
+        PRON - pronouns
+        ADJ - adjectives
+        ADV - adverbs
+        ADP - adpositions (prepositions and postpositions)
+        CONJ - conjunctions
+        DET - determiners
+        NUM - cardinal numbers
+        PRT - particles or other function words
+        X - other: foreign words, typos, abbreviations
+        . - punctuation
+
+        # extract ReVerb patterns:
+        # V | V P | V W*P
+        # V = verb particle? adv?
+        # W = (noun | adj | adv | pron | det)
+        # P = (prep | particle | inf. marker)
+        """
+
+        patterns = []
+        patterns_tags = []
+        i = 0
+        limit = len(text)-1
+
+        while i <= limit:
+            tmp = StringIO.StringIO()
+            tmp_tags = []
+
+            # a ReVerb pattern always starts with a verb
+            if text[i][1] == 'VERB':
+                tmp.write(text[i][0]+' ')
+                t = (text[i][0], text[i][1])
+                tmp_tags.append(t)
+                i += 1
+
+                # V = verb particle? adv? (also capture auxiliary verbs)
+                while i <= limit and text[i][1] in ['VERB', 'PRT', 'ADV']:
+                    tmp.write(text[i][0]+' ')
+                    t = (text[i][0], text[i][1])
+                    tmp_tags.append(t)
+                    i += 1
+
+                # W = (noun | adj | adv | pron | det)
+                while i <= limit and text[i][1] in ['NOUN', 'ADJ', 'ADV',
+                                                    'PRON', 'DET']:
+                    tmp.write(text[i][0]+' ')
+                    t = (text[i][0], text[i][1])
+                    tmp_tags.append(t)
+                    i += 1
+
+                # P = (prep | particle | inf. marker)
+                while i <= limit and text[i][1] in ['ADP', 'PRT']:
+                    tmp.write(text[i][0]+' ')
+                    t = (text[i][0], text[i][1])
+                    tmp_tags.append(t)
+                    i += 1
+                # add the build pattern to the list collected patterns
+                patterns.append(tmp.getvalue())
+                patterns_tags.append(tmp_tags)
+            i += 1
+
+        return patterns, patterns_tags
+
+
+def detect_passive_voice(pattern):
+    passive_voice = False
+
+    # TODO: there more complex exceptions, adjectives or adverbs in between
+    # (to be) + (adj|adv) + past_verb + by
+    # to be + past verb + by
+
+    if len(pattern) >= 3:
+        if pattern[0][1].startswith('V'):
+            verb = self.lmtzr.lemmatize(pattern[0][0], 'v')
+            if verb in self.aux_verbs:
+                if (pattern[1][1] == 'VBN' or pattern[1][1] == 'VBD') \
+                        and pattern[-1][0] == 'by':
+                    passive_voice = True
+
+                # past verb + by
+                elif (pattern[-2][1] == 'VBN' or pattern[-2][1] == 'VBD') \
+                        and pattern[-1][0] == 'by':
+                    passive_voice = True
+
+            # past verb + by
+            elif (pattern[-2][1] == 'VBN' or pattern[-2][1] == 'VBD') \
+                    and pattern[-1][0] == 'by':
+                passive_voice = True
+
+    # past verb + by
+    elif len(pattern) >= 2:
+        if (pattern[-2][1] == 'VBN' or pattern[-2][1] == 'VBD') \
+                and pattern[-1][0] == 'by':
+            passive_voice = True
+
+    return passive_voice
+
+
+def feature_extraction(relationships):
+
+    # feature extraction
+    all_features = []
+    relationship_features = []
+
+    for rel in relationships:
+        rel_features = []
+
+        patterns, patterns_tags = extract_reverb_patterns(rel.word_pos_between)
+
+        print rel.word_pos_between
+        print "patterns: ", patterns
+        print "patterns_tags", patterns_tags
+        print
+
+
+        """
+        # TODO: extract ReVerb patterns from BET
+
+        patterns_bet = reverb.extract_reverb_patterns_ptb(rel.between)
+
+        for p in patterns_bet:
+            verb = p.split('_')[0]
+            try:
+                inf = verbs[verb]
+                if inf not in ['ser', 'estar', 'ter', 'haver', 'ficar', 'ir']:
+                    for word in clusters_words[int(word_cluster[verb])]:
+                        if word in verbs[verb]:
+                            rel_features.append(word)
+            except KeyError:
+                pass
+
+        for f in patterns_bet:
+            rel_features.append(f)
+        """
+
+        # relationships arguments
+        #args_type = 'arg1_' + rel.arg1type.strip() + '_arg2_' + rel.arg2type.strip()
+        #rel_features.append(args_type)
+
+        # append features to relationships features collection
+        #relationship_features.append(rel_features)
+
+        # print rel.arg1type
+        # print rel.arg2type
+        # print rel.sentence.encode("utf8")
+        # print rel_features
+        # print "\n"
+
+        # add the extracted features to a collection containing all the seen features
+        for feature in rel_features:
+            all_features.append(feature)
+
+    print len(all_features), " features extracted"
+
+    return all_features, relationship_features
+
+
 def main():
 
     # load training data
@@ -466,35 +672,12 @@ def main():
         data.append((relationships[x], relationships[x].rel_type))
 
     data_frame = pd.DataFrame(data, columns=["relationship", "rel_type"])
-    x = data_frame['relationship']
 
-    y = []
-    for rel_type in data_frame[['rel_type']].values.tolist():
-        y.append(rel_type_id[rel_type[0]])
-    y = np.array(y)
-
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
-
-    # train
-    train_gram_matrix = compute_gram_matrix(x_train)
-    print "train"
-    # print train_gram_matrix.shape, type(train_gram_matrix)
-    # print y_train.shape, type(y_train)
-    svm = SVC(kernel='precomputed', decision_function_shape='ovo')
-    svm.fit(train_gram_matrix, y_train)
-    # print svm.classes_
-    # http://stackoverflow.com/questions/35022270/which-support-vectors-returned-in-multiclass-svm-sklearn
-
-    # test
-    print "test"
-    # http://stats.stackexchange.com/questions/92101/prediction-with-scikit-and-an-precomputed-kernel-svm
-    test_gram_matrix = compute_gram_matrix(x_test)
-    predictions = svm.predict(test_gram_matrix)
-
-    print predictions, len(predictions)
-    print y_test, len(y_test)
+    # train_shortest_path_kernel(data_frame)
+    feature_extraction(relationships)
 
     # ./process_sentences.py train_data.txt `jot -r 1  0 1083`
+
 
 if __name__ == "__main__":
     main()

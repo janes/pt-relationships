@@ -351,6 +351,7 @@ def feature_extraction(reverb, clusters_words, relationships, verbs, word_cluste
     # feature extraction
     all_features = set()
     relationship_features = list()
+
     for rel in relationships:
         rel_features = list()
 
