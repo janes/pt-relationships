@@ -2,36 +2,69 @@
 # -*- coding: utf-8 -*-
 
 import subprocess
+import os
+import sys
+
+from nltk import DependencyGraph
 
 
-def main():
+def read_syntaxnet_output(sentences):
 
-    sentence = """
-    Quase 900 funcionários do Departamento de Estado assinaram memorando que
-    critica Trump.
-    """
+    # joint all sentences into a single string with
+    # separating new lines
+    all_sentences = "\n".join(sentences)
+
+    # redirect std_error to /dev/null
+    FNULL = open(os.devnull, 'w')
 
     process = subprocess.Popen(
         'MODEL_DIRECTORY=/Users/dbatista/Downloads/Portuguese; '
         'cd /Users/dbatista/models/syntaxnet; '
-        'echo "%s" | syntaxnet/models/parsey_universal/parse.sh '
-        '$MODEL_DIRECTORY 2' % sentence,
+        'echo \'%s\' | syntaxnet/models/parsey_universal/parse.sh '
+        '$MODEL_DIRECTORY 2' % all_sentences,
         shell=True,
         universal_newlines=False,
-        stdout=subprocess.PIPE)
+        stdout=subprocess.PIPE,
+        stderr=FNULL)
 
     output = process.communicate()
+    processed_sentences = []
+    sentence = []
 
     for line in output[0].split("\n"):
-        word = line.split("\t")
-        sentence.append(word)
+        if len(line) == 0:
+            processed_sentences.append(sentence)
+            sentence = []
+        else:
+            word = line.split("\t")
+            sentence.append(word)
 
-    # find ROOT verb
-    for word in sentence:
-        if len(word) == 1:
-            continue
-        if word[7] == 'ROOT' and word[3] == 'VERB':
-            print word
+    # subprocess captures an empty new line
+    del processed_sentences[-1]
+
+    deps = []
+    for sentence in processed_sentences:
+        s = ''
+        for line in sentence:
+            s += "\t".join(line) + '\n'
+        deps.append(s)
+
+    for sent_dep in deps:
+        graph = DependencyGraph(tree_str=sent_dep.decode("utf8"))
+        print "triples"
+        for triple in graph.triples():
+            print triple
+        print
+        tree = graph.tree()
+        tree.pretty_print()
+
+
+def main():
+    with open(sys.argv[1], 'r') as f:
+        data = f.readlines()
+        sentences = [x.strip() for x in data]
+    read_syntaxnet_output(sentences)
+
 
 if __name__ == "__main__":
     main()

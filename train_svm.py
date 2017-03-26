@@ -578,7 +578,6 @@ def main():
     relationships, tagged = load_dbpedia_relationships(sys.argv[1])
     print len(relationships), " loaded"
 
-    """
     global tagger
     print "Loading PoS tagger from", sys.argv[1]
     f_model = open(sys.argv[1], "rb")
@@ -601,11 +600,6 @@ def main():
     verbs = pickle.load(verbs_conj)
     verbs_conj.close()
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 48a5a6f839c4c6b1e4605b6a1ad633329032a03c
     # print number of samples per class
     per_class = dict()
     for rel in relationships:
@@ -692,7 +686,6 @@ def main():
 
         # classify the sentences
         classify(classifier, relationships_pool, hasher)
-    """
 
 if __name__ == "__main__":
     main()
